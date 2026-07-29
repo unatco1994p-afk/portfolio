@@ -70,7 +70,7 @@ substitutions:
   _REPOSITORY: 'portfolio'
   _GKE_CLUSTER: 'portfolio-cluster'
   _GKE_LOCATION: 'europe-north1'
-  _DOMAIN: 'portfolio.example.com'
+  _DOMAIN: 'portfolio.tomasz0zwierzynski.pl'
 
 images:
   - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend:${SHORT_SHA}'
