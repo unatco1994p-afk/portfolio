@@ -65,6 +65,9 @@ steps:
       - '--set'
       - 'global.domain=${_DOMAIN}'
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 substitutions:
   _LOCATION: 'europe-north1'
   _REPOSITORY: 'portfolio'
