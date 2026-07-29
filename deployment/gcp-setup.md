@@ -94,23 +94,35 @@ gcloud compute addresses describe $STATIC_IP_NAME --global --format="value(addre
 
 ---
 
-## 7. Grant Cloud Build IAM Permissions for GKE & Artifact Registry
+## 7. Create Dedicated Service Account & Grant IAM Permissions
 
-Since Cloud Build runs natively inside GCP under its Service Account, grant it the required roles to push Docker images to Artifact Registry and deploy Helm releases to GKE:
+To follow security best practices (Least Privilege Principle), create a dedicated Service Account **`portfolio-deployer`** and grant it only the minimal required permissions for GKE and Artifact Registry:
 
 ```powershell
-# Get Project Number
-$PROJECT_NUMBER = (gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
+# 1. Create dedicated IAM Service Account
+gcloud iam service-accounts create portfolio-deployer `
+    --display-name="Portfolio CI/CD Deployer"
 
-# Grant Artifact Registry Writer role
+# 2. Grant Artifact Registry Writer role
 gcloud projects add-iam-policy-binding $PROJECT_ID `
-    --member="serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com" `
+    --member="serviceAccount:portfolio-deployer@${PROJECT_ID}.iam.gserviceaccount.com" `
     --role="roles/artifactregistry.writer"
 
-# Grant GKE Developer role (for helm upgrade)
+# 3. Grant GKE Developer role (for helm upgrade)
 gcloud projects add-iam-policy-binding $PROJECT_ID `
-    --member="serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com" `
+    --member="serviceAccount:portfolio-deployer@${PROJECT_ID}.iam.gserviceaccount.com" `
     --role="roles/container.developer"
+
+# 4. Grant Cloud Build Builder role
+gcloud projects add-iam-policy-binding $PROJECT_ID `
+    --member="serviceAccount:portfolio-deployer@${PROJECT_ID}.iam.gserviceaccount.com" `
+    --role="roles/cloudbuild.builds.builder"
+
+# 5. Allow Cloud Build service agent to act as portfolio-deployer
+$PROJECT_NUMBER = (gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
+gcloud iam service-accounts add-iam-policy-binding "portfolio-deployer@${PROJECT_ID}.iam.gserviceaccount.com" `
+    --member="serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com" `
+    --role="roles/iam.serviceAccountUser"
 ```
 
 ---
