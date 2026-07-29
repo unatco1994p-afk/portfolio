@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+
+# Angular build & cache
+frontend/dist/
+frontend/.angular/
+.angular/
+dist/
+tmp/
+out-tsc/
+
+# Temp extracted files
+stitch_design/
+
+# Quarkus / Java / Maven (Backend)
+backend/target/
+backend/.mvn/
+backend/.quarkus/
+*.class
+*.jar
+*.war
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# IDE & Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System / OS
+.DS_Store
+Thumbs.db
+
+# Local environment files
+.env
+.env.local

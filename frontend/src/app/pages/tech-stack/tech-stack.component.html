@@ -1,0 +1,43 @@
+<div class="tech-stack-page">
+  <div class="page-header">
+    <span class="badge badge-primary">02 // TECH STACK & ARCHITECTURE</span>
+    <h1 class="page-title">Technical Capabilities & Tooling</h1>
+    <p class="page-description">Sprawdzony zestaw narzędzi inżynieryjnych używanych do budowania bezawaryjnych mikroserwisów oraz automatyzacji w chmurze.</p>
+  </div>
+
+  <div class="skills-grid">
+    @for (skill of skills(); track skill.id) {
+      <div class="skill-card glass-panel">
+        <div class="skill-header">
+          <div class="skill-icon-wrap">
+            <span class="material-symbols-outlined">{{ skill.icon }}</span>
+          </div>
+          <div class="skill-meta">
+            <h3 class="skill-name">{{ skill.name }}</h3>
+            <span class="skill-category">{{ skill.category }}</span>
+          </div>
+          <span class="skill-exp">{{ skill.experience }}</span>
+        </div>
+
+        <div class="proficiency-container">
+          <div class="proficiency-label">
+            <span>Proficiency Level</span>
+            <span class="percentage">{{ skill.proficiency }}%</span>
+          </div>
+          <div class="bar-background">
+            <div class="bar-fill" [style.width.%]="skill.proficiency"></div>
+          </div>
+        </div>
+
+        <div class="skill-highlights">
+          @for (item of skill.highlights; track item) {
+            <span class="highlight-chip">
+              <span class="chip-dot"></span>
+              {{ item }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

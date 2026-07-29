@@ -1,0 +1,79 @@
+steps:
+  # 1. Build Quarkus Backend Docker Image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-backend'
+    args:
+      - 'build'
+      - '-t'
+      - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend:${SHORT_SHA}'
+      - '-t'
+      - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend:latest'
+      - './backend'
+
+  # 2. Push Backend Image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-backend'
+    args:
+      - 'push'
+      - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend:${SHORT_SHA}'
+
+  # 3. Build Angular Nginx Frontend Docker Image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-frontend'
+    args:
+      - 'build'
+      - '-t'
+      - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend:${SHORT_SHA}'
+      - '-t'
+      - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend:latest'
+      - './frontend'
+
+  # 4. Push Frontend Image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-frontend'
+    args:
+      - 'push'
+      - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend:${SHORT_SHA}'
+
+  # 5. Fetch GKE Cluster Credentials
+  - name: 'gcr.io/cloud-builders/gcloud'
+    id: 'get-gke-credentials'
+    args:
+      - 'container'
+      - 'clusters'
+      - 'get-credentials'
+      - '${_GKE_CLUSTER}'
+      - '--location=${_GKE_LOCATION}'
+
+  # 6. Deploy / Upgrade Helm Release on GKE
+  - name: 'microservices-demo/helm'
+    id: 'helm-deploy'
+    entrypoint: 'helm'
+    args:
+      - 'upgrade'
+      - '--install'
+      - 'portfolio'
+      - './deployment/helm/portfolio-chart'
+      - '--set'
+      - 'backend.image.repository=${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend'
+      - '--set'
+      - 'backend.image.tag=${SHORT_SHA}'
+      - '--set'
+      - 'frontend.image.repository=${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend'
+      - '--set'
+      - 'frontend.image.tag=${SHORT_SHA}'
+      - '--set'
+      - 'global.domain=${_DOMAIN}'
+
+substitutions:
+  _LOCATION: 'europe-west3'
+  _REPOSITORY: 'portfolio'
+  _GKE_CLUSTER: 'portfolio-gke-cluster'
+  _GKE_LOCATION: 'europe-west3'
+  _DOMAIN: 'portfolio.example.com'
+
+images:
+  - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend:${SHORT_SHA}'
+  - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend:${SHORT_SHA}'
+
+timeout: '1800s'

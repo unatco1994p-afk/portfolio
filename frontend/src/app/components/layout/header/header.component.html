@@ -1,0 +1,24 @@
+<header class="header-container">
+  <div class="header-left">
+    <span class="path-breadcrumbs">{{ currentRoutePath }}</span>
+  </div>
+
+  <div class="header-right">
+    <div class="search-box">
+      <span class="material-symbols-outlined icon">search</span>
+      <input type="text" placeholder="Search systems..." class="search-input" />
+    </div>
+
+    <div class="header-actions">
+      <a [href]="profile().githubUrl" target="_blank" title="GitHub" class="action-btn">
+        <span class="material-symbols-outlined">code</span>
+      </a>
+      <a [href]="profile().linkedinUrl" target="_blank" title="LinkedIn" class="action-btn">
+        <span class="material-symbols-outlined">link</span>
+      </a>
+      <div class="user-avatar" [title]="profile().name">
+        <img [src]="profile().avatarUrl" [alt]="profile().name" />
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,36 @@
+<aside class="sidebar-container">
+  <div class="sidebar-brand">
+    <h1 class="brand-title">Portfolio OS</h1>
+    <p class="brand-subtitle">{{ profile().title }}</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a routerLink="/dashboard" routerLinkActive="active" class="nav-item">
+      <span class="material-symbols-outlined">dashboard</span>
+      <span class="nav-text">Dashboard</span>
+    </a>
+    <a routerLink="/tech-stack" routerLinkActive="active" class="nav-item">
+      <span class="material-symbols-outlined">terminal</span>
+      <span class="nav-text">Tech Stack</span>
+    </a>
+    <a routerLink="/projects" routerLinkActive="active" class="nav-item">
+      <span class="material-symbols-outlined">rocket_launch</span>
+      <span class="nav-text">Projects</span>
+    </a>
+    <a routerLink="/experience" routerLinkActive="active" class="nav-item">
+      <span class="material-symbols-outlined">history</span>
+      <span class="nav-text">Experience</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="status-indicator">
+      <span class="status-dot"></span>
+      <span class="status-text">{{ profile().status }}</span>
+    </div>
+    <a [href]="'mailto:' + profile().email" class="contact-btn">
+      <span class="material-symbols-outlined">mail</span>
+      <span>Contact Engineer</span>
+    </a>
+  </div>
+</aside>

@@ -1,0 +1,51 @@
+<div class="experience-page">
+  <div class="page-header">
+    <span class="badge badge-primary">04 // CAREER TIMELINE & IMPACT</span>
+    <h1 class="page-title">Work Experience & Leadership</h1>
+    <p class="page-description">Historia zatrudnienia, zrealizowane projekty inżynieryjne oraz mierzalny wpływ biznesowy i technologiczny.</p>
+  </div>
+
+  <div class="timeline-container">
+    @for (exp of experiences(); track exp.id) {
+      <div class="timeline-item">
+        <div class="timeline-marker" [class.current]="exp.isCurrent">
+          <span class="marker-dot"></span>
+          <span class="marker-line"></span>
+        </div>
+
+        <div class="timeline-content glass-panel">
+          <div class="item-header">
+            <div class="role-group">
+              <h2 class="role-title">{{ exp.role }}</h2>
+              <span class="company-name">&#64; {{ exp.company }}</span>
+            </div>
+            <div class="period-badge">
+              <span class="material-symbols-outlined icon">calendar_today</span>
+              <span>{{ exp.period }}</span>
+            </div>
+          </div>
+
+          <p class="summary-text">{{ exp.summary }}</p>
+
+          <div class="achievements-section">
+            <h3 class="section-subtitle">Key Achievements & Impact</h3>
+            <ul class="achievements-list">
+              @for (achievement of exp.achievements; track achievement) {
+                <li class="achievement-item">
+                  <span class="material-symbols-outlined check-icon">check_circle</span>
+                  <span>{{ achievement }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+
+          <div class="technologies-row">
+            @for (tech of exp.technologies; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

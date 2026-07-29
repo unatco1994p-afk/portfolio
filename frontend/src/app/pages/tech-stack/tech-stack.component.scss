@@ -1,0 +1,134 @@
+.tech-stack-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.page-header {
+  .page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--on-surface);
+    margin-top: 0.5rem;
+  }
+
+  .page-description {
+    color: var(--on-surface-variant);
+    font-size: 1rem;
+    max-width: 700px;
+    margin-top: 0.25rem;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  .skill-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .skill-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 0.5rem;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+    }
+
+    .skill-meta {
+      flex: 1;
+
+      .skill-name {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--on-surface);
+      }
+
+      .skill-category {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--on-surface-variant);
+      }
+    }
+
+    .skill-exp {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+  }
+
+  .proficiency-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    .proficiency-label {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+
+      .percentage {
+        color: var(--primary);
+        font-weight: 700;
+      }
+    }
+
+    .bar-background {
+      height: 6px;
+      background: var(--surface-container-highest);
+      border-radius: 3px;
+      overflow: hidden;
+
+      .bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary-container), var(--secondary));
+        border-radius: 3px;
+        transition: width 0.6s ease-out;
+      }
+    }
+  }
+
+  .skill-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    .highlight-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.6rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--outline-variant);
+      border-radius: 0.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--on-surface);
+
+      .chip-dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--primary);
+      }
+    }
+  }
+}

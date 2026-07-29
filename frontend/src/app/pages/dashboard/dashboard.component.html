@@ -1,0 +1,102 @@
+<div class="dashboard-page">
+  <!-- Hero Section -->
+  <section class="hero-card glass-panel">
+    <div class="hero-content">
+      <span class="badge badge-primary">01 // EXECUTIVE SUMMARY</span>
+      <h1 class="hero-name">{{ profile().name }}</h1>
+      <h2 class="hero-title">{{ profile().title }}</h2>
+      <p class="hero-bio">{{ profile().bio }}</p>
+      
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="material-symbols-outlined">location_on</span>
+          <span>{{ profile().location }}</span>
+        </div>
+        <div class="meta-item">
+          <span class="material-symbols-outlined">terminal</span>
+          <span>Stack: GraalVM / Quarkus / Angular / GKE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Metrics Grid -->
+  <section class="metrics-grid">
+    @for (metric of metrics(); track metric.id) {
+      <div class="metric-card glass-panel">
+        <span class="metric-label">{{ metric.label }}</span>
+        <div class="metric-value-row">
+          <span class="metric-value">{{ metric.value }}</span>
+          @if (metric.trend) {
+            <span class="metric-trend">{{ metric.trend }}</span>
+          }
+        </div>
+        <div class="metric-status">
+          <span class="status-indicator-dot"></span>
+          <span>Status: {{ metric.status }}</span>
+        </div>
+      </div>
+    }
+  </section>
+
+  <!-- Two Column Showcase -->
+  <div class="showcase-grid">
+    <!-- Featured Projects -->
+    <div class="showcase-column">
+      <div class="section-header">
+        <h3 class="section-title">Featured Projects</h3>
+        <a routerLink="/projects" class="view-all-link">View All Projects &rarr;</a>
+      </div>
+
+      <div class="project-list">
+        @for (project of projects(); track project.id) {
+          @if (project.featured) {
+            <div class="project-card glass-panel">
+              <div class="project-header">
+                <span class="badge badge-secondary">{{ project.status }}</span>
+                <span class="project-metrics-badge">{{ project.metrics }}</span>
+              </div>
+              <h4 class="project-title">{{ project.title }}</h4>
+              <p class="project-desc">{{ project.description }}</p>
+              <div class="project-tags">
+                @for (tech of project.techStack; track tech) {
+                  <span class="tech-tag">{{ tech }}</span>
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    <!-- Terminal Code Showcase -->
+    <div class="showcase-column">
+      <div class="section-header">
+        <h3 class="section-title">Engineering Showcase</h3>
+        <span class="badge badge-tertiary">LIVE CONSOLE</span>
+      </div>
+
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="dot-group">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title">system-architecture-spec.json</span>
+        </div>
+        <div class="terminal-body">
+          <pre><code>&#123;
+  <span style="color: var(--primary);">"runtime"</span>: <span style="color: var(--secondary);">"GraalVM Native Image"</span>,
+  <span style="color: var(--primary);">"framework"</span>: <span style="color: var(--secondary);">"Quarkus 3.x + Angular 19"</span>,
+  <span style="color: var(--primary);">"orchestrator"</span>: <span style="color: var(--secondary);">"GKE Autopilot"</span>,
+  <span style="color: var(--primary);">"packaging"</span>: <span style="color: var(--secondary);">"Helm v3 Chart"</span>,
+  <span style="color: var(--primary);">"cicd"</span>: <span style="color: var(--secondary);">"Workload Identity Federation"</span>,
+  <span style="color: var(--primary);">"coldStartMs"</span>: 18,
+  <span style="color: var(--primary);">"footprintRamMb"</span>: 42
+&#125;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

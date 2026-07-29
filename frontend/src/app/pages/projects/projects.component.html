@@ -1,0 +1,54 @@
+<div class="projects-page">
+  <div class="page-header">
+    <span class="badge badge-primary">03 // FEATURED PROJECTS & SYSTEMS</span>
+    <h1 class="page-title">Engineering Project Showcase</h1>
+    <p class="page-description">Wyselekcjonowane architektury, narzędzia open-source oraz systemy chmurowe gotowe do zastosowań produkcyjnych.</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    @for (cat of categories; track cat.id) {
+      <button 
+        class="filter-btn" 
+        [class.active]="selectedCategory() === cat.id"
+        (click)="setCategory(cat.id)">
+        {{ cat.label }}
+      </button>
+    }
+  </div>
+
+  <!-- Projects Grid -->
+  <div class="projects-grid">
+    @for (project of filteredProjects(); track project.id) {
+      <div class="project-card glass-panel">
+        <div class="card-header">
+          <span class="badge badge-secondary">{{ project.status }}</span>
+          <span class="project-metrics">{{ project.metrics }}</span>
+        </div>
+
+        <h2 class="project-title">{{ project.title }}</h2>
+        <p class="project-description">{{ project.description }}</p>
+
+        <div class="tech-stack-chips">
+          @for (tech of project.techStack; track tech) {
+            <span class="tech-chip">{{ tech }}</span>
+          }
+        </div>
+
+        <div class="card-footer">
+          @if (project.githubUrl) {
+            <a [href]="project.githubUrl" target="_blank" class="btn-secondary link-btn">
+              <span class="material-symbols-outlined">code</span>
+              <span>Source Code</span>
+            </a>
+          }
+        </div>
+      </div>
+    } @empty {
+      <div class="empty-state glass-panel">
+        <span class="material-symbols-outlined">folder_off</span>
+        <p>No projects found in this category.</p>
+      </div>
+    }
+  </div>
+</div>
