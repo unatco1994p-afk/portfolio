@@ -1,9 +1,11 @@
 steps:
-  # 1. Build Quarkus Backend Docker Image
+  # 1. Build Quarkus Backend Native Docker Image (GraalVM Mandrel)
   - name: 'gcr.io/cloud-builders/docker'
     id: 'build-backend'
     args:
       - 'build'
+      - '-f'
+      - './backend/Dockerfile.native'
       - '-t'
       - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend:${SHORT_SHA}'
       - '-t'

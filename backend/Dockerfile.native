@@ -5,6 +5,7 @@ USER root
 WORKDIR /code
 
 COPY pom.xml ./
+RUN mvn dependency:go-offline -B
 COPY src ./src
 
 # Build native binary executable using preinstalled Maven
