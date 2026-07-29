@@ -10,8 +10,8 @@ RUN chmod +x ./mvnw
 
 COPY src ./src
 
-# Build native binary executable using Maven Wrapper
-RUN ./mvnw package -Dnative -DskipTests -B
+# Build native binary executable using Mandrel Native Builder
+RUN ./mvnw package -Pnative -Dquarkus.native.enabled=true -DskipTests -B
 
 # Stage 2: Ultra-lightweight Native Runtime
 FROM quay.io/quarkus/quarkus-micro-image:2.0
