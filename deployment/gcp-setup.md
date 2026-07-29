@@ -4,18 +4,48 @@ This guide provides all the exact `gcloud` CLI commands required to set up Googl
 
 ---
 
-## 1. Environment Setup & Variables
+## 1. Authenticate with Google Cloud (Browser Login)
+
+Before running any infrastructure commands, authenticate your `gcloud` CLI tool with your Google account via browser login:
+
+```bash
+# 1. Log in to your GCP user account (opens browser for Google SSO)
+gcloud auth login
+
+# 2. Configure Docker authentication helper for Artifact Registry (in your region)
+gcloud auth configure-docker europe-north1-docker.pkg.dev
+```
+
+---
+
+## 2. Environment Setup & Variables
 
 Set your target Google Cloud Project ID and desired configuration variables in your shell (PowerShell or Bash):
 
+### Bash / Linux / macOS:
 ```bash
-# Set your GCP Project ID and Configuration Variables
+# Set configuration variables
 export PROJECT_ID="portfolio-503914"
 export REGION="europe-north1"
 export CLUSTER_NAME="portfolio-cluster"
 export REPO_NAME="portfolio"
 export STATIC_IP_NAME="portfolio-ip"
 export GITHUB_REPO="unatco1994p-afk/portfolio"
+
+# Configure gcloud defaults
+gcloud config set project $PROJECT_ID
+gcloud config set compute/region $REGION
+```
+
+### PowerShell / Windows:
+```powershell
+# Set configuration variables
+$PROJECT_ID="portfolio-503914"
+$REGION="europe-north1"
+$CLUSTER_NAME="portfolio-cluster"
+$REPO_NAME="portfolio"
+$STATIC_IP_NAME="portfolio-ip"
+$GITHUB_REPO="unatco1994p-afk/portfolio"
 
 # Configure gcloud defaults
 gcloud config set project $PROJECT_ID
