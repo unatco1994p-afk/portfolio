@@ -46,9 +46,11 @@ steps:
       - '--location=${_GKE_LOCATION}'
 
   # 6. Deploy / Upgrade Helm Release on GKE
-  - name: 'microservices-demo/helm'
+  - name: 'alpine/helm:3.14.0'
     id: 'helm-deploy'
     entrypoint: 'helm'
+    env:
+      - 'KUBECONFIG=/builder/home/.kube/config'
     args:
       - 'upgrade'
       - '--install'
