@@ -20,6 +20,9 @@ frontend:
     requests:
       cpu: "250m"
       memory: "512Mi"
+  pdb:
+    enabled: true
+    maxUnavailable: 1
 
 backend:
   replicaCount: 1
@@ -39,6 +42,14 @@ backend:
       memory: "512Mi"
   env:
     quarkusCorsOrigins: "https://portfolio.example.com"
+  pdb:
+    enabled: true
+    maxUnavailable: 1
+
+serviceAccount:
+  create: true
+  name: "portfolio-sa"
+  annotations: {}
 
 ingress:
   enabled: true
