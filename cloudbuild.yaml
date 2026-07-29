@@ -35,37 +35,21 @@ steps:
       - 'push'
       - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend:${SHORT_SHA}'
 
-  # 5. Fetch GKE Cluster Credentials
+  # 5. Fetch GKE Credentials & Deploy Helm Release
   - name: 'gcr.io/cloud-builders/gcloud'
-    id: 'get-gke-credentials'
-    args:
-      - 'container'
-      - 'clusters'
-      - 'get-credentials'
-      - '${_GKE_CLUSTER}'
-      - '--location=${_GKE_LOCATION}'
-
-  # 6. Deploy / Upgrade Helm Release on GKE
-  - name: 'alpine/helm:3.14.0'
     id: 'helm-deploy'
-    entrypoint: 'helm'
-    env:
-      - 'KUBECONFIG=/builder/home/.kube/config'
+    entrypoint: 'bash'
     args:
-      - 'upgrade'
-      - '--install'
-      - 'portfolio'
-      - './deployment/helm/portfolio-chart'
-      - '--set'
-      - 'backend.image.repository=${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend'
-      - '--set'
-      - 'backend.image.tag=${SHORT_SHA}'
-      - '--set'
-      - 'frontend.image.repository=${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend'
-      - '--set'
-      - 'frontend.image.tag=${SHORT_SHA}'
-      - '--set'
-      - 'global.domain=${_DOMAIN}'
+      - '-c'
+      - |
+        gcloud container clusters get-credentials ${_GKE_CLUSTER} --location=${_GKE_LOCATION}
+        curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+        helm upgrade --install portfolio ./deployment/helm/portfolio-chart \
+          --set backend.image.repository=${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-backend \
+          --set backend.image.tag=${SHORT_SHA} \
+          --set frontend.image.repository=${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPOSITORY}/portfolio-frontend \
+          --set frontend.image.tag=${SHORT_SHA} \
+          --set global.domain=${_DOMAIN}
 
 options:
   logging: CLOUD_LOGGING_ONLY
