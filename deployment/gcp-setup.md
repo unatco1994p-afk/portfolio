@@ -1,6 +1,6 @@
 # GCP Infrastructure & Deployment Guide (PowerShell)
 
-This guide provides step-by-step **PowerShell** commands to set up Google Cloud Platform (GCP) infrastructure for the Portfolio monorepo, configure **GKE Autopilot**, set up **Artifact Registry**, reserve a **Static IP**, and connect **GitHub to GCP Cloud Build** using **Workload Identity Federation**.
+This guide provides step-by-step **PowerShell** commands to set up Google Cloud Platform (GCP) infrastructure for the Portfolio monorepo, configure **GKE Autopilot**, set up **Artifact Registry**, reserve a **Static IP**, grant IAM permissions to **Cloud Build**, and connect **GitHub to GCP Cloud Build Triggers**.
 
 ---
 
@@ -39,7 +39,7 @@ gcloud config set compute/region $REGION
 
 ## 3. Enable Required GCP APIs
 
-Enable the necessary Google Cloud services for Kubernetes, Container Registry, Cloud Build, and Identity Management:
+Enable the necessary Google Cloud services for Kubernetes, Container Registry, Cloud Build, and Compute Engine:
 
 ```powershell
 gcloud services enable `
@@ -90,58 +90,27 @@ gcloud compute addresses create $STATIC_IP_NAME --global
 # Retrieve the assigned static IP address
 gcloud compute addresses describe $STATIC_IP_NAME --global --format="value(address)"
 ```
-> **Note**: Update your domain DNS records (A Record) to point to this assigned static IP.
+> **Note**: Update your domain DNS records (A Record) to point `portfolio.tomasz0zwierzynski.pl` to this assigned static IP (`8.233.156.61`).
 
 ---
 
-## 7. Configure Workload Identity Federation (GitHub <-> GCP IAM)
+## 7. Grant Cloud Build IAM Permissions for GKE & Artifact Registry
 
-Workload Identity Federation allows GitHub / Cloud Build to authenticate securely with GCP without using static JSON keys.
-
-### Step 7.1: Create Workload Identity Pool & Provider
+Since Cloud Build runs natively inside GCP under its Service Account, grant it the required roles to push Docker images to Artifact Registry and deploy Helm releases to GKE:
 
 ```powershell
-# Create Workload Identity Pool
-gcloud iam workload-identity-pools create "github-pool" `
-    --location="global" `
-    --display-name="GitHub Actions & Build Pool"
+# Get Project Number
+$PROJECT_NUMBER = (gcloud projects describe $PROJECT_ID --format="value(projectNumber)")
 
-# Get Pool ID into variable
-$POOL_ID = (gcloud iam workload-identity-pools describe "github-pool" --location="global" --format="value(name)")
-
-# Add GitHub OIDC Provider
-gcloud iam workload-identity-pools providers create-oidc "github-provider" `
-    --location="global" `
-    --workload-identity-pool="github-pool" `
-    --display-name="GitHub Provider" `
-    --attribute-mapping="google.subject=assertion.sub,attribute.actor=assertion.actor,attribute.repository=assertion.repository" `
-    --issuer-uri="https://token.actions.githubusercontent.com"
-```
-
-### Step 7.2: Create Service Account & Grant IAM Roles
-
-```powershell
-# Create IAM Service Account for CI/CD
-gcloud iam service-accounts create portfolio-deployer `
-    --display-name="Portfolio CI/CD Deployer"
-
-# Grant required permissions to the Service Account
+# Grant Artifact Registry Writer role
 gcloud projects add-iam-policy-binding $PROJECT_ID `
-    --member="serviceAccount:portfolio-deployer@$PROJECT_ID.iam.gserviceaccount.com" `
+    --member="serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com" `
     --role="roles/artifactregistry.writer"
 
+# Grant GKE Developer role (for helm upgrade)
 gcloud projects add-iam-policy-binding $PROJECT_ID `
-    --member="serviceAccount:portfolio-deployer@$PROJECT_ID.iam.gserviceaccount.com" `
+    --member="serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com" `
     --role="roles/container.developer"
-
-gcloud projects add-iam-policy-binding $PROJECT_ID `
-    --member="serviceAccount:portfolio-deployer@$PROJECT_ID.iam.gserviceaccount.com" `
-    --role="roles/cloudbuild.builds.editor"
-
-# Allow GitHub repository to impersonate the Service Account
-gcloud iam service-accounts add-iam-policy-binding "portfolio-deployer@$PROJECT_ID.iam.gserviceaccount.com" `
-    --role="roles/iam.workloadIdentityUser" `
-    --member="principalSet://iam.googleapis.com/${POOL_ID}/attribute.repository/${GITHUB_REPO}"
 ```
 
 ---
@@ -165,9 +134,9 @@ gcloud builds triggers create github `
 
 ```powershell
 helm upgrade --install portfolio ./deployment/helm/portfolio-chart `
-    --set global.domain="portfolio.example.com" `
+    --set global.domain="portfolio.tomasz0zwierzynski.pl" `
     --set backend.image.repository="$REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/portfolio-backend" `
-    --set backend.image.tag="latest" `
+    --set backend.image.tag="1.0.0" `
     --set frontend.image.repository="$REGION-docker.pkg.dev/$PROJECT_ID/$REPO_NAME/portfolio-frontend" `
-    --set frontend.image.tag="latest"
+    --set frontend.image.tag="1.0.0"
 ```
