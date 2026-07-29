@@ -66,10 +66,10 @@ steps:
       - 'global.domain=${_DOMAIN}'
 
 substitutions:
-  _LOCATION: 'europe-west3'
+  _LOCATION: 'europe-north1'
   _REPOSITORY: 'portfolio'
-  _GKE_CLUSTER: 'portfolio-gke-cluster'
-  _GKE_LOCATION: 'europe-west3'
+  _GKE_CLUSTER: 'portfolio-cluster'
+  _GKE_LOCATION: 'europe-north1'
   _DOMAIN: 'portfolio.example.com'
 
 images:

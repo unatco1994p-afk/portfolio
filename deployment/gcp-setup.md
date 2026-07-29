@@ -9,13 +9,13 @@ This guide provides all the exact `gcloud` CLI commands required to set up Googl
 Set your target Google Cloud Project ID and desired configuration variables in your shell (PowerShell or Bash):
 
 ```bash
-# Set your GCP Project ID
-export PROJECT_ID="your-gcp-project-id"
-export REGION="europe-west3"
-export CLUSTER_NAME="portfolio-gke-cluster"
+# Set your GCP Project ID and Configuration Variables
+export PROJECT_ID="portfolio-503914"
+export REGION="europe-north1"
+export CLUSTER_NAME="portfolio-cluster"
 export REPO_NAME="portfolio"
-export STATIC_IP_NAME="portfolio-static-ip"
-export GITHUB_REPO="your-username/portfolio"
+export STATIC_IP_NAME="portfolio-ip"
+export GITHUB_REPO="unatco1994p-afk/portfolio"
 
 # Configure gcloud defaults
 gcloud config set project $PROJECT_ID
