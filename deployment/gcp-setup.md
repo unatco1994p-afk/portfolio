@@ -115,29 +115,33 @@ gcloud projects add-iam-policy-binding $PROJECT_ID `
 
 ---
 
-## 8. Connect GitHub Repository to GCP Cloud Build Trigger
+## 8. Create Cloud Build Trigger in GCP Console
 
-Before `gcloud` can create a trigger for a GitHub repository, Google Cloud needs authorization via the **Google Cloud Build GitHub App**.
+Since Cloud Build uses modern 2nd Gen GitHub Connections, the fastest and most reliable way to create the trigger is directly from the GCP Console (takes 10 seconds):
 
-### Step 8.1: Connect Repository in GCP Console (One-time Setup)
 1. Go to **[Google Cloud Console -> Cloud Build -> Triggers](https://console.cloud.google.com/cloud-build/triggers?project=portfolio-503914)**.
-2. Click **Connect Repository** (Połącz repozytorium).
-3. Choose **GitHub (Cloud Build GitHub App)** as the source.
-4. Authorize Google Cloud Build to access your GitHub account and select **`unatco1994p-afk/portfolio`**.
-5. Click **Connect Repository**.
+2. Click **Create Trigger** (Stwórz wyzwalacz) at the top of the page.
+3. Fill in the following fields:
+   - **Name**: `portfolio-main-trigger`
+   - **Event**: `Push to a branch`
+   - **Repository**: Select `unatco1994p-afk/portfolio`
+   - **Branch**: `^main$`
+   - **Configuration**: Select **Cloud Build configuration file (yaml or json)**
+   - **Location**: Repository
+   - **Cloud Build configuration file location**: `cloudbuild.yaml`
+4. Click **Create** (Stwórz).
 
-### Step 8.2: Create Trigger via gcloud CLI
+---
 
-Once the repository is linked, run:
+## 9. Run First Build & Deploy
 
-```powershell
-gcloud builds triggers create github `
-    --name="portfolio-main-trigger" `
-    --repo-name="portfolio" `
-    --repo-owner="unatco1994p-afk" `
-    --branch-pattern="^main$" `
-    --build-config="cloudbuild.yaml"
+Once the trigger is created, you can trigger it automatically by pushing code to GitHub:
+
+```bash
+git push -u origin main
 ```
+
+Or click **Run** (Uruchom) on the trigger row in GCP Cloud Build Console!
 
 ---
 
