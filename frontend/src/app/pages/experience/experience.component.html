@@ -1,9 +1,18 @@
-<div class="experience-page">
-  <div class="page-header">
-    <span class="badge badge-primary">04 // CAREER TIMELINE & IMPACT</span>
-    <h1 class="page-title">Work Experience & Leadership</h1>
-    <p class="page-description">Historia zatrudnienia, zrealizowane projekty inżynieryjne oraz mierzalny wpływ biznesowy i technologiczny.</p>
-  </div>
+<div class="experience-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">work</span>
+      <span>CAREER TIMELINE & PROJECTS</span>
+    </div>
+    <h1 class="page-title">
+      {{ currentLang() === 'pl' ? 'Doświadczenie Zawodowe & Projektowe' : 'Work Experience & Engineering Timeline' }}
+    </h1>
+    <p class="page-subtitle">
+      {{ currentLang() === 'pl' 
+        ? 'Historia zatrudnienia w tym PSI Polska oraz WASKO S.A., realizowane projekty inżynieryjne i osiągnięcia.' 
+        : 'Career journey including PSI Polska and WASKO S.A., project achievements and technical responsibilities.' }}
+    </p>
+  </header>
 
   <div class="timeline-container">
     @for (exp of experiences(); track exp.id) {
@@ -28,7 +37,9 @@
           <p class="summary-text">{{ exp.summary }}</p>
 
           <div class="achievements-section">
-            <h3 class="section-subtitle">Key Achievements & Impact</h3>
+            <h3 class="section-subtitle">
+              {{ currentLang() === 'pl' ? 'Kluczowe Projekt i Osiągnięcia' : 'Key Projects & Achievements' }}
+            </h3>
             <ul class="achievements-list">
               @for (achievement of exp.achievements; track achievement) {
                 <li class="achievement-item">

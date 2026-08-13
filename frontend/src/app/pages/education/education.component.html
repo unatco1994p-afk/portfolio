@@ -1,0 +1,55 @@
+<div class="education-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">school</span>
+      <span>ACADEMIC BACKGROUND</span>
+    </div>
+    <h1 class="page-title">
+      {{ currentLang() === 'pl' ? 'Wykształcenie & Tytuły Naukowe' : 'Education & Academic Degrees' }}
+    </h1>
+    <p class="page-subtitle">
+      {{ currentLang() === 'pl' 
+        ? 'Wyższe wykształcenie zdobyte na Politechnice Śląskiej w Gliwicach (Wydział Mechaniczny Technologiczny).' 
+        : 'Higher education credentials from Silesian University of Technology in Gliwice.' }}
+    </p>
+  </header>
+
+  <div class="education-grid">
+    @for (edu of education(); track edu.id) {
+      <div class="edu-card">
+        <div class="card-badge">
+          <span class="material-symbols-outlined">workspace_premium</span>
+          <span class="degree-title">{{ edu.degree }}</span>
+        </div>
+
+        <div class="card-body">
+          <h2 class="institution-name">{{ edu.institution }}</h2>
+          <div class="field-info">
+            <span class="field-label">{{ currentLang() === 'pl' ? 'Kierunek:' : 'Field of Study:' }}</span>
+            <span class="field-value">{{ edu.fieldOfStudy }}</span>
+          </div>
+
+          @if (edu.specialization) {
+            <div class="field-info">
+              <span class="field-label">{{ currentLang() === 'pl' ? 'Specjalizacja:' : 'Specialization:' }}</span>
+              <span class="field-value highlight">{{ edu.specialization }}</span>
+            </div>
+          }
+
+          <div class="meta-row">
+            <div class="period">
+              <span class="material-symbols-outlined">calendar_today</span>
+              <span>{{ edu.period }}</span>
+            </div>
+            <div class="location">
+              <span class="material-symbols-outlined">location_on</span>
+              <span>{{ edu.location }}</span>
+            </div>
+          </div>
+
+          <p class="description">{{ edu.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

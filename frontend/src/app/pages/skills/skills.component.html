@@ -1,0 +1,54 @@
+<div class="skills-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">terminal</span>
+      <span>TECH STACK & CORE COMPETENCIES</span>
+    </div>
+    <h1 class="page-title">
+      {{ currentLang() === 'pl' ? 'Umiejętności Techniczne & Inżynierskie' : 'Technical & Engineering Skills' }}
+    </h1>
+    <p class="page-subtitle">
+      {{ currentLang() === 'pl' 
+        ? 'Zestawienie kategoryzowanych stosów technologicznych, narządzi oraz praktyk inżynierii oprogramowania.' 
+        : 'Comprehensive categorization of tech stacks, development tools, and engineering practices.' }}
+    </p>
+  </header>
+
+  <div class="skills-grid">
+    @for (skill of skills(); track skill.id) {
+      <div class="skill-card">
+        <div class="card-header">
+          <div class="icon-wrapper">
+            <span class="material-symbols-outlined">{{ skill.icon || 'code' }}</span>
+          </div>
+          <div class="title-group">
+            <h3 class="skill-name">{{ skill.name }}</h3>
+            <span class="skill-exp">{{ skill.experience }} {{ currentLang() === 'pl' ? 'doświadczenia' : 'experience' }}</span>
+          </div>
+        </div>
+
+        <div class="proficiency-section">
+          <div class="proficiency-info">
+            <span>{{ currentLang() === 'pl' ? 'Poziom zaawansowania' : 'Proficiency Level' }}</span>
+            <span class="score">{{ skill.proficiency }}%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" [style.width.%]="skill.proficiency"></div>
+          </div>
+        </div>
+
+        <div class="highlights-section">
+          <h4 class="section-label">{{ currentLang() === 'pl' ? 'Kluczowe Technologie i Narzędzia' : 'Key Stack & Highlights' }}</h4>
+          <div class="badge-container">
+            @for (item of skill.highlights; track item) {
+              <span class="tech-badge">
+                <span class="dot"></span>
+                {{ item }}
+              </span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

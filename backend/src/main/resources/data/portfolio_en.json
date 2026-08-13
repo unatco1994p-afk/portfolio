@@ -1,0 +1,146 @@
+{
+  "profile": {
+    "name": "Tomasz Zwierzyński",
+    "title": "Senior Software Engineer",
+    "avatarUrl": "/images/photo.jpg",
+    "status": "",
+    "bio": "Software Engineer with hands-on experience in building self-service systems, time-tracking applications, and scalable microservices (Quarkus, Angular, GCP, Kubernetes).",
+    "location": "Poland (Remote / Hybrid)",
+    "email": "tomasz0zwierzynski@gmail.com",
+    "githubUrl": "https://github.com/unatco1994p-afk/portfolio",
+    "linkedinUrl": "https://www.linkedin.com/in/tomasz-zwierzyński-614733194/"
+  },
+  "metrics": [
+    { "id": "m1", "label": "System Uptime", "value": "99.99%", "trend": "+0.01%", "status": "optimal" },
+    { "id": "m2", "label": "Kubernetes Nodes", "value": "3 Active", "status": "optimal" },
+    { "id": "m3", "label": "GraalVM Cold Start", "value": "18ms", "trend": "-82%", "status": "optimal" },
+    { "id": "m4", "label": "CI/CD Build Success Rate", "value": "100%", "status": "good" }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "GCP Cloud & GKE Microservices Monorepo",
+      "category": "cloud",
+      "description": "Production portfolio integrated into a monorepo: Quarkus Native with GraalVM, Angular 19 SPA, Helm packaging, and GCP Cloud Build CI/CD with Workload Identity.",
+      "metrics": "< 50MB RAM footprint per pod",
+      "techStack": ["Quarkus", "GraalVM", "Angular 19", "GCP GKE", "Helm", "Cloud Build"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/portfolio",
+      "featured": true,
+      "status": "PRODUCTION"
+    },
+    {
+      "id": "p2",
+      "title": "Self-Service Cash Machine (CDM/ATM) GUI",
+      "category": "backend",
+      "description": "Business logic and GUI implementation for self-service financial deposit and withdrawal machines.",
+      "metrics": "Real-time transaction processing",
+      "techStack": ["Java", "JavaFX", "Hibernate", "PostgreSQL", "REST API"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/",
+      "featured": true,
+      "status": "COMPLETED"
+    },
+    {
+      "id": "p3",
+      "title": "Work Time Management System",
+      "category": "frontend",
+      "description": "Modern enterprise web client for managing and tracking employee work hours.",
+      "metrics": "Modular web interface",
+      "techStack": ["Angular", "TypeScript", "HTML5", "CSS3", "REST API"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/",
+      "featured": true,
+      "status": "STABLE"
+    }
+  ],
+  "skills": [
+    {
+      "id": "s1",
+      "name": "Backend & JVM",
+      "category": "Backend & JVM",
+      "proficiency": 95,
+      "experience": "6+ years",
+      "icon": "terminal",
+      "highlights": ["Java (SE/EE)", "Quarkus", "Spring / Spring Boot", "Hibernate", "ExpressJS", "REST API & WebServices", "GraalVM Native"]
+    },
+    {
+      "id": "s2",
+      "name": "Frontend & Web",
+      "category": "Frontend & Web",
+      "proficiency": 90,
+      "experience": "5+ years",
+      "icon": "code",
+      "highlights": ["Angular (Signals & Standalone)", "TypeScript / JavaScript (ES6+)", "HTML5 & CSS3/SCSS", "Vue.js", "NPM & NodeJS"]
+    },
+    {
+      "id": "s3",
+      "name": "DevOps, Cloud & Tools",
+      "category": "DevOps & Cloud",
+      "proficiency": 88,
+      "experience": "4+ years",
+      "icon": "cloud",
+      "highlights": ["Docker & Kubernetes (GKE)", "Helm Charts", "Jenkins & GCP Cloud Build", "Git, Maven & Gradle", "PostgreSQL, IntelliJ, VS Code"]
+    },
+    {
+      "id": "s4",
+      "name": "Engineering & Quality",
+      "category": "Quality & Engineering",
+      "proficiency": 92,
+      "experience": "6+ years",
+      "icon": "verified",
+      "highlights": ["Manual & Automated Testing", "Unit & Integration Testing (Karma, JUnit)", "Technical Documentation", "Agile & Teamwork"]
+    }
+  ],
+  "experiences": [
+    {
+      "id": "e1",
+      "company": "PSI Polska Sp. z o.o.",
+      "role": "Software Engineer / Java & Angular Developer",
+      "period": "12.2020 – Present",
+      "location": "Poznan / Poland",
+      "summary": "Design, development, and maintenance of enterprise software solutions for industry and logistics in a microservices architecture.",
+      "achievements": [
+        "Development of core business microservice modules in Java/Quarkus and Angular.",
+        "Code refactoring, performance tuning, and unit/integration test automation.",
+        "Active participation in an Agile development team."
+      ],
+      "technologies": ["Java", "Quarkus", "Spring Boot", "Angular", "TypeScript", "Docker", "REST API"],
+      "isCurrent": true
+    },
+    {
+      "id": "e2",
+      "company": "WASKO S.A.",
+      "role": "Software Developer / Full-Stack Engineer",
+      "period": "08.2018 – 11.2020",
+      "location": "Gliwice / Poland",
+      "summary": "Development of custom business applications, self-service bank machine GUI/logic, and web clients.",
+      "achievements": [
+        "Cash Deposit/Withdrawal Machines Project: Developed GUI and business logic for self-service terminals (Java, JavaFX, Hibernate, PostgreSQL).",
+        "Work Time Management Project: Developed client web application for work time logging and management (Angular, HTML5, CSS3, REST API).",
+        "Quality & Testing: Created and executed test scenarios (manual, integration, unit tests)."
+      ],
+      "technologies": ["Java", "JavaFX", "Hibernate", "PostgreSQL", "Angular", "HTML5", "CSS3", "REST API"],
+      "isCurrent": false
+    }
+  ],
+  "education": [
+    {
+      "id": "edu1",
+      "institution": "Silesian University of Technology in Gliwice",
+      "degree": "M.Sc. Eng. (Master of Science)",
+      "fieldOfStudy": "Mechatronics",
+      "specialization": "Drive Systems & Applications",
+      "period": "02.2017 – 10.2018",
+      "location": "Gliwice, Poland",
+      "description": "Faculty of Mechanical Engineering. Second-cycle Master's degree in Mechatronics."
+    },
+    {
+      "id": "edu2",
+      "institution": "Silesian University of Technology in Gliwice",
+      "degree": "B.Sc. Eng. (Bachelor of Science)",
+      "fieldOfStudy": "Mechatronics",
+      "specialization": "",
+      "period": "10.2013 – 01.2017",
+      "location": "Gliwice, Poland",
+      "description": "Faculty of Mechanical Engineering. Full-time Bachelor's degree in Mechatronics."
+    }
+  ]
+}

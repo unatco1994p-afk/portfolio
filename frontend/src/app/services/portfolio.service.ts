@@ -1,6 +1,7 @@
-import { Injectable, signal, computed, inject } from '@angular/core';
+import { Injectable, signal, computed, inject, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PortfolioData } from '../models/portfolio.model';
+import { LanguageService, Language } from './language.service';
 import { environment } from '../../environments/environment';
 import { catchError, of } from 'rxjs';
 
@@ -9,25 +10,25 @@ import { catchError, of } from 'rxjs';
 })
 export class PortfolioService {
   private readonly http = inject(HttpClient);
+  private readonly languageService = inject(LanguageService);
 
-  // Default fallback mock data
-  private readonly defaultData: PortfolioData = {
+  private readonly defaultPlData: PortfolioData = {
     profile: {
-      name: 'Partial Derivative',
-      title: 'Senior DevOps & Software Engineer',
-      avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBuytYhIPcEDORYmsl4HVUxqSrADgbfa_N4e0sQ994gm_6Mv9wqpLme5qsL9Ty4IIJ1OuQ4dG-COoAHucw-L59H65XuYhVPGDDEJORcbCCY4bZ6dgh6m_18Yg_foRTC8m7sh-Ym5dw1o9pyV1ye6RWUEsmZ_G1oJU7XH4zMp4N_Ztn9NvYBbWleymhryuTWDbLUejvgWvxNpPgM9-5iCCBobA3laB9W4Rjyx8C-5l8ic_lV1uUb11syYL32JNGZLdmunxiE0sLrnyQE',
-      status: 'AVAILABLE_FOR_CONTRACTS',
-      bio: 'Inżynier oprogramowania i Cloud Architect pasjonujący się skalowalnymi mikroserwisami, GraalVM, Kubernetes oraz automatyzacją CI/CD w chmurze GCP.',
-      location: 'Warsaw, Poland (Hybrid / Remote)',
-      email: 'dev@portfolio.internal',
-      githubUrl: 'https://github.com',
-      linkedinUrl: 'https://linkedin.com'
+      name: 'Tomasz Zwierzyński',
+      title: 'Senior Software Engineer',
+      avatarUrl: '/images/photo.jpg',
+      status: '',
+      bio: 'Programista i inżynier oprogramowania z wieloletnim doświadczeniem w tworzeniu systemów samoobsługowych, ewidencji czasu oraz skalowalnych mikroserwisów (Quarkus, Angular, GCP, Kubernetes).',
+      location: 'Polska (Zdalnie / Hybrydowo)',
+      email: 'tomasz0zwierzynski@gmail.com',
+      githubUrl: 'https://github.com/unatco1994p-afk/portfolio',
+      linkedinUrl: 'https://www.linkedin.com/in/tomasz-zwierzyński-614733194/'
     },
     metrics: [
-      { id: 'm1', label: 'System Uptime', value: '99.99%', trend: '+0.01%', status: 'optimal' },
-      { id: 'm2', label: 'Kubernetes Nodes', value: '3 Active', status: 'optimal' },
-      { id: 'm3', label: 'GraalVM Cold Start', value: '18ms', trend: '-82%', status: 'optimal' },
-      { id: 'm4', label: 'Build Success Rate', value: '100%', status: 'good' }
+      { id: 'm1', label: 'Czas Działania Systemu', value: '99.99%', trend: '+0.01%', status: 'optimal' },
+      { id: 'm2', label: 'Węzły Kubernetes', value: '3 Aktywne', status: 'optimal' },
+      { id: 'm3', label: 'Zimny Start GraalVM', value: '18ms', trend: '-82%', status: 'optimal' },
+      { id: 'm4', label: 'Sukces Pipeline CI/CD', value: '100%', status: 'good' }
     ],
     projects: [
       {
@@ -35,121 +36,292 @@ export class PortfolioService {
         title: 'GCP Cloud & GKE Microservices Monorepo',
         category: 'cloud',
         description: 'Produkcyjne portfolio zintegrowane w monorepo: Quarkus Native z GraalVM, SPA w Angularze 19, packaging Helm oraz pipeline CI/CD na GCP Cloud Build z Workload Identity.',
-        metrics: '< 50MB RAM footprint per pod',
+        metrics: '< 50MB zużycia RAM na pod',
         techStack: ['Quarkus', 'GraalVM', 'Angular 19', 'GCP GKE', 'Helm', 'Cloud Build'],
-        githubUrl: 'https://github.com/example/portfolio-gcp',
+        githubUrl: 'https://github.com/tomasz0zwierzynski/portfolio',
         featured: true,
         status: 'PRODUCTION'
       },
       {
         id: 'p2',
-        title: 'High-Throughput Reactive Event Streamer',
+        title: 'Wpłatomaty / Wypłatomaty Self-Service GUI',
         category: 'backend',
-        description: 'System rozproszonego przetwarzania zdarzeń w czasie rzeczywistym z gwarancją dostarczenia Exactly-Once i integracją z Apache Kafka.',
-        metrics: '150k msg/sec throughput',
-        techStack: ['Java 21', 'Quarkus Reactive', 'Kafka', 'Docker', 'Prometheus'],
-        githubUrl: 'https://github.com/example/event-streamer',
+        description: 'Moduł logiki biznesowej i GUI dla dedykowanych urządzeń samoobsługowych wpłat i wypłat gotówki dla instytucji finansowych.',
+        metrics: 'Transakcje w czasie rzeczywistym',
+        techStack: ['Java', 'JavaFX', 'Hibernate', 'PostgreSQL', 'REST API'],
+        githubUrl: 'https://github.com/tomasz0zwierzynski/',
         featured: true,
-        status: 'ACTIVE'
+        status: 'COMPLETED'
       },
       {
         id: 'p3',
-        title: 'GitOps Kubernetes Fleet Automator',
-        category: 'devops',
-        description: 'Narzędzie CLI i kontroler Kubernetes do bezobsługowej synchronizacji specyfikacji klastrów z wykorzystaniem ArgoCD i Helm Chartów.',
-        metrics: 'Zero-downtime rollouts',
-        techStack: ['Go', 'Kubernetes Operator SDK', 'ArgoCD', 'Helm', 'Terraform'],
-        githubUrl: 'https://github.com/example/gitops-automator',
-        featured: false,
+        title: 'System Zarządzania Czasem Pracy',
+        category: 'frontend',
+        description: 'Nowoczesna aplikacja webowa do rejestracji i analizy ewidencji czasu pracy pracowników w enterprise.',
+        metrics: 'Modułowy interfejs webowy',
+        techStack: ['Angular', 'TypeScript', 'HTML5', 'CSS3', 'REST API'],
+        githubUrl: 'https://github.com/tomasz0zwierzynski/',
+        featured: true,
         status: 'STABLE'
       }
     ],
     skills: [
       {
         id: 's1',
-        name: 'Quarkus & GraalVM',
+        name: 'Backend & JVM',
         category: 'Backend & JVM',
         proficiency: 95,
-        experience: '4+ lat',
+        experience: '6+ lat',
         icon: 'terminal',
-        highlights: ['Native compilation', 'RESTEasy Reactive', 'Panache ORM', 'Low memory footprint']
+        highlights: ['Java (SE/EE)', 'Quarkus', 'Spring / Spring Boot', 'Hibernate', 'ExpressJS', 'REST API & WebServices', 'GraalVM Native']
       },
       {
         id: 's2',
-        name: 'Angular (Signals & Standalone)',
+        name: 'Frontend & Web',
         category: 'Frontend & Web',
-        proficiency: 92,
+        proficiency: 90,
         experience: '5+ lat',
         icon: 'code',
-        highlights: ['Signals architecture', 'Control Flow syntax', 'Nginx SPA deployment', 'SCSS design system']
+        highlights: ['Angular (Signals & Standalone)', 'TypeScript / JavaScript (ES6+)', 'HTML5 & CSS3/SCSS', 'Vue.js', 'NPM & NodeJS']
       },
       {
         id: 's3',
-        name: 'GCP, GKE & Kubernetes',
-        category: 'Cloud & Infrastructure',
-        proficiency: 90,
+        name: 'DevOps, Cloud & Narzędzia',
+        category: 'DevOps & Cloud',
+        proficiency: 88,
         experience: '4+ lat',
         icon: 'cloud',
-        highlights: ['GKE Autopilot', 'Workload Identity', 'Ingress & Managed Certs', 'Helm v3']
+        highlights: ['Docker & Kubernetes (GKE)', 'Helm Charts', 'Jenkins & GCP Cloud Build', 'Git, Maven & Gradle', 'PostgreSQL, IntelliJ, VS Code']
       },
       {
         id: 's4',
-        name: 'CI/CD & Cloud Build',
-        category: 'DevOps & CI/CD',
-        proficiency: 88,
-        experience: '5+ lat',
-        icon: 'rocket_launch',
-        highlights: ['GCP Cloud Build triggers', 'Multi-stage Docker builds', 'Helm release management']
+        name: 'Inżynieria & Jakość',
+        category: 'Quality & Engineering',
+        proficiency: 92,
+        experience: '6+ lat',
+        icon: 'verified',
+        highlights: ['Testowanie manualne i automatyczne', 'Testy jednostkowe i integracyjne (Karma, JUnit)', 'Czytanie i tworzenie dokumentacji technicznej', 'Agile & Praca zespołowa']
       }
     ],
     experiences: [
       {
         id: 'e1',
-        company: 'Cloud Native Solutions Inc.',
-        role: 'Senior DevOps & Cloud Architect',
-        period: '2022 - PRESENT',
-        location: 'Warsaw, Poland',
-        summary: 'Projektowanie i wdrożenie wielochmurowej architektury mikrousługowej opartej na GKE Autopilot, Quarkusie oraz Helm.',
+        company: 'PSI Polska Sp. z o.o.',
+        role: 'Software Engineer / Java & Angular Developer',
+        period: '12.2020 – Obecnie',
+        location: 'Poznań / Polska',
+        summary: 'Projektowanie, rozwój oraz utrzymanie zaawansowanych systemów oprogramowania dla przemysłu i logistyki w architekturze mikrousługowej.',
         achievements: [
-          'Zredukowano zużycie pamięci RAM o 70% dzięki kompilacji GraalVM Native Image w kontenerach.',
-          'Wdrożono w pełni bezpieczny pipeline CI/CD bez długożyciowych kluczy service account (Workload Identity Federation).',
-          'Zapewniono dostępność infrastruktury na poziomie 99.99% Uptime.'
+          'Rozwój skomplikowanych modułów biznesowych w Java/Quarkus i Angular.',
+          'Refaktoryzacja i podnoszenie jakości kodu oraz automatyzacja testów jednostkowych i integracyjnych.',
+          'Współpraca w zespole programistycznym przy wykorzystaniu zwinnych metodyk Agile.'
         ],
-        technologies: ['GCP', 'GKE', 'Quarkus', 'GraalVM', 'Helm', 'Cloud Build', 'Angular'],
+        technologies: ['Java', 'Quarkus', 'Spring Boot', 'Angular', 'TypeScript', 'Docker', 'REST API'],
         isCurrent: true
       },
       {
         id: 'e2',
-        company: 'Enterprise Software Corp',
-        role: 'Full Stack Java / Angular Engineer',
-        period: '2019 - 2022',
-        location: 'Warsaw, Poland',
-        summary: 'Rozwój skalowalnych aplikacji webowych w architekturze mikrousługowej oraz systemów zarządzania flotą serwerów.',
+        company: 'WASKO S.A.',
+        role: 'Programista / Full-Stack Engineer',
+        period: '08.2018 – 11.2020',
+        location: 'Gliwice / Polska',
+        summary: 'Tworzenie i rozwój dedykowanych systemów biznesowych, aplikacji bankomatowych/samoobsługowych oraz systemów webowych.',
         achievements: [
-          'Przeprowadzono migrację aplikacji z monolitu Spring Boot do reaktywnego środowiska Quarkus.',
-          'Stworzono kompleksowy system design komponentów Angulara z wysokim wskaźnikiem pokrycia testami.'
+          'Projekt Wpłatomaty / Wypłatomaty: Tworzenie interfejsu graficznego GUI i logiki biznesowej dla urządzeń samoobsługowych (Java, JavaFX, Hibernate, PostgreSQL).',
+          'Projekt System Zarządzania Czasem Pracy: Tworzenie i rozwój aplikacji klienckiej do ewidencji czasu (Angular, HTML5, CSS3, REST API).',
+          'Jakość i Testy: Tworzenie oraz wykonywanie scenariuszy testowych (manualne, integracyjne, jednostkowe).'
         ],
-        technologies: ['Java', 'Spring Boot', 'Quarkus', 'Angular', 'Docker', 'Kubernetes'],
+        technologies: ['Java', 'JavaFX', 'Hibernate', 'PostgreSQL', 'Angular', 'HTML5', 'CSS3', 'REST API'],
         isCurrent: false
+      }
+    ],
+    education: [
+      {
+        id: 'edu1',
+        institution: 'Politechnika Śląska w Gliwicach',
+        degree: 'mgr inż. (Magister Inżynier)',
+        fieldOfStudy: 'Mechatronika',
+        specialization: 'Aplikacje Napędowe',
+        period: '02.2017 – 10.2018',
+        location: 'Gliwice, Polska',
+        description: 'Wydział Mechaniczny Technologiczny. Studia II stopnia zakończone uzyskaniem tytułu magistra inżyniera mechatroniki.'
+      },
+      {
+        id: 'edu2',
+        institution: 'Politechnika Śląska w Gliwicach',
+        degree: 'inż. (Inżynier)',
+        fieldOfStudy: 'Mechatronika',
+        specialization: '',
+        period: '10.2013 – 01.2017',
+        location: 'Gliwice, Polska',
+        description: 'Wydział Mechaniczny Technologiczny. Studia I stopnia w trybie dziennym zakończone tytułem inżyniera.'
       }
     ]
   };
 
-  // State Signal initialized with default data
-  private readonly dataSignal = signal<PortfolioData>(this.defaultData);
+  private readonly defaultEnData: PortfolioData = {
+    profile: {
+      name: 'Tomasz Zwierzyński',
+      title: 'Senior Software Engineer',
+      avatarUrl: '/images/photo.jpg',
+      status: '',
+      bio: 'Software Engineer with hands-on experience in building self-service systems, time-tracking applications, and scalable microservices (Quarkus, Angular, GCP, Kubernetes).',
+      location: 'Poland (Remote / Hybrid)',
+      email: 'tomasz0zwierzynski@gmail.com',
+      githubUrl: 'https://github.com/unatco1994p-afk/portfolio',
+      linkedinUrl: 'https://www.linkedin.com/in/tomasz-zwierzyński-614733194/'
+    },
+    metrics: [
+      { id: 'm1', label: 'System Uptime', value: '99.99%', trend: '+0.01%', status: 'optimal' },
+      { id: 'm2', label: 'Kubernetes Nodes', value: '3 Active', status: 'optimal' },
+      { id: 'm3', label: 'GraalVM Cold Start', value: '18ms', trend: '-82%', status: 'optimal' },
+      { id: 'm4', label: 'CI/CD Build Success Rate', value: '100%', status: 'good' }
+    ],
+    projects: [
+      {
+        id: 'p1',
+        title: 'GCP Cloud & GKE Microservices Monorepo',
+        category: 'cloud',
+        description: 'Production portfolio integrated into a monorepo: Quarkus Native with GraalVM, Angular 19 SPA, Helm packaging, and GCP Cloud Build CI/CD with Workload Identity.',
+        metrics: '< 50MB RAM footprint per pod',
+        techStack: ['Quarkus', 'GraalVM', 'Angular 19', 'GCP GKE', 'Helm', 'Cloud Build'],
+        githubUrl: 'https://github.com/tomasz0zwierzynski/portfolio',
+        featured: true,
+        status: 'PRODUCTION'
+      },
+      {
+        id: 'p2',
+        title: 'Self-Service Cash Machine (CDM/ATM) GUI',
+        category: 'backend',
+        description: 'Business logic and GUI implementation for self-service financial deposit and withdrawal machines.',
+        metrics: 'Real-time transaction processing',
+        techStack: ['Java', 'JavaFX', 'Hibernate', 'PostgreSQL', 'REST API'],
+        githubUrl: 'https://github.com/tomasz0zwierzynski/',
+        featured: true,
+        status: 'COMPLETED'
+      },
+      {
+        id: 'p3',
+        title: 'Work Time Management System',
+        category: 'frontend',
+        description: 'Modern enterprise web client for managing and tracking employee work hours.',
+        metrics: 'Modular web interface',
+        techStack: ['Angular', 'TypeScript', 'HTML5', 'CSS3', 'REST API'],
+        githubUrl: 'https://github.com/tomasz0zwierzynski/',
+        featured: true,
+        status: 'STABLE'
+      }
+    ],
+    skills: [
+      {
+        id: 's1',
+        name: 'Backend & JVM',
+        category: 'Backend & JVM',
+        proficiency: 95,
+        experience: '6+ years',
+        icon: 'terminal',
+        highlights: ['Java (SE/EE)', 'Quarkus', 'Spring / Spring Boot', 'Hibernate', 'ExpressJS', 'REST API & WebServices', 'GraalVM Native']
+      },
+      {
+        id: 's2',
+        name: 'Frontend & Web',
+        category: 'Frontend & Web',
+        proficiency: 90,
+        experience: '5+ years',
+        icon: 'code',
+        highlights: ['Angular (Signals & Standalone)', 'TypeScript / JavaScript (ES6+)', 'HTML5 & CSS3/SCSS', 'Vue.js', 'NPM & NodeJS']
+      },
+      {
+        id: 's3',
+        name: 'DevOps, Cloud & Tools',
+        category: 'DevOps & Cloud',
+        proficiency: 88,
+        experience: '4+ years',
+        icon: 'cloud',
+        highlights: ['Docker & Kubernetes (GKE)', 'Helm Charts', 'Jenkins & GCP Cloud Build', 'Git, Maven & Gradle', 'PostgreSQL, IntelliJ, VS Code']
+      },
+      {
+        id: 's4',
+        name: 'Engineering & Quality',
+        category: 'Quality & Engineering',
+        proficiency: 92,
+        experience: '6+ years',
+        icon: 'verified',
+        highlights: ['Manual & Automated Testing', 'Unit & Integration Testing (Karma, JUnit)', 'Technical Documentation', 'Agile & Teamwork']
+      }
+    ],
+    experiences: [
+      {
+        id: 'e1',
+        company: 'PSI Polska Sp. z o.o.',
+        role: 'Software Engineer / Java & Angular Developer',
+        period: '12.2020 – Present',
+        location: 'Poznan / Poland',
+        summary: 'Design, development, and maintenance of enterprise software solutions for industry and logistics in a microservices architecture.',
+        achievements: [
+          'Development of core business microservice modules in Java/Quarkus and Angular.',
+          'Code refactoring, performance tuning, and unit/integration test automation.',
+          'Active participation in an Agile development team.'
+        ],
+        technologies: ['Java', 'Quarkus', 'Spring Boot', 'Angular', 'TypeScript', 'Docker', 'REST API'],
+        isCurrent: true
+      },
+      {
+        id: 'e2',
+        company: 'WASKO S.A.',
+        role: 'Software Developer / Full-Stack Engineer',
+        period: '08.2018 – 11.2020',
+        location: 'Gliwice / Poland',
+        summary: 'Development of custom business applications, self-service bank machine GUI/logic, and web clients.',
+        achievements: [
+          'Cash Deposit/Withdrawal Machines Project: Developed GUI and business logic for self-service terminals (Java, JavaFX, Hibernate, PostgreSQL).',
+          'Work Time Management Project: Developed client web application for work time logging and management (Angular, HTML5, CSS3, REST API).',
+          'Quality & Testing: Created and executed test scenarios (manual, integration, unit tests).'
+        ],
+        technologies: ['Java', 'JavaFX', 'Hibernate', 'PostgreSQL', 'Angular', 'HTML5', 'CSS3', 'REST API'],
+        isCurrent: false
+      }
+    ],
+    education: [
+      {
+        id: 'edu1',
+        institution: 'Silesian University of Technology in Gliwice',
+        degree: 'M.Sc. Eng. (Master of Science)',
+        fieldOfStudy: 'Mechatronics',
+        specialization: 'Drive Systems & Applications',
+        period: '02.2017 – 10.2018',
+        location: 'Gliwice, Poland',
+        description: 'Faculty of Mechanical Engineering. Second-cycle Master\'s degree in Mechatronics.'
+      },
+      {
+        id: 'edu2',
+        institution: 'Silesian University of Technology in Gliwice',
+        degree: 'B.Sc. Eng. (Bachelor of Science)',
+        fieldOfStudy: 'Mechatronics',
+        specialization: '',
+        period: '10.2013 – 01.2017',
+        location: 'Gliwice, Poland',
+        description: 'Faculty of Mechanical Engineering. Full-time Bachelor\'s degree in Mechatronics.'
+      }
+    ]
+  };
 
-  // Signal indicating whether backend data is actively loaded
+  private readonly dataSignal = signal<PortfolioData>(this.defaultPlData);
   readonly isLoadedFromBackend = signal<boolean>(false);
 
   constructor() {
-    this.fetchDataFromBackend();
+    effect(() => {
+      const lang = this.languageService.currentLang();
+      this.fetchDataFromBackend(lang);
+    });
   }
 
-  fetchDataFromBackend(): void {
-    this.http.get<PortfolioData>(`${environment.apiUrl}/portfolio`)
+  fetchDataFromBackend(lang: Language = this.languageService.currentLang()): void {
+    const fallbackData = lang === 'pl' ? this.defaultPlData : this.defaultEnData;
+    this.http.get<PortfolioData>(`${environment.apiUrl}/portfolio?lang=${lang}`)
       .pipe(
         catchError(err => {
-          console.warn('Backend API unavailable, using fallback portfolio data:', err.message);
+          console.warn(`Backend API unavailable, using fallback ${lang.toUpperCase()} portfolio data:`, err.message);
           return of(null);
         })
       )
@@ -157,21 +329,22 @@ export class PortfolioService {
         if (data) {
           this.dataSignal.set(data);
           this.isLoadedFromBackend.set(true);
+        } else {
+          this.dataSignal.set(fallbackData);
+          this.isLoadedFromBackend.set(false);
         }
       });
   }
 
-  // Read-only Signal Expositions
   readonly profile = computed(() => this.dataSignal().profile);
   readonly metrics = computed(() => this.dataSignal().metrics);
   readonly projects = computed(() => this.dataSignal().projects);
   readonly skills = computed(() => this.dataSignal().skills);
   readonly experiences = computed(() => this.dataSignal().experiences);
+  readonly education = computed(() => this.dataSignal().education || []);
 
-  // Selected filter signal for projects view
   readonly selectedProjectCategory = signal<string>('all');
 
-  // Filtered projects computed signal
   readonly filteredProjects = computed(() => {
     const category = this.selectedProjectCategory();
     const allProjects = this.projects();

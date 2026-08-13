@@ -4,20 +4,33 @@
   </div>
 
   <div class="header-right">
-    <div class="search-box">
-      <span class="material-symbols-outlined icon">search</span>
-      <input type="text" placeholder="Search systems..." class="search-input" />
+    <div class="lang-switcher">
+      <button 
+        type="button" 
+        class="lang-btn" 
+        [class.active]="currentLang() === 'pl'" 
+        (click)="setLang('pl')">
+        PL
+      </button>
+      <span class="divider">|</span>
+      <button 
+        type="button" 
+        class="lang-btn" 
+        [class.active]="currentLang() === 'en'" 
+        (click)="setLang('en')">
+        EN
+      </button>
     </div>
 
     <div class="header-actions">
-      <a [href]="profile().githubUrl" target="_blank" title="GitHub" class="action-btn">
+      <a [href]="profile().githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" [title]="currentLang() === 'pl' ? 'GitHub (Kod źródłowy projektu)' : 'GitHub (Project repository)'" class="action-btn">
         <span class="material-symbols-outlined">code</span>
       </a>
-      <a [href]="profile().linkedinUrl" target="_blank" title="LinkedIn" class="action-btn">
+      <span class="action-btn disabled" [title]="currentLang() === 'pl' ? 'LinkedIn - Wkrótce dostępne' : 'LinkedIn - Not available yet'">
         <span class="material-symbols-outlined">link</span>
-      </a>
-      <div class="user-avatar" [title]="profile().name">
-        <img [src]="profile().avatarUrl" [alt]="profile().name" />
+      </span>
+      <div class="user-avatar" [title]="profile().name || 'Tomasz Zwierzyński'">
+        <img src="assets/photo.jpg" [alt]="profile().name || 'Tomasz Zwierzyński'" />
       </div>
     </div>
   </div>

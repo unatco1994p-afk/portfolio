@@ -4,16 +4,17 @@ import { PortfolioService } from '../../services/portfolio.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-experience',
+  selector: 'app-architecture',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss'
+  templateUrl: './architecture.component.html',
+  styleUrl: './architecture.component.scss'
 })
-export class ExperienceComponent {
+export class ArchitectureComponent {
   readonly portfolioService = inject(PortfolioService);
   readonly languageService = inject(LanguageService);
 
-  readonly experiences = this.portfolioService.experiences;
+  readonly metrics = this.portfolioService.metrics;
+  readonly isLoadedFromBackend = this.portfolioService.isLoadedFromBackend;
   readonly currentLang = this.languageService.currentLang;
 }

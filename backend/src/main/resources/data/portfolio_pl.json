@@ -1,0 +1,146 @@
+{
+  "profile": {
+    "name": "Tomasz Zwierzyński",
+    "title": "Senior Software Engineer",
+    "avatarUrl": "/images/photo.jpg",
+    "status": "",
+    "bio": "Programista i inżynier oprogramowania z wieloletnim doświadczeniem w tworzeniu systemów samoobsługowych, ewidencji czasu oraz skalowalnych mikroserwisów (Quarkus, Angular, GCP, Kubernetes).",
+    "location": "Polska (Zdalnie / Hybrydowo)",
+    "email": "tomasz0zwierzynski@gmail.com",
+    "githubUrl": "https://github.com/unatco1994p-afk/portfolio",
+    "linkedinUrl": "https://www.linkedin.com/in/tomasz-zwierzyński-614733194/"
+  },
+  "metrics": [
+    { "id": "m1", "label": "Czas Działania Systemu", "value": "99.99%", "trend": "+0.01%", "status": "optimal" },
+    { "id": "m2", "label": "Węzły Kubernetes", "value": "3 Aktywne", "status": "optimal" },
+    { "id": "m3", "label": "Zimny Start GraalVM", "value": "18ms", "trend": "-82%", "status": "optimal" },
+    { "id": "m4", "label": "Sukces Pipeline CI/CD", "value": "100%", "status": "good" }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "GCP Cloud & GKE Microservices Monorepo",
+      "category": "cloud",
+      "description": "Produkcyjne portfolio zintegrowane w monorepo: Quarkus Native z GraalVM, SPA w Angularze 19, packaging Helm oraz pipeline CI/CD na GCP Cloud Build z Workload Identity.",
+      "metrics": "< 50MB zużycia RAM na pod",
+      "techStack": ["Quarkus", "GraalVM", "Angular 19", "GCP GKE", "Helm", "Cloud Build"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/portfolio",
+      "featured": true,
+      "status": "PRODUCTION"
+    },
+    {
+      "id": "p2",
+      "title": "Wpłatomaty / Wypłatomaty Self-Service GUI",
+      "category": "backend",
+      "description": "Moduł logiki biznesowej i GUI dla dedykowanych urządzeń samoobsługowych wpłat i wypłat gotówki dla instytucji finansowych.",
+      "metrics": "Transakcje w czasie rzeczywistym",
+      "techStack": ["Java", "JavaFX", "Hibernate", "PostgreSQL", "REST API"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/",
+      "featured": true,
+      "status": "COMPLETED"
+    },
+    {
+      "id": "p3",
+      "title": "System Zarządzania Czasem Pracy",
+      "category": "frontend",
+      "description": "Nowoczesna aplikacja webowa do rejestracji i analizy ewidencji czasu pracy pracowników w enterprise.",
+      "metrics": "Modułowy interfejs webowy",
+      "techStack": ["Angular", "TypeScript", "HTML5", "CSS3", "REST API"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/",
+      "featured": true,
+      "status": "STABLE"
+    }
+  ],
+  "skills": [
+    {
+      "id": "s1",
+      "name": "Backend & JVM",
+      "category": "Backend & JVM",
+      "proficiency": 95,
+      "experience": "6+ lat",
+      "icon": "terminal",
+      "highlights": ["Java (SE/EE)", "Quarkus", "Spring / Spring Boot", "Hibernate", "ExpressJS", "REST API & WebServices", "GraalVM Native"]
+    },
+    {
+      "id": "s2",
+      "name": "Frontend & Web",
+      "category": "Frontend & Web",
+      "proficiency": 90,
+      "experience": "5+ lat",
+      "icon": "code",
+      "highlights": ["Angular (Signals & Standalone)", "TypeScript / JavaScript (ES6+)", "HTML5 & CSS3/SCSS", "Vue.js", "NPM & NodeJS"]
+    },
+    {
+      "id": "s3",
+      "name": "DevOps, Cloud & Narzędzia",
+      "category": "DevOps & Cloud",
+      "proficiency": 88,
+      "experience": "4+ lat",
+      "icon": "cloud",
+      "highlights": ["Docker & Kubernetes (GKE)", "Helm Charts", "Jenkins & GCP Cloud Build", "Git, Maven & Gradle", "PostgreSQL, IntelliJ, VS Code"]
+    },
+    {
+      "id": "s4",
+      "name": "Inżynieria & Jakość",
+      "category": "Quality & Engineering",
+      "proficiency": 92,
+      "experience": "6+ lat",
+      "icon": "verified",
+      "highlights": ["Testowanie manualne i automatyczne", "Testy jednostkowe i integracyjne (Karma, JUnit)", "Czytanie i tworzenie dokumentacji technicznej", "Agile & Praca zespołowa"]
+    }
+  ],
+  "experiences": [
+    {
+      "id": "e1",
+      "company": "PSI Polska Sp. z o.o.",
+      "role": "Software Engineer / Java & Angular Developer",
+      "period": "12.2020 – Obecnie",
+      "location": "Poznań / Polska",
+      "summary": "Projektowanie, rozwój oraz utrzymanie zaawansowanych systemów oprogramowania dla przemysłu i logistyki w architekturze mikrousługowej.",
+      "achievements": [
+        "Rozwój skomplikowanych modułów biznesowych w Java/Quarkus i Angular.",
+        "Refaktoryzacja i podnoszenie jakości kodu oraz automatyzacja testów jednostkowych i integracyjnych.",
+        "Współpraca w zespole programistycznym przy wykorzystaniu zwinnych metodyk Agile."
+      ],
+      "technologies": ["Java", "Quarkus", "Spring Boot", "Angular", "TypeScript", "Docker", "REST API"],
+      "isCurrent": true
+    },
+    {
+      "id": "e2",
+      "company": "WASKO S.A.",
+      "role": "Programista / Full-Stack Engineer",
+      "period": "08.2018 – 11.2020",
+      "location": "Gliwice / Polska",
+      "summary": "Tworzenie i rozwój dedykowanych systemów biznesowych, aplikacji bankomatowych/samoobsługowych oraz systemów webowych.",
+      "achievements": [
+        "Projekt Wpłatomaty / Wypłatomaty: Tworzenie interfejsu graficznego GUI i logiki biznesowej dla urządzeń samoobsługowych (Java, JavaFX, Hibernate, PostgreSQL).",
+        "Projekt System Zarządzania Czasem Pracy: Tworzenie i rozwój aplikacji klienckiej do ewidencji czasu (Angular, HTML5, CSS3, REST API).",
+        "Jakość i Testy: Tworzenie oraz wykonywanie scenariuszy testowych (manualne, integracyjne, jednostkowe)."
+      ],
+      "technologies": ["Java", "JavaFX", "Hibernate", "PostgreSQL", "Angular", "HTML5", "CSS3", "REST API"],
+      "isCurrent": false
+    }
+  ],
+  "education": [
+    {
+      "id": "edu1",
+      "institution": "Politechnika Śląska w Gliwicach",
+      "degree": "mgr inż. (Magister Inżynier)",
+      "fieldOfStudy": "Mechatronika",
+      "specialization": "Aplikacje Napędowe",
+      "period": "02.2017 – 10.2018",
+      "location": "Gliwice, Polska",
+      "description": "Wydział Mechaniczny Technologiczny. Studia II stopnia zakończone uzyskaniem tytułu magistra inżyniera mechatroniki."
+    },
+    {
+      "id": "edu2",
+      "institution": "Politechnika Śląska w Gliwicach",
+      "degree": "inż. (Inżynier)",
+      "fieldOfStudy": "Mechatronika",
+      "specialization": "",
+      "period": "10.2013 – 01.2017",
+      "location": "Gliwice, Polska",
+      "description": "Wydział Mechaniczny Technologiczny. Studia I stopnia w trybie dziennym zakończone tytułem inżyniera."
+    }
+  ]
+}

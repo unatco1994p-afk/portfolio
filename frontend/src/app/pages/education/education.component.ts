@@ -4,16 +4,16 @@ import { PortfolioService } from '../../services/portfolio.service';
 import { LanguageService } from '../../services/language.service';
 
 @Component({
-  selector: 'app-experience',
+  selector: 'app-education',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './experience.component.html',
-  styleUrl: './experience.component.scss'
+  templateUrl: './education.component.html',
+  styleUrl: './education.component.scss'
 })
-export class ExperienceComponent {
+export class EducationComponent {
   readonly portfolioService = inject(PortfolioService);
   readonly languageService = inject(LanguageService);
 
-  readonly experiences = this.portfolioService.experiences;
+  readonly education = this.portfolioService.education;
   readonly currentLang = this.languageService.currentLang;
 }
