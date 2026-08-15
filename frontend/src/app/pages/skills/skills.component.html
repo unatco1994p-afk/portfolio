@@ -5,50 +5,102 @@
       <span>TECH STACK & CORE COMPETENCIES</span>
     </div>
     <h1 class="page-title">
-      {{ currentLang() === 'pl' ? 'Umiejętności Techniczne & Inżynierskie' : 'Technical & Engineering Skills' }}
+      {{ currentLang() === 'pl' ? 'Ekosystem Technologiczny & Umiejętności' : 'Technical Ecosystem & Stack' }}
     </h1>
     <p class="page-subtitle">
       {{ currentLang() === 'pl' 
-        ? 'Zestawienie kategoryzowanych stosów technologicznych, narządzi oraz praktyk inżynierii oprogramowania.' 
-        : 'Comprehensive categorization of tech stacks, development tools, and engineering practices.' }}
+        ? 'Zestawienie zaawansowanych stosów technologicznych, środowisk uruchomieniowych, chmurowych oraz praktyk inżynieryjnych.' 
+        : 'Comprehensive breakdown of production-tested tech stacks, cloud platforms, and engineering practices.' }}
     </p>
   </header>
 
-  <div class="skills-grid">
-    @for (skill of skills(); track skill.id) {
-      <div class="skill-card">
-        <div class="card-header">
-          <div class="icon-wrapper">
-            <span class="material-symbols-outlined">{{ skill.icon || 'code' }}</span>
-          </div>
-          <div class="title-group">
-            <h3 class="skill-name">{{ skill.name }}</h3>
-            <span class="skill-exp">{{ skill.experience }} {{ currentLang() === 'pl' ? 'doświadczenia' : 'experience' }}</span>
-          </div>
-        </div>
-
-        <div class="proficiency-section">
-          <div class="proficiency-info">
-            <span>{{ currentLang() === 'pl' ? 'Poziom zaawansowania' : 'Proficiency Level' }}</span>
-            <span class="score">{{ skill.proficiency }}%</span>
-          </div>
-          <div class="progress-bar-bg">
-            <div class="progress-bar-fill" [style.width.%]="skill.proficiency"></div>
-          </div>
-        </div>
-
-        <div class="highlights-section">
-          <h4 class="section-label">{{ currentLang() === 'pl' ? 'Kluczowe Technologie i Narzędzia' : 'Key Stack & Highlights' }}</h4>
-          <div class="badge-container">
-            @for (item of skill.highlights; track item) {
-              <span class="tech-badge">
-                <span class="dot"></span>
-                {{ item }}
-              </span>
-            }
-          </div>
-        </div>
+  <!-- Connection Error State -->
+  @if (portfolioService.hasError()) {
+    <div class="error-banner animate-fade-in">
+      <div class="error-icon">
+        <span class="material-symbols-outlined">wifi_off</span>
       </div>
-    }
-  </div>
+      <div class="error-content">
+        <h3>{{ currentLang() === 'pl' ? 'Brak połączenia z backendem API' : 'Backend API Unreachable' }}</h3>
+        <p>{{ portfolioService.errorMessage() }}</p>
+      </div>
+      <button class="retry-btn" (click)="retry()">
+        <span class="material-symbols-outlined">refresh</span>
+        <span>{{ currentLang() === 'pl' ? 'Ponów próbę' : 'Retry Connection' }}</span>
+      </button>
+    </div>
+  }
+
+  <!-- Loading State -->
+  @if (portfolioService.isLoading()) {
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>{{ currentLang() === 'pl' ? 'Ładowanie stosu technologicznego z serwera...' : 'Fetching tech ecosystem from backend API...' }}</p>
+    </div>
+  } @else if (!portfolioService.hasError()) {
+
+    <!-- Category Filter Tabs -->
+    <div class="category-filters">
+      @for (cat of categories; track cat.id) {
+        <button 
+          class="filter-tab"
+          [class.active]="selectedCategory() === cat.id"
+          (click)="setCategory(cat.id)"
+        >
+          <span class="material-symbols-outlined">{{ cat.icon }}</span>
+          <span>{{ currentLang() === 'pl' ? cat.labelPl : cat.labelEn }}</span>
+        </button>
+      }
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="skills-grid">
+      @for (skill of filteredSkills(); track skill.id) {
+        <div class="skill-card animate-fade-in">
+          <div class="card-header">
+            <div class="icon-wrapper">
+              <span class="material-symbols-outlined">{{ skill.icon || 'code' }}</span>
+            </div>
+            <div class="title-group">
+              <h3 class="skill-name">{{ skill.name }}</h3>
+              <span class="skill-exp">
+                <span class="material-symbols-outlined exp-icon">history_edu</span>
+                {{ skill.experience }} {{ currentLang() === 'pl' ? 'doświadczenia' : 'experience' }}
+              </span>
+            </div>
+          </div>
+
+          <div class="proficiency-section">
+            <div class="proficiency-info">
+              <span class="prof-label">{{ currentLang() === 'pl' ? 'Biegłość operacyjna' : 'Operational Proficiency' }}</span>
+              <span class="score">{{ skill.proficiency }}%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" [style.width.%]="skill.proficiency"></div>
+            </div>
+          </div>
+
+          <div class="highlights-section">
+            <h4 class="section-label">
+              <span class="material-symbols-outlined label-icon">stars</span>
+              {{ currentLang() === 'pl' ? 'Sprawdzony Stos & Narzędzia' : 'Proven Stack & Highlights' }}
+            </h4>
+            <div class="badge-container">
+              @for (item of skill.highlights; track item) {
+                <span class="tech-badge">
+                  <span class="dot"></span>
+                  <span class="badge-text">{{ item }}</span>
+                </span>
+              }
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <span class="material-symbols-outlined">search_off</span>
+          <p>{{ currentLang() === 'pl' ? 'Brak technologii w wybranej kategorii.' : 'No skills found in this category.' }}</p>
+        </div>
+      }
+    </div>
+  }
 </div>

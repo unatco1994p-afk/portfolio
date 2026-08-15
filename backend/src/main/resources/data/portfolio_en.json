@@ -54,39 +54,88 @@
   "skills": [
     {
       "id": "s1",
-      "name": "Backend & JVM",
-      "category": "Backend & JVM",
+      "name": "Backend & JVM Ecosystem",
+      "category": "backend",
       "proficiency": 95,
       "experience": "6+ years",
       "icon": "terminal",
-      "highlights": ["Java (SE/EE)", "Quarkus", "Spring / Spring Boot", "Hibernate", "ExpressJS", "REST API & WebServices", "GraalVM Native"]
+      "highlights": [
+        "Java (21 / 25-ready)",
+        "Quarkus (Native & MicroProfile)",
+        "Jakarta EE & WildFly",
+        "Hibernate & JPA",
+        "GraalVM Native Image",
+        "Maven",
+        "JUnit 5 & Mockito",
+        "REST-Assured (API Testing)",
+        "PostgreSQL & Liquibase",
+        "REST API & OpenAPI / Swagger"
+      ]
     },
     {
       "id": "s2",
-      "name": "Frontend & Web",
-      "category": "Frontend & Web",
+      "name": "Frontend & Modern Web UI",
+      "category": "frontend",
       "proficiency": 90,
       "experience": "5+ years",
       "icon": "code",
-      "highlights": ["Angular (Signals & Standalone)", "TypeScript / JavaScript (ES6+)", "HTML5 & CSS3/SCSS", "Vue.js", "NPM & NodeJS"]
+      "highlights": [
+        "Angular (Standalone Components, Signals)",
+        "TypeScript & JavaScript (ES6+)",
+        "HTML5 & SCSS / CSS3 (Flexbox/Grid, RWD)",
+        "RxJS & Reactive Streams",
+        "Karma & Jasmine (Unit Testing)",
+        "Figma (Design-to-Code)",
+        "Node.js & npm",
+        "Angular Router & HTTP Interceptors"
+      ]
     },
     {
       "id": "s3",
-      "name": "DevOps, Cloud & Tools",
-      "category": "DevOps & Cloud",
+      "name": "DevOps, Cloud & Infrastructure",
+      "category": "devops",
       "proficiency": 88,
       "experience": "4+ years",
       "icon": "cloud",
-      "highlights": ["Docker & Kubernetes (GKE)", "Helm Charts", "Jenkins & GCP Cloud Build", "Git, Maven & Gradle", "PostgreSQL, IntelliJ, VS Code"]
+      "highlights": [
+        "Docker & Multi-Stage Builds",
+        "Kubernetes (K8s) & Helm Charts",
+        "GCP (Google Cloud Platform & GKE)",
+        "GCP Cloud Build & Artifact Registry",
+        "Jenkins & GitLab CI/CD",
+        "Git (Gitflow, Pull/Merge Requests)",
+        "Linux / Bash CLI & Nginx"
+      ]
     },
     {
       "id": "s4",
-      "name": "Engineering & Quality",
-      "category": "Quality & Engineering",
+      "name": "Security & Code Quality",
+      "category": "security",
       "proficiency": 92,
       "experience": "6+ years",
-      "icon": "verified",
-      "highlights": ["Manual & Automated Testing", "Unit & Integration Testing (Karma, JUnit)", "Technical Documentation", "Agile & Teamwork"]
+      "icon": "verified_user",
+      "highlights": [
+        "SDLC (Secure Development Life Cycle)",
+        "CVE Analysis & SonarQube / SonarCloud",
+        "OWASP Top 10 Awareness",
+        "Dependency Vulnerability Scanning",
+        "Code Review & Quality Gates"
+      ]
+    },
+    {
+      "id": "s5",
+      "name": "Methodologies, Tools & Architecture",
+      "category": "methodology",
+      "proficiency": 94,
+      "experience": "6+ years",
+      "icon": "architecture",
+      "highlights": [
+        "Scrum & Agile Development",
+        "Jira & Confluence",
+        "Microservices Architecture",
+        "Clean Code & SOLID Principles",
+        "RESTful API Design"
+      ]
     }
   ],
   "experiences": [

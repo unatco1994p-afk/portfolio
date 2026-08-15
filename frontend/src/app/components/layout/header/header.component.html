@@ -23,14 +23,14 @@
     </div>
 
     <div class="header-actions">
-      <a [href]="profile().githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" [title]="currentLang() === 'pl' ? 'GitHub (Kod źródłowy projektu)' : 'GitHub (Project repository)'" class="action-btn">
+      <a [href]="profile()?.githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" [title]="currentLang() === 'pl' ? 'GitHub (Kod źródłowy projektu)' : 'GitHub (Project repository)'" class="action-btn">
         <span class="material-symbols-outlined">code</span>
       </a>
       <span class="action-btn disabled" [title]="currentLang() === 'pl' ? 'LinkedIn - Wkrótce dostępne' : 'LinkedIn - Not available yet'">
         <span class="material-symbols-outlined">link</span>
       </span>
-      <div class="user-avatar" [title]="profile().name || 'Tomasz Zwierzyński'">
-        <img src="assets/photo.jpg" [alt]="profile().name || 'Tomasz Zwierzyński'" />
+      <div class="user-avatar" [title]="profile()?.name || 'Tomasz Zwierzyński'">
+        <img src="assets/photo.jpg" [alt]="profile()?.name || 'Tomasz Zwierzyński'" />
       </div>
     </div>
   </div>
