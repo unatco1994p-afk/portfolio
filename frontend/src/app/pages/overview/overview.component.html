@@ -4,10 +4,6 @@
     <div class="portrait-column">
       <div class="photo-wrapper">
         <img src="assets/photo.jpg" alt="Tomasz Zwierzyński" class="portrait-img" />
-        <div class="availability-badge">
-          <span class="pulse-dot"></span>
-          <span>{{ currentLang() === 'pl' ? 'Dostępny (Zdalnie / Hybrydowo)' : 'Available (Remote / Hybrid)' }}</span>
-        </div>
       </div>
 
       <div class="portrait-actions">
@@ -31,37 +27,26 @@
       <div class="meta-chips-row">
         <div class="meta-chip">
           <span class="material-symbols-outlined icon">location_on</span>
-          <span>{{ profile()?.location || 'Polska (Zdalnie / Hybrydowo)' }}</span>
-        </div>
-        <div class="meta-chip highlight-chip">
-          <span class="material-symbols-outlined icon">verified</span>
-          <span>Google Cloud Certified ACE</span>
-        </div>
-        <div class="meta-chip">
-          <span class="material-symbols-outlined icon">school</span>
-          <span>mgr inż. Mechatronika</span>
+          <span>{{ currentLang() === 'pl' ? 'Polska (Zdalnie / Hybrydowo)' : 'Poland (Remote / Hybrid)' }}</span>
         </div>
       </div>
 
-      <p class="bio-text">
-        {{ profile()?.bio || (currentLang() === 'pl' 
-          ? 'Programista i inżynier oprogramowania z wieloletnim doświadczeniem w tworzeniu systemów samoobsługowych, ewidencji czasu oraz skalowalnych mikroserwisów (Quarkus, Angular, GCP, Kubernetes).' 
-          : 'Software Engineer with hands-on experience in building self-service systems, time-tracking applications, and scalable microservices.') }}
-      </p>
-
-      <div class="key-facts-grid">
-        <div class="fact-item">
-          <span class="fact-label">{{ currentLang() === 'pl' ? 'Główny backend:' : 'Primary backend:' }}</span>
-          <span class="fact-value">Java 21 / Quarkus Native / GraalVM</span>
-        </div>
-        <div class="fact-item">
-          <span class="fact-label">{{ currentLang() === 'pl' ? 'Główny frontend:' : 'Primary frontend:' }}</span>
-          <span class="fact-value">Angular 19 (Signals & Standalone)</span>
-        </div>
-        <div class="fact-item">
-          <span class="fact-label">{{ currentLang() === 'pl' ? 'Infrastruktura & Chmura:' : 'Cloud & Infra:' }}</span>
-          <span class="fact-value">GCP GKE, Helm, Cloud Build, Docker</span>
-        </div>
+      <div class="bio-text">
+        @if (currentLang() === 'pl') {
+          <p>
+            Inżynier oprogramowania z ponad 6-letnim komercyjnym doświadczeniem w projektowaniu, wytwarzaniu i utrzymaniu złożonych systemów branżowych. Specjalizuję się w tworzeniu nowoczesnych aplikacji Full-Stack — od reaktywnego frontendu w Angularze, po wysokowydajne mikroserwisy backendowe w języku Java (Spring Boot, Quarkus Native).
+          </p>
+          <p>
+            Posiadam praktyczną wiedzę z zakresu architektury chmurowej potwierdzoną oficjalnym certyfikatem <strong>Google Cloud Certified - Associate Cloud Engineer (ACE)</strong>, a także bogate doświadczenie w konteneryzacji Docker, orkiestracji Kubernetes (GKE) oraz automatyzacji procesów CI/CD.
+          </p>
+        } @else {
+          <p>
+            Software Engineer with over 6 years of commercial experience designing, building, and scaling enterprise applications. Specializing in modern Full-Stack engineering — from reactive Angular frontends to high-performance Java microservices (Spring Boot, Quarkus Native).
+          </p>
+          <p>
+            Demonstrated expertise in cloud software architecture backed by an official <strong>Google Cloud Certified - Associate Cloud Engineer (ACE)</strong> credential, alongside extensive experience with Docker containerization, Kubernetes (GKE) orchestration, and automated CI/CD.
+          </p>
+        }
       </div>
     </div>
   </section>
@@ -79,10 +64,6 @@
     <div class="stat-card">
       <span class="stat-number">mgr inż.</span>
       <span class="stat-label">Politechnika Śląska</span>
-    </div>
-    <div class="stat-card">
-      <span class="stat-number">&lt; 18ms</span>
-      <span class="stat-label">GraalVM Cold Start</span>
     </div>
   </section>
 
@@ -183,15 +164,15 @@
       </div>
     </div>
 
-    <!-- System Architecture Snapshot -->
+    <!-- Portfolio App Demo Snapshot -->
     <div class="snapshot-card">
       <div class="snapshot-header">
         <div class="snapshot-tag">
           <span class="material-symbols-outlined">schema</span>
-          <span>{{ currentLang() === 'pl' ? 'LIVE SYSTEM STACK' : 'LIVE SYSTEM STACK' }}</span>
+          <span>{{ currentLang() === 'pl' ? 'APLIKACJA PORTFOLIO (DEMO)' : 'PORTFOLIO APP DEMO' }}</span>
         </div>
         <a routerLink="/architecture" class="view-link">
-          <span>{{ currentLang() === 'pl' ? 'Zobacz specyfikację' : 'View spec' }}</span>
+          <span>{{ currentLang() === 'pl' ? 'Zobacz architekturę' : 'View architecture' }}</span>
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
@@ -199,22 +180,14 @@
       <div class="snapshot-body">
         <p class="arch-desc">
           {{ currentLang() === 'pl' 
-            ? 'Produkcyjne portfolio zintegrowane w monorepo: Quarkus Native (GraalVM), Angular 19 SPA, packaging Helm oraz CI/CD na GCP Cloud Build.' 
-            : 'Production monorepo portfolio running Quarkus Native (GraalVM), Angular 19 SPA, Helm packaging, and GCP Cloud Build CI/CD.' }}
+            ? 'Aplikacja demonstracyjna typu Full-Stack wybudowana w oparciu o Angular 19 SPA, mikroserwis Quarkus (Java 21 Native) oraz architekturę chmurową GCP GKE.' 
+            : 'Full-stack demo application built with Angular 19 SPA, Quarkus (Java 21 Native) microservice, and GCP GKE cloud architecture.' }}
         </p>
-        <div class="arch-metrics-mini">
-          <div class="mini-metric">
-            <span class="val">99.99%</span>
-            <span class="lbl">Uptime</span>
-          </div>
-          <div class="mini-metric">
-            <span class="val">&lt; 50MB</span>
-            <span class="lbl">RAM Footprint</span>
-          </div>
-          <div class="mini-metric">
-            <span class="val">18ms</span>
-            <span class="lbl">Cold Start</span>
-          </div>
+        <div class="tech-chips">
+          <span class="chip">Angular 19 SPA</span>
+          <span class="chip">Quarkus Java 21</span>
+          <span class="chip">GraalVM AOT</span>
+          <span class="chip">GCP GKE</span>
         </div>
       </div>
     </div>

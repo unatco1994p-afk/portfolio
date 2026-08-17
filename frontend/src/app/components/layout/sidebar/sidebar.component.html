@@ -29,6 +29,11 @@
       <span class="material-symbols-outlined">schema</span>
       <span class="nav-text">{{ currentLang() === 'pl' ? 'Architektura & Stack' : 'Architecture & Stack' }}</span>
     </a>
+
+    <a routerLink="/interests" routerLinkActive="active" class="nav-item">
+      <span class="material-symbols-outlined">favorite</span>
+      <span class="nav-text">{{ currentLang() === 'pl' ? 'Zainteresowania' : 'Interests' }}</span>
+    </a>
   </nav>
 
   <div class="sidebar-footer">
@@ -61,8 +66,8 @@
     <span class="nav-label">{{ currentLang() === 'pl' ? 'Edukacja' : 'Education' }}</span>
   </a>
 
-  <a routerLink="/architecture" routerLinkActive="active" class="mobile-nav-item">
-    <span class="material-symbols-outlined">schema</span>
-    <span class="nav-label">{{ currentLang() === 'pl' ? 'Stack' : 'Stack' }}</span>
+  <a routerLink="/interests" routerLinkActive="active" class="mobile-nav-item">
+    <span class="material-symbols-outlined">favorite</span>
+    <span class="nav-label">{{ currentLang() === 'pl' ? 'Pasje' : 'Hobbies' }}</span>
   </a>
 </nav>

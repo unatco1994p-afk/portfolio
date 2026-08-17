@@ -305,44 +305,6 @@
     }
   }
 
-  .proficiency-section {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    .proficiency-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-
-      .prof-label {
-        color: var(--on-surface-variant);
-        font-weight: 500;
-      }
-
-      .score {
-        font-family: var(--font-mono);
-        color: var(--primary);
-        font-weight: 700;
-      }
-    }
-
-    .progress-bar-bg {
-      height: 7px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 9999px;
-      overflow: hidden;
-
-      .progress-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #38bdf8 0%, #4edea3 100%);
-        border-radius: 9999px;
-        transition: width 1s ease-in-out;
-      }
-    }
-  }
-
   .highlights-section {
     .section-label {
       display: flex;
@@ -378,16 +340,23 @@
         color: var(--on-surface);
         cursor: default;
 
-        .dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--primary);
-          transition: all 0.2s ease;
+        .badge-icon {
+          font-size: 1rem;
+          color: var(--primary);
         }
 
         .badge-text {
           font-weight: 500;
+        }
+
+        &.highlighted-badge {
+          background: rgba(255, 193, 118, 0.12);
+          border-color: rgba(255, 193, 118, 0.35);
+          color: #fef08a;
+
+          .badge-icon {
+            color: var(--tertiary);
+          }
         }
       }
     }

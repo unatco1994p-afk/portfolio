@@ -56,7 +56,6 @@
       "id": "s1",
       "name": "Backend & JVM Ecosystem",
       "category": "backend",
-      "proficiency": 95,
       "experience": "6+ lat",
       "icon": "terminal",
       "highlights": [
@@ -76,7 +75,6 @@
       "id": "s2",
       "name": "Frontend & Modern Web UI",
       "category": "frontend",
-      "proficiency": 90,
       "experience": "5+ lat",
       "icon": "code",
       "highlights": [
@@ -94,7 +92,6 @@
       "id": "s3",
       "name": "DevOps, Cloud & Infrastruktura",
       "category": "devops",
-      "proficiency": 88,
       "experience": "4+ lat",
       "icon": "cloud",
       "highlights": [
@@ -118,7 +115,6 @@
       "id": "s4",
       "name": "Security & Jakość Kodu",
       "category": "security",
-      "proficiency": 92,
       "experience": "6+ lat",
       "icon": "verified_user",
       "highlights": [
@@ -133,10 +129,10 @@
       "id": "s5",
       "name": "Metodyki, Narzędzia & Architektura",
       "category": "methodology",
-      "proficiency": 94,
       "experience": "6+ lat",
       "icon": "architecture",
       "highlights": [
+        "Język Angielski (C1/C2 - Biegły w mowie i piśmie)",
         "Scrum & Agile Development",
         "Jira & Confluence",
         "Architektura Mikrousługowa",

@@ -107,60 +107,42 @@
     }
   }
 
-  .flowchart-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding-top: 1rem;
+  .pipeline-summary-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    padding-top: 1.25rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
 
-    .flow-step {
+    .pipeline-block {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
 
-      .node-icon {
-        width: 54px;
-        height: 54px;
-        border-radius: 14px;
+      .pipeline-title {
         display: flex;
         align-items: center;
-        justify-content: center;
-        font-size: 1.6rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--outline-variant);
-        color: var(--on-surface);
-
-        &.user { color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
-        &.ingress { color: #818cf8; border-color: rgba(129, 140, 248, 0.3); }
-        &.frontend { color: #34d399; border-color: rgba(52, 211, 153, 0.3); }
-        &.backend { color: #fbbf24; border-color: rgba(251, 191, 36, 0.3); }
-      }
-
-      .node-title {
-        font-weight: 700;
+        gap: 0.4rem;
         font-size: 0.9rem;
-        color: var(--on-surface);
+        font-weight: 700;
+        color: var(--primary);
+        margin: 0;
+
+        .icon {
+          font-size: 1.1rem;
+        }
       }
 
-      .node-subtitle {
+      .pipeline-flow {
         font-family: var(--font-mono);
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         color: var(--on-surface-variant);
-      }
-    }
-
-    .flow-arrow {
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-
-      .material-symbols-outlined {
-        font-size: 1.4rem;
+        margin: 0;
+        line-height: 1.5;
       }
     }
   }

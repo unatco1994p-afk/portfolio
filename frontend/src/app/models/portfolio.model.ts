@@ -43,7 +43,6 @@ export interface TechSkill {
   id: string;
   name: string;
   category: string;
-  proficiency: number; // 0 to 100
   experience: string;
   icon: string;
   highlights: string[];

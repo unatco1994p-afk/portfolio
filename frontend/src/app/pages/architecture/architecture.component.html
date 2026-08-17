@@ -28,50 +28,22 @@
       <img src="assets/architecture-diagram.jpg" alt="Architecture Diagram" class="architecture-img" />
     </div>
 
-    <!-- Step Pipeline Nodes -->
-    <div class="flowchart-container">
-      <div class="flow-step">
-        <div class="node-icon user">
-          <span class="material-symbols-outlined">devices</span>
-        </div>
-        <div class="node-title">{{ currentLang() === 'pl' ? 'Przeglądarka / Client' : 'User / Browser' }}</div>
-        <div class="node-subtitle">Angular 19 SPA</div>
+    <!-- Step Pipeline Summary -->
+    <div class="pipeline-summary-container">
+      <div class="pipeline-block">
+        <h4 class="pipeline-title">
+          <span class="material-symbols-outlined icon">sync</span>
+          <span>{{ currentLang() === 'pl' ? 'Ścieżka Wdrożeniowa (CI/CD Pipeline):' : 'Deployment Pipeline (CI/CD):' }}</span>
+        </h4>
+        <p class="pipeline-flow">GitHub Repo &rarr; GCP Cloud Build Trigger &rarr; Helm Charts & Docker &rarr; GCP GKE Cluster</p>
       </div>
 
-      <div class="flow-arrow">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-
-      <div class="flow-step">
-        <div class="node-icon ingress">
-          <span class="material-symbols-outlined">router</span>
-        </div>
-        <div class="node-title">Load Balancer</div>
-        <div class="node-subtitle">Ingress Controller</div>
-      </div>
-
-      <div class="flow-arrow">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-
-      <div class="flow-step">
-        <div class="node-icon frontend">
-          <span class="material-symbols-outlined">web</span>
-        </div>
-        <div class="node-title">Frontend Pods</div>
-        <div class="node-subtitle">Angular 19 Signals</div>
-      </div>
-
-      <div class="flow-arrow">
-        <span class="material-symbols-outlined">arrow_forward</span>
-      </div>
-
-      <div class="flow-step">
-        <div class="node-icon backend">
-          <span class="material-symbols-outlined">dns</span>
-        </div>
-        <div class="node-title">Backend Native Pods</div>
-        <div class="node-subtitle">Quarkus Java 21 REST API</div>
+      <div class="pipeline-block">
+        <h4 class="pipeline-title">
+          <span class="material-symbols-outlined icon">swap_horiz</span>
+          <span>{{ currentLang() === 'pl' ? 'Ścieżka Aplikacji (Runtime Flow):' : 'Application Runtime Flow:' }}</span>
+        </h4>
+        <p class="pipeline-flow">Przeglądarka (User) &rarr; Load Balancer (Ingress) &rarr; Angular 19 SPA &rarr; Quarkus Java 21 REST API</p>
       </div>
     </div>
   </section>

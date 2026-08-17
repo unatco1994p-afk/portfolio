@@ -1,0 +1,46 @@
+<div class="interests-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">favorite</span>
+      <span>HOBBIES & PERSONAL PASSIONS</span>
+    </div>
+    <h1 class="page-title">
+      {{ currentLang() === 'pl' ? 'Zainteresowania & Pasje' : 'Interests & Passions' }}
+    </h1>
+    <p class="page-subtitle">
+      {{ currentLang() === 'pl' 
+        ? 'Czym zajmuję się po godzinach spędzonych przy kodzie — innowacje technologiczne, mechatronika, motoryzacja oraz aktywny wypoczynek.' 
+        : 'Personal hobbies and passions beyond software engineering — tech innovations, mechatronics, automotive engineering, and outdoor adventures.' }}
+    </p>
+  </header>
+
+  <div class="interests-page-grid">
+    @for (item of interests; track item.id) {
+      <div class="interest-card glass-panel">
+        <div class="card-top">
+          <div class="icon-wrapper">
+            <span class="material-symbols-outlined">{{ item.icon }}</span>
+          </div>
+          <span class="category-badge">
+            {{ currentLang() === 'pl' ? item.categoryPl : item.categoryEn }}
+          </span>
+        </div>
+
+        <div class="card-body">
+          <h2 class="item-title">
+            {{ currentLang() === 'pl' ? item.titlePl : item.titleEn }}
+          </h2>
+          <p class="item-desc">
+            {{ currentLang() === 'pl' ? item.descPl : item.descEn }}
+          </p>
+
+          <div class="tags-row">
+            @for (tag of item.tags; track tag) {
+              <span class="tag-pill">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
