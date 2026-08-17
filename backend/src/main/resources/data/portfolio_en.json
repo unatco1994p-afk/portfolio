@@ -204,5 +204,47 @@
       "badgeUrl": "workspace_premium",
       "description": "Official Google Cloud certification validating hands-on expertise in deploying applications, monitoring operations, and managing enterprise cloud solutions on GCP and Kubernetes (GKE) clusters."
     }
+  ],
+  "interests": [
+    {
+      "id": "tech",
+      "icon": "memory",
+      "title": "Emerging Tech & Cloud-Native",
+      "category": "Innovation & Software",
+      "description": "Hands-on experimentation with GraalVM AOT native image compilation, microservices architecture, Quarkus 3.x, Angular 19 reactive signals, and GCP GKE container orchestration.",
+      "tags": ["GraalVM AOT", "Angular 19 Signals", "Quarkus Native", "K8s & GCP GKE"]
+    },
+    {
+      "id": "mechatronics",
+      "icon": "precision_manufacturing",
+      "title": "Mechatronics & Automation",
+      "category": "Hardware Engineering",
+      "description": "Fostering academic background from Silesian University of Technology — control systems, industrial automation, power drives, and hardware-software integration.",
+      "tags": ["M.Sc. Eng. Graduate", "Industrial Automation", "Hardware & Embedded"]
+    },
+    {
+      "id": "automotive",
+      "icon": "directions_car",
+      "title": "Automotive Tech & EV",
+      "category": "Technology & Mobility",
+      "description": "Keen interest in modern automotive engineering, advanced driver-assistance systems (ADAS), electric vehicle (EV) tech, and embedded car software.",
+      "tags": ["ADAS Systems", "EV Engineering", "Automotive Tech"]
+    },
+    {
+      "id": "outdoor",
+      "icon": "hiking",
+      "title": "Hiking & Mountain Outdoor",
+      "category": "Lifestyle & Outdoor",
+      "description": "Mountain hiking, outdoor trekking, discovering nature trails, and active outdoor recreation ensuring a healthy work-life balance after intensive coding sessions.",
+      "tags": ["Mountain Trekking", "Outdoor & Nature", "Work-Life Balance"]
+    },
+    {
+      "id": "gaming",
+      "icon": "sports_esports",
+      "title": "Strategy Games & Esports",
+      "category": "Analytical Gaming",
+      "description": "Passion for strategy & simulation games fostering analytical problem solving, esports tournaments, and following real-time graphics rendering innovations.",
+      "tags": ["Simulations & Strategy", "Analytical Thinking", "Graphics Engines"]
+    }
   ]
 }

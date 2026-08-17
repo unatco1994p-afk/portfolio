@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "overview": "Overview & CV",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "architecture": "Architecture & Stack",
+    "interests": "Interests",
+    "contact": "Contact Me",
+    "mobileOverview": "Overview",
+    "mobileSkills": "Skills",
+    "mobileExperience": "Experience",
+    "mobileEducation": "Education",
+    "mobileArchitecture": "Stack",
+    "mobileInterests": "Hobbies"
+  },
+  "header": {
+    "systemRole": "FULL-STACK ENGINEERING SYSTEM",
+    "availability": "Available for Remote Work",
+    "online": "SYSTEM ONLINE",
+    "langTooltip": "Switch language (PL / EN)"
+  },
+  "overview": {
+    "emailMe": "Email Me",
+    "location": "Poland (Remote / Hybrid)",
+    "snapshotTitle": "Key Achievements & Credentials",
+    "snapshotSubtitle": "Overview of official cloud certifications, experience, and system architecture status.",
+    "cloudCertTitle": "Google Cloud Certificate",
+    "cloudCertSubtitle": "Google Cloud Certified - Associate Cloud Engineer (ACE)",
+    "expTitle": "Commercial Experience",
+    "expSubtitle": "Over 6 years designing and building enterprise software systems",
+    "eduTitle": "Higher Academic Degree",
+    "eduSubtitle": "M.Sc. Eng. in Mechatronics (Silesian University of Technology)",
+    "demoTitle": "Portfolio Application (Demo)",
+    "demoSubtitle": "Cloud-native Java 21 & Angular 19 Signals Architecture"
+  },
+  "skills": {
+    "headerTag": "TECH STACK & CORE COMPETENCIES",
+    "title": "Technical Ecosystem & Stack",
+    "subtitle": "Comprehensive breakdown of production-tested tech stacks, cloud platforms, and engineering practices.",
+    "errorTitle": "Backend API Unreachable",
+    "retry": "Retry Connection",
+    "loading": "Fetching tech ecosystem from backend API...",
+    "provenStack": "Proven Stack & Highlights",
+    "expSuffix": "experience",
+    "empty": "No skills found in this category.",
+    "catAll": "All Stacks",
+    "catBackend": "Backend & JVM",
+    "catFrontend": "Frontend & UI",
+    "catDevops": "DevOps & Cloud",
+    "catSecurity": "Security & Quality",
+    "catMethodology": "Methodology & Arch"
+  },
+  "experience": {
+    "headerTag": "WORK EXPERIENCE & CAREER PATH",
+    "title": "Professional Experience",
+    "subtitle": "Engineering career track, employment history, and key project accomplishments.",
+    "errorTitle": "Backend API Unreachable",
+    "retry": "Retry Connection",
+    "loading": "Fetching career timeline from backend API...",
+    "currentBadge": "Current Position",
+    "achievementsTitle": "Key Responsibilities & Accomplishments"
+  },
+  "education": {
+    "headerTag": "ACADEMIC & PROFESSIONAL CREDENTIALS",
+    "title": "Education & Certifications",
+    "subtitle": "Verified M.Sc. engineering degrees alongside official cloud credentials.",
+    "certTag": "OFFICIAL CLOUD CERTIFICATION",
+    "validUntil": "Valid until",
+    "verifiedBadge": "Verifiable in Google Cloud Directory",
+    "viewCredential": "View Credential",
+    "degreeTag": "ACADEMIC DEGREE",
+    "fieldLabel": "Field of Study:",
+    "specLabel": "Specialization:"
+  },
+  "architecture": {
+    "headerTag": "SYSTEM ARCHITECTURE",
+    "title": "Portfolio Architecture",
+    "subtitle": "System flow diagram and technical layer breakdown of this cloud-native application.",
+    "tagBadge": "GCP GKE • QUARKUS NATIVE • ANGULAR 19",
+    "flowTitle": "System Architecture Flow",
+    "pipelineTitle": "Deployment Pipeline (CI/CD):",
+    "pipelineFlow": "GitHub Repo → GCP Cloud Build Trigger → Helm Charts & Docker → GCP GKE Cluster",
+    "runtimeTitle": "Application Runtime Flow:",
+    "runtimeFlow": "User Browser → Load Balancer (Ingress) → Angular 19 SPA → Quarkus Java 21 REST API",
+    "frontendCardTitle": "Cloud-Native Frontend SPA",
+    "frontendCardSub": "Angular 19 Standalone & Signals",
+    "frontendCardDesc": "Reactive Single Page Application engineered with Angular Signals, zoneless change detection, and modular SCSS architecture with CSS variable design tokens.",
+    "backendCardTitle": "High-Performance REST Backend",
+    "backendCardSub": "Quarkus 3.x Java 21 Native Image",
+    "backendCardDesc": "Quarkus microservice compiled AOT via GraalVM Native Image, delivering sub-20ms cold start latency and ultra-low RAM footprint.",
+    "infraCardTitle": "Cloud Infrastructure & DevOps",
+    "infraCardSub": "GCP GKE & Automated CI/CD",
+    "infraCardDesc": "Automated deployments triggered via Google Cloud Build on GitHub commits, packaged with Helm Charts, and orchestrated in Google Kubernetes Engine (GKE)."
+  },
+  "interests": {
+    "headerTag": "HOBBIES & PERSONAL PASSIONS",
+    "title": "Interests & Passions",
+    "subtitle": "Personal hobbies and passions beyond software engineering — tech innovations, mechatronics, automotive engineering, and outdoor adventures."
+  },
+  "errors": {
+    "backendUnreachable": "Unable to connect to the portfolio API server. Make sure the Quarkus backend service is running."
+  }
+}

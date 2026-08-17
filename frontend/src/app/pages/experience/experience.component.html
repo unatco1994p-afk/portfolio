@@ -2,15 +2,13 @@
   <header class="page-header">
     <div class="header-tag">
       <span class="material-symbols-outlined">work</span>
-      <span>CAREER TIMELINE & PROJECTS</span>
+      <span>{{ 'experience.headerTag' | translate }}</span>
     </div>
     <h1 class="page-title">
-      {{ currentLang() === 'pl' ? 'Doświadczenie Zawodowe & Projektowe' : 'Work Experience & Engineering Timeline' }}
+      {{ 'experience.title' | translate }}
     </h1>
     <p class="page-subtitle">
-      {{ currentLang() === 'pl' 
-        ? 'Historia zatrudnienia w tym PSI Polska oraz WASKO S.A., realizowane projekty inżynieryjne i osiągnięcia.' 
-        : 'Career journey including PSI Polska and WASKO S.A., project achievements and technical responsibilities.' }}
+      {{ 'experience.subtitle' | translate }}
     </p>
   </header>
 
@@ -38,7 +36,7 @@
 
           <div class="achievements-section">
             <h3 class="section-subtitle">
-              {{ currentLang() === 'pl' ? 'Kluczowe Projekt i Osiągnięcia' : 'Key Projects & Achievements' }}
+              {{ 'experience.achievementsTitle' | translate }}
             </h3>
             <ul class="achievements-list">
               @for (achievement of exp.achievements; track achievement) {

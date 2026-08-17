@@ -9,7 +9,7 @@
       <div class="portrait-actions">
         <a href="mailto:tomasz0zwierzynski@gmail.com" class="action-btn email-btn">
           <span class="material-symbols-outlined">mail</span>
-          <span>{{ currentLang() === 'pl' ? 'Wyślij Email' : 'Email Me' }}</span>
+          <span>{{ 'overview.emailMe' | translate }}</span>
         </a>
         <a [href]="profile()?.githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" class="action-btn github-btn">
           <span class="material-symbols-outlined">code</span>
@@ -27,26 +27,12 @@
       <div class="meta-chips-row">
         <div class="meta-chip">
           <span class="material-symbols-outlined icon">location_on</span>
-          <span>{{ currentLang() === 'pl' ? 'Polska (Zdalnie / Hybrydowo)' : 'Poland (Remote / Hybrid)' }}</span>
+          <span>{{ 'overview.location' | translate }}</span>
         </div>
       </div>
 
       <div class="bio-text">
-        @if (currentLang() === 'pl') {
-          <p>
-            Inżynier oprogramowania z ponad 6-letnim komercyjnym doświadczeniem w projektowaniu, wytwarzaniu i utrzymaniu złożonych systemów branżowych. Specjalizuję się w tworzeniu nowoczesnych aplikacji Full-Stack — od reaktywnego frontendu w Angularze, po wysokowydajne mikroserwisy backendowe w języku Java (Spring Boot, Quarkus Native).
-          </p>
-          <p>
-            Posiadam praktyczną wiedzę z zakresu architektury chmurowej potwierdzoną oficjalnym certyfikatem <strong>Google Cloud Certified - Associate Cloud Engineer (ACE)</strong>, a także bogate doświadczenie w konteneryzacji Docker, orkiestracji Kubernetes (GKE) oraz automatyzacji procesów CI/CD.
-          </p>
-        } @else {
-          <p>
-            Software Engineer with over 6 years of commercial experience designing, building, and scaling enterprise applications. Specializing in modern Full-Stack engineering — from reactive Angular frontends to high-performance Java microservices (Spring Boot, Quarkus Native).
-          </p>
-          <p>
-            Demonstrated expertise in cloud software architecture backed by an official <strong>Google Cloud Certified - Associate Cloud Engineer (ACE)</strong> credential, alongside extensive experience with Docker containerization, Kubernetes (GKE) orchestration, and automated CI/CD.
-          </p>
-        }
+        <p>{{ profile()?.bio || ('overview.expSubtitle' | translate) }}</p>
       </div>
     </div>
   </section>
@@ -55,15 +41,15 @@
   <section class="stats-grid">
     <div class="stat-card">
       <span class="stat-number">6+</span>
-      <span class="stat-label">{{ currentLang() === 'pl' ? 'Lat Doświadczenia' : 'Years Experience' }}</span>
+      <span class="stat-label">{{ 'overview.expTitle' | translate }}</span>
     </div>
     <div class="stat-card cert-stat">
       <span class="stat-number">GCP ACE</span>
-      <span class="stat-label">Google Cloud Certified (2026)</span>
+      <span class="stat-label">{{ 'overview.cloudCertSubtitle' | translate }}</span>
     </div>
     <div class="stat-card">
       <span class="stat-number">mgr inż.</span>
-      <span class="stat-label">Politechnika Śląska</span>
+      <span class="stat-label">{{ 'overview.eduSubtitle' | translate }}</span>
     </div>
   </section>
 
@@ -74,10 +60,9 @@
       <div class="snapshot-header">
         <div class="snapshot-tag">
           <span class="material-symbols-outlined">work</span>
-          <span>{{ currentLang() === 'pl' ? 'DOŚWIADCZENIE ZAWODOWE' : 'WORK EXPERIENCE' }}</span>
+          <span>{{ 'nav.experience' | translate }}</span>
         </div>
         <a routerLink="/experience" class="view-link">
-          <span>{{ currentLang() === 'pl' ? 'Zobacz pełne' : 'View all' }}</span>
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
@@ -101,10 +86,9 @@
       <div class="snapshot-header">
         <div class="snapshot-tag">
           <span class="material-symbols-outlined">code</span>
-          <span>{{ currentLang() === 'pl' ? 'STOS TECHNOLOGICZNY' : 'TECH STACK' }}</span>
+          <span>{{ 'nav.skills' | translate }}</span>
         </div>
         <a routerLink="/skills" class="view-link">
-          <span>{{ currentLang() === 'pl' ? 'Zobacz pełny stos' : 'View full stack' }}</span>
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
@@ -129,10 +113,9 @@
       <div class="snapshot-header">
         <div class="snapshot-tag">
           <span class="material-symbols-outlined">school</span>
-          <span>{{ currentLang() === 'pl' ? 'EDUKACJA & CERTYFIKATY' : 'EDUCATION & CERTS' }}</span>
+          <span>{{ 'nav.education' | translate }}</span>
         </div>
         <a routerLink="/education" class="view-link">
-          <span>{{ currentLang() === 'pl' ? 'Zobacz wykształcenie' : 'View education' }}</span>
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
@@ -143,21 +126,21 @@
             <span class="material-symbols-outlined icon">verified</span>
             <div class="item-text">
               <span class="item-title">Google Cloud Certified - Associate Cloud Engineer</span>
-              <span class="item-sub">Google Cloud • 23 marca 2026</span>
+              <span class="item-sub">Google Cloud • 2026</span>
             </div>
           </li>
           <li class="list-item">
             <span class="material-symbols-outlined icon">school</span>
             <div class="item-text">
-              <span class="item-title">mgr inż. Mechatronika (Aplikacje Napędowe)</span>
-              <span class="item-sub">Politechnika Śląska w Gliwicach (2017 – 2018)</span>
+              <span class="item-title">mgr inż. Mechatronika</span>
+              <span class="item-sub">Politechnika Śląska (2017 – 2018)</span>
             </div>
           </li>
           <li class="list-item">
             <span class="material-symbols-outlined icon">school</span>
             <div class="item-text">
               <span class="item-title">inż. Mechatronika</span>
-              <span class="item-sub">Politechnika Śląska w Gliwicach (2013 – 2017)</span>
+              <span class="item-sub">Politechnika Śląska (2013 – 2017)</span>
             </div>
           </li>
         </ul>
@@ -169,19 +152,16 @@
       <div class="snapshot-header">
         <div class="snapshot-tag">
           <span class="material-symbols-outlined">schema</span>
-          <span>{{ currentLang() === 'pl' ? 'APLIKACJA PORTFOLIO (DEMO)' : 'PORTFOLIO APP DEMO' }}</span>
+          <span>{{ 'overview.demoTitle' | translate }}</span>
         </div>
         <a routerLink="/architecture" class="view-link">
-          <span>{{ currentLang() === 'pl' ? 'Zobacz architekturę' : 'View architecture' }}</span>
           <span class="material-symbols-outlined">arrow_forward</span>
         </a>
       </div>
 
       <div class="snapshot-body">
         <p class="arch-desc">
-          {{ currentLang() === 'pl' 
-            ? 'Aplikacja demonstracyjna typu Full-Stack wybudowana w oparciu o Angular 19 SPA, mikroserwis Quarkus (Java 21 Native) oraz architekturę chmurową GCP GKE.' 
-            : 'Full-stack demo application built with Angular 19 SPA, Quarkus (Java 21 Native) microservice, and GCP GKE cloud architecture.' }}
+          {{ 'overview.demoSubtitle' | translate }}
         </p>
         <div class="tech-chips">
           <span class="chip">Angular 19 SPA</span>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { PortfolioService } from '../../../services/portfolio.service';
 import { LanguageService, Language } from '../../../services/language.service';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

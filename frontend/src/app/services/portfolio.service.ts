@@ -2,6 +2,7 @@ import { Injectable, signal, computed, inject, effect } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PortfolioData } from '../models/portfolio.model';
 import { LanguageService, Language } from './language.service';
+import { TranslationService } from './translation.service';
 import { environment } from '../../environments/environment';
 import { catchError, of } from 'rxjs';
 
@@ -11,6 +12,7 @@ import { catchError, of } from 'rxjs';
 export class PortfolioService {
   private readonly http = inject(HttpClient);
   private readonly languageService = inject(LanguageService);
+  private readonly translationService = inject(TranslationService);
 
   private readonly dataSignal = signal<PortfolioData | null>(null);
   readonly isLoading = signal<boolean>(true);
@@ -44,11 +46,7 @@ export class PortfolioService {
         } else {
           this.dataSignal.set(null);
           this.hasError.set(true);
-          this.errorMessage.set(
-            lang === 'pl'
-              ? 'Brak połączenia z serwerem API portfolio. Upewnij się, że usługa backendowa Quarkus jest uruchomiona.'
-              : 'Unable to connect to the portfolio API server. Make sure the Quarkus backend service is running.'
-          );
+          this.errorMessage.set(this.translationService.translate('errors.backendUnreachable'));
         }
       });
   }
@@ -61,6 +59,7 @@ export class PortfolioService {
   readonly experiences = computed(() => this.dataSignal()?.experiences ?? []);
   readonly education = computed(() => this.dataSignal()?.education ?? []);
   readonly certifications = computed(() => this.dataSignal()?.certifications ?? []);
+  readonly interests = computed(() => this.dataSignal()?.interests ?? []);
 
   readonly selectedProjectCategory = signal<string>('all');
 

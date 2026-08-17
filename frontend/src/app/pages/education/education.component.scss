@@ -4,47 +4,7 @@
   margin: 0 auto;
 }
 
-.page-header {
-  margin-bottom: 2.5rem;
 
-  .header-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.85rem;
-    background: rgba(56, 189, 248, 0.1);
-    border: 1px solid rgba(56, 189, 248, 0.25);
-    border-radius: 9999px;
-    color: var(--primary);
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    margin-bottom: 1rem;
-
-    .material-symbols-outlined {
-      font-size: 1.1rem;
-    }
-  }
-
-  .page-title {
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: var(--on-surface);
-    margin: 0 0 0.5rem 0;
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .page-subtitle {
-    color: var(--on-surface-variant);
-    font-size: 1rem;
-    margin: 0;
-    max-width: 750px;
-    line-height: 1.6;
-  }
-}
 
 .timeline-container {
   display: flex;

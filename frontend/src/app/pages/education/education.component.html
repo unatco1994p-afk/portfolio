@@ -2,15 +2,13 @@
   <header class="page-header">
     <div class="header-tag">
       <span class="material-symbols-outlined">school</span>
-      <span>ACADEMIC BACKGROUND & CERTIFICATIONS</span>
+      <span>{{ 'education.headerTag' | translate }}</span>
     </div>
     <h1 class="page-title">
-      {{ currentLang() === 'pl' ? 'Wykształcenie & Certyfikaty' : 'Education & Certifications' }}
+      {{ 'education.title' | translate }}
     </h1>
     <p class="page-subtitle">
-      {{ currentLang() === 'pl' 
-        ? 'Ścieżka edukacyjna na Politechnice Śląskiej w Gliwicach oraz oficjalne inżynieryjne certyfikacje chmurowe.' 
-        : 'Educational timeline at Silesian University of Technology and official cloud engineering certifications.' }}
+      {{ 'education.subtitle' | translate }}
     </p>
   </header>
 
@@ -79,13 +77,13 @@
 
           <div class="field-info-row">
             <div class="field-info">
-              <span class="field-label">{{ currentLang() === 'pl' ? 'Kierunek:' : 'Field of Study:' }}</span>
+              <span class="field-label">{{ 'education.fieldLabel' | translate }}</span>
               <span class="field-value">{{ edu.fieldOfStudy }}</span>
             </div>
 
             @if (edu.specialization) {
               <div class="field-info">
-                <span class="field-label">{{ currentLang() === 'pl' ? 'Specjalizacja:' : 'Specialization:' }}</span>
+                <span class="field-label">{{ 'education.specLabel' | translate }}</span>
                 <span class="field-value highlight">{{ edu.specialization }}</span>
               </div>
             }
@@ -97,5 +95,3 @@
     }
   </div>
 </div>
-
-

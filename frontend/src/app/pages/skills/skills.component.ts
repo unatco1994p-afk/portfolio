@@ -2,18 +2,18 @@ import { Component, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PortfolioService } from '../../services/portfolio.service';
 import { LanguageService } from '../../services/language.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 interface CategoryFilter {
   id: string;
-  labelPl: string;
-  labelEn: string;
+  labelKey: string;
   icon: string;
 }
 
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.scss'
 })
@@ -21,16 +21,15 @@ export class SkillsComponent {
   readonly portfolioService = inject(PortfolioService);
   readonly languageService = inject(LanguageService);
 
-  readonly currentLang = this.languageService.currentLang;
   readonly selectedCategory = signal<string>('all');
 
   readonly categories: CategoryFilter[] = [
-    { id: 'all', labelPl: 'Wszystkie', labelEn: 'All Stacks', icon: 'apps' },
-    { id: 'backend', labelPl: 'Backend & JVM', labelEn: 'Backend & JVM', icon: 'terminal' },
-    { id: 'frontend', labelPl: 'Frontend & UI', labelEn: 'Frontend & UI', icon: 'code' },
-    { id: 'devops', labelPl: 'DevOps & Cloud', labelEn: 'DevOps & Cloud', icon: 'cloud' },
-    { id: 'security', labelPl: 'Security & Jakość', labelEn: 'Security & Quality', icon: 'verified_user' },
-    { id: 'methodology', labelPl: 'Metodyki & Architektura', labelEn: 'Methodology & Arch', icon: 'architecture' }
+    { id: 'all', labelKey: 'skills.catAll', icon: 'apps' },
+    { id: 'backend', labelKey: 'skills.catBackend', icon: 'terminal' },
+    { id: 'frontend', labelKey: 'skills.catFrontend', icon: 'code' },
+    { id: 'devops', labelKey: 'skills.catDevops', icon: 'cloud' },
+    { id: 'security', labelKey: 'skills.catSecurity', icon: 'verified_user' },
+    { id: 'methodology', labelKey: 'skills.catMethodology', icon: 'architecture' }
   ];
 
   readonly filteredSkills = computed(() => {

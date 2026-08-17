@@ -82,6 +82,15 @@ export interface Certification {
   description: string;
 }
 
+export interface Interest {
+  id: string;
+  icon: string;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+}
+
 export interface PortfolioData {
   profile: UserProfile;
   metrics: SystemMetric[];
@@ -90,5 +99,6 @@ export interface PortfolioData {
   experiences: WorkExperience[];
   education: Education[];
   certifications?: Certification[];
+  interests: Interest[];
 }
 

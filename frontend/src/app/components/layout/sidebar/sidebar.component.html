@@ -7,39 +7,39 @@
   <nav class="sidebar-nav">
     <a routerLink="/overview" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">person</span>
-      <span class="nav-text">{{ currentLang() === 'pl' ? 'O mnie / CV' : 'Overview & CV' }}</span>
+      <span class="nav-text">{{ 'nav.overview' | translate }}</span>
     </a>
 
     <a routerLink="/skills" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">code</span>
-      <span class="nav-text">{{ currentLang() === 'pl' ? 'Umiejętności' : 'Skills' }}</span>
+      <span class="nav-text">{{ 'nav.skills' | translate }}</span>
     </a>
 
     <a routerLink="/experience" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">work</span>
-      <span class="nav-text">{{ currentLang() === 'pl' ? 'Doświadczenie' : 'Experience' }}</span>
+      <span class="nav-text">{{ 'nav.experience' | translate }}</span>
     </a>
 
     <a routerLink="/education" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">school</span>
-      <span class="nav-text">{{ currentLang() === 'pl' ? 'Wykształcenie' : 'Education' }}</span>
+      <span class="nav-text">{{ 'nav.education' | translate }}</span>
     </a>
 
     <a routerLink="/architecture" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">schema</span>
-      <span class="nav-text">{{ currentLang() === 'pl' ? 'Architektura & Stack' : 'Architecture & Stack' }}</span>
+      <span class="nav-text">{{ 'nav.architecture' | translate }}</span>
     </a>
 
     <a routerLink="/interests" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">favorite</span>
-      <span class="nav-text">{{ currentLang() === 'pl' ? 'Zainteresowania' : 'Interests' }}</span>
+      <span class="nav-text">{{ 'nav.interests' | translate }}</span>
     </a>
   </nav>
 
   <div class="sidebar-footer">
     <a href="mailto:tomasz0zwierzynski@gmail.com" class="contact-btn">
       <span class="material-symbols-outlined">mail</span>
-      <span>{{ currentLang() === 'pl' ? 'Kontakt' : 'Contact Me' }}</span>
+      <span>{{ 'nav.contact' | translate }}</span>
     </a>
   </div>
 </aside>
@@ -48,26 +48,26 @@
 <nav class="mobile-bottom-nav">
   <a routerLink="/overview" routerLinkActive="active" class="mobile-nav-item">
     <span class="material-symbols-outlined">person</span>
-    <span class="nav-label">{{ currentLang() === 'pl' ? 'O mnie' : 'Overview' }}</span>
+    <span class="nav-label">{{ 'nav.mobileOverview' | translate }}</span>
   </a>
 
   <a routerLink="/skills" routerLinkActive="active" class="mobile-nav-item">
     <span class="material-symbols-outlined">code</span>
-    <span class="nav-label">{{ currentLang() === 'pl' ? 'Skille' : 'Skills' }}</span>
+    <span class="nav-label">{{ 'nav.mobileSkills' | translate }}</span>
   </a>
 
   <a routerLink="/experience" routerLinkActive="active" class="mobile-nav-item">
     <span class="material-symbols-outlined">work</span>
-    <span class="nav-label">{{ currentLang() === 'pl' ? 'Kariera' : 'Experience' }}</span>
+    <span class="nav-label">{{ 'nav.mobileExperience' | translate }}</span>
   </a>
 
   <a routerLink="/education" routerLinkActive="active" class="mobile-nav-item">
     <span class="material-symbols-outlined">school</span>
-    <span class="nav-label">{{ currentLang() === 'pl' ? 'Edukacja' : 'Education' }}</span>
+    <span class="nav-label">{{ 'nav.mobileEducation' | translate }}</span>
   </a>
 
   <a routerLink="/interests" routerLinkActive="active" class="mobile-nav-item">
     <span class="material-symbols-outlined">favorite</span>
-    <span class="nav-label">{{ currentLang() === 'pl' ? 'Pasje' : 'Hobbies' }}</span>
+    <span class="nav-label">{{ 'nav.mobileInterests' | translate }}</span>
   </a>
 </nav>

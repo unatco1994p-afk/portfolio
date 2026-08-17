@@ -4,7 +4,7 @@
   </div>
 
   <div class="header-right">
-    <div class="lang-switcher">
+    <div class="lang-switcher" [title]="'header.langTooltip' | translate">
       <button 
         type="button" 
         class="lang-btn" 
@@ -23,10 +23,10 @@
     </div>
 
     <div class="header-actions">
-      <a [href]="profile()?.githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" [title]="currentLang() === 'pl' ? 'GitHub (Kod źródłowy projektu)' : 'GitHub (Project repository)'" class="action-btn">
+      <a [href]="profile()?.githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" title="GitHub (Repository)" class="action-btn">
         <span class="material-symbols-outlined">code</span>
       </a>
-      <span class="action-btn disabled" [title]="currentLang() === 'pl' ? 'LinkedIn - Wkrótce dostępne' : 'LinkedIn - Not available yet'">
+      <span class="action-btn disabled" title="LinkedIn" class="action-btn disabled">
         <span class="material-symbols-outlined">link</span>
       </span>
       <div class="user-avatar" [title]="profile()?.name || 'Tomasz Zwierzyński'">

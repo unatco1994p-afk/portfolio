@@ -204,5 +204,47 @@
       "badgeUrl": "workspace_premium",
       "description": "Oficjalny certyfikat Google Cloud potwierdzający praktyczne umiejętności wdrażania aplikacji, monitorowania operacji i zarządzania rozwiązaniami chmurowymi w GCP oraz klastrach Kubernetes (GKE)."
     }
+  ],
+  "interests": [
+    {
+      "id": "tech",
+      "icon": "memory",
+      "title": "Nowe Technologie & Cloud-Native",
+      "category": "Innowacje & Software",
+      "description": "Praktyczne eksperymentowanie z kompilacją natywną GraalVM AOT, architekturą mikroserwisową, frameworkiem Quarkus 3.x, reaktywnymi sygnałami w Angularze 19 oraz orkiestracją konteneryzacji na GCP GKE.",
+      "tags": ["GraalVM AOT", "Angular 19 Signals", "Quarkus Native", "K8s & GCP GKE"]
+    },
+    {
+      "id": "mechatronics",
+      "icon": "precision_manufacturing",
+      "title": "Mechatronika & Automatyka",
+      "category": "Inżynieria Hardware",
+      "description": "Pielęgnowanie pasji z czasów studiów magisterskich na Wydziale Mechanicznym Technologicznym Politechniki Śląskiej — układy sterowania, automatyka przemysłowa, napędy oraz integracja sprzętu z oprogramowaniem.",
+      "tags": ["mgr inż. Politechnika Śląska", "Automatyka Przemysłowa", "Hardware & Embedded"]
+    },
+    {
+      "id": "automotive",
+      "icon": "directions_car",
+      "title": "Motoryzacja & Nowoczesne Pojazdy",
+      "category": "Technologia & Transport",
+      "description": "Zainteresowanie rozwojem nowoczesnej motoryzacji, zaawansowanymi systemami wspomagania kierowcy (ADAS), technologią pojazdów elektrycznych (EV) oraz inżynierią oprogramowania samochodowego.",
+      "tags": ["Systemy ADAS", "EV Engineering", "Technologia Samochodowa"]
+    },
+    {
+      "id": "outdoor",
+      "icon": "hiking",
+      "title": "Podróże & Turystyka Górka",
+      "category": "Styl Życia & Outdoor",
+      "description": "Piesze wycieczki w góry, trekking na świeżym powietrzu, odkrywanie nowych szlaków oraz aktywny wypoczynek zapewniający doskonały balans i regenerację po intensywnej pracy architektonicznej.",
+      "tags": ["Trekking Górski", "Outdoor & Nature", "Work-Life Balance"]
+    },
+    {
+      "id": "gaming",
+      "icon": "sports_esports",
+      "title": "Gry Strategiczne & E-Sport",
+      "category": "Rozrywka Analityczna",
+      "description": "Pasja do gier strategicznych i symulacyjnych rozwijających myślenie analityczne, śledzenie e-sportu oraz fascynacja nowinkami z zakresu technologii silników graficznych i renderowania.",
+      "tags": ["Simulations & Strategy", "Analytical Thinking", "Graphics Engines"]
+    }
   ]
 }

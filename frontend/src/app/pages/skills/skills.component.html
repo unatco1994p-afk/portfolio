@@ -2,15 +2,13 @@
   <header class="page-header">
     <div class="header-tag">
       <span class="material-symbols-outlined">terminal</span>
-      <span>TECH STACK & CORE COMPETENCIES</span>
+      <span>{{ 'skills.headerTag' | translate }}</span>
     </div>
     <h1 class="page-title">
-      {{ currentLang() === 'pl' ? 'Ekosystem Technologiczny & Umiejętności' : 'Technical Ecosystem & Stack' }}
+      {{ 'skills.title' | translate }}
     </h1>
     <p class="page-subtitle">
-      {{ currentLang() === 'pl' 
-        ? 'Zestawienie zaawansowanych stosów technologicznych, środowisk uruchomieniowych, chmurowych oraz praktyk inżynieryjnych.' 
-        : 'Comprehensive breakdown of production-tested tech stacks, cloud platforms, and engineering practices.' }}
+      {{ 'skills.subtitle' | translate }}
     </p>
   </header>
 
@@ -21,12 +19,12 @@
         <span class="material-symbols-outlined">wifi_off</span>
       </div>
       <div class="error-content">
-        <h3>{{ currentLang() === 'pl' ? 'Brak połączenia z backendem API' : 'Backend API Unreachable' }}</h3>
+        <h3>{{ 'skills.errorTitle' | translate }}</h3>
         <p>{{ portfolioService.errorMessage() }}</p>
       </div>
       <button class="retry-btn" (click)="retry()">
         <span class="material-symbols-outlined">refresh</span>
-        <span>{{ currentLang() === 'pl' ? 'Ponów próbę' : 'Retry Connection' }}</span>
+        <span>{{ 'skills.retry' | translate }}</span>
       </button>
     </div>
   }
@@ -35,7 +33,7 @@
   @if (portfolioService.isLoading()) {
     <div class="loading-state">
       <div class="spinner"></div>
-      <p>{{ currentLang() === 'pl' ? 'Ładowanie stosu technologicznego z serwera...' : 'Fetching tech ecosystem from backend API...' }}</p>
+      <p>{{ 'skills.loading' | translate }}</p>
     </div>
   } @else if (!portfolioService.hasError()) {
 
@@ -48,7 +46,7 @@
           (click)="setCategory(cat.id)"
         >
           <span class="material-symbols-outlined">{{ cat.icon }}</span>
-          <span>{{ currentLang() === 'pl' ? cat.labelPl : cat.labelEn }}</span>
+          <span>{{ cat.labelKey | translate }}</span>
         </button>
       }
     </div>
@@ -65,7 +63,7 @@
               <h3 class="skill-name">{{ skill.name }}</h3>
               <span class="skill-exp">
                 <span class="material-symbols-outlined exp-icon">history_edu</span>
-                {{ skill.experience }} {{ currentLang() === 'pl' ? 'doświadczenia' : 'experience' }}
+                {{ skill.experience }} {{ 'skills.expSuffix' | translate }}
               </span>
             </div>
           </div>
@@ -89,7 +87,7 @@
           <div class="highlights-section">
             <h4 class="section-label">
               <span class="material-symbols-outlined label-icon">stars</span>
-              {{ currentLang() === 'pl' ? 'Sprawdzony Stos & Narzędzia' : 'Proven Stack & Highlights' }}
+              {{ 'skills.provenStack' | translate }}
             </h4>
             <div class="badge-container">
               @for (item of skill.highlights; track item) {
@@ -106,7 +104,7 @@
       } @empty {
         <div class="empty-state">
           <span class="material-symbols-outlined">search_off</span>
-          <p>{{ currentLang() === 'pl' ? 'Brak technologii w wybranej kategorii.' : 'No skills found in this category.' }}</p>
+          <p>{{ 'skills.empty' | translate }}</p>
         </div>
       }
     </div>

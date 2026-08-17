@@ -2,15 +2,13 @@
   <header class="page-header">
     <div class="header-tag">
       <span class="material-symbols-outlined">schema</span>
-      <span>SYSTEM ARCHITECTURE</span>
+      <span>{{ 'architecture.headerTag' | translate }}</span>
     </div>
     <h1 class="page-title">
-      {{ currentLang() === 'pl' ? 'Architektura Portfela' : 'Portfolio Architecture' }}
+      {{ 'architecture.title' | translate }}
     </h1>
     <p class="page-subtitle">
-      {{ currentLang() === 'pl' 
-        ? 'Schemat przepływu danych oraz opis warstw technologicznych natywnej aplikacji chmurowej.' 
-        : 'System flow diagram and technical layer breakdown of this cloud-native application.' }}
+      {{ 'architecture.subtitle' | translate }}
     </p>
   </header>
 
@@ -19,9 +17,9 @@
     <div class="section-title-row">
       <div class="section-title">
         <span class="material-symbols-outlined">account_tree</span>
-        <span>{{ currentLang() === 'pl' ? 'Schemat Przepływu Systemu' : 'System Architecture Flow' }}</span>
+        <span>{{ 'architecture.flowTitle' | translate }}</span>
       </div>
-      <span class="tag-badge">GCP GKE • QUARKUS NATIVE • ANGULAR 19</span>
+      <span class="tag-badge">{{ 'architecture.tagBadge' | translate }}</span>
     </div>
 
     <div class="diagram-image-wrapper">
@@ -33,17 +31,17 @@
       <div class="pipeline-block">
         <h4 class="pipeline-title">
           <span class="material-symbols-outlined icon">sync</span>
-          <span>{{ currentLang() === 'pl' ? 'Ścieżka Wdrożeniowa (CI/CD Pipeline):' : 'Deployment Pipeline (CI/CD):' }}</span>
+          <span>{{ 'architecture.pipelineTitle' | translate }}</span>
         </h4>
-        <p class="pipeline-flow">GitHub Repo &rarr; GCP Cloud Build Trigger &rarr; Helm Charts & Docker &rarr; GCP GKE Cluster</p>
+        <p class="pipeline-flow">{{ 'architecture.pipelineFlow' | translate }}</p>
       </div>
 
       <div class="pipeline-block">
         <h4 class="pipeline-title">
           <span class="material-symbols-outlined icon">swap_horiz</span>
-          <span>{{ currentLang() === 'pl' ? 'Ścieżka Aplikacji (Runtime Flow):' : 'Application Runtime Flow:' }}</span>
+          <span>{{ 'architecture.runtimeTitle' | translate }}</span>
         </h4>
-        <p class="pipeline-flow">Przeglądarka (User) &rarr; Load Balancer (Ingress) &rarr; Angular 19 SPA &rarr; Quarkus Java 21 REST API</p>
+        <p class="pipeline-flow">{{ 'architecture.runtimeFlow' | translate }}</p>
       </div>
     </div>
   </section>
@@ -54,11 +52,9 @@
       <div class="card-icon">
         <span class="material-symbols-outlined">laptop_mac</span>
       </div>
-      <h3>Frontend (Angular 19)</h3>
+      <h3>{{ 'architecture.frontendCardTitle' | translate }}</h3>
       <p class="card-description">
-        {{ currentLang() === 'pl' 
-          ? 'Reaktywny interfejs typu Single Page Application wybudowany w oparciu o Standalone Components i Angular Signals. Zarządzanie stanem (w tym natychmiastowe przełączanie języka PL/EN) odbywa się bez odświeżania strony.' 
-          : 'Reactive Single Page Application built with Standalone Components and Angular Signals for instant PL/EN language switching without page reloads.' }}
+        {{ 'architecture.frontendCardDesc' | translate }}
       </p>
       <ul>
         <li><strong>Framework:</strong> Angular 19 (Standalone Architecture)</li>
@@ -71,11 +67,9 @@
       <div class="card-icon">
         <span class="material-symbols-outlined">terminal</span>
       </div>
-      <h3>Backend (Quarkus Native)</h3>
+      <h3>{{ 'architecture.backendCardTitle' | translate }}</h3>
       <p class="card-description">
-        {{ currentLang() === 'pl' 
-          ? 'Mikroserwis napisany w Java 21 (Quarkus 3.x) skompilowany wyprzedzająco (AOT) za pomocą GraalVM do natywnej pliku binarnego, zapewniając zerowy czas rozgrzewania i błyskawiczne API.' 
-          : 'Microservice written in Java 21 (Quarkus 3.x) compiled ahead-of-time (AOT) via GraalVM into a standalone native binary for sub-millisecond API responses.' }}
+        {{ 'architecture.backendCardDesc' | translate }}
       </p>
       <ul>
         <li><strong>Runtime:</strong> Java 21 LTS + GraalVM Native Image</li>
@@ -88,11 +82,9 @@
       <div class="card-icon">
         <span class="material-symbols-outlined">cloud_sync</span>
       </div>
-      <h3>Chmura & DevOps (GCP GKE)</h3>
+      <h3>{{ 'architecture.infraCardTitle' | translate }}</h3>
       <p class="card-description">
-        {{ currentLang() === 'pl' 
-          ? 'Lekkie kontenerowe obrazy Dockerowe orkiestrowane za pomocą szablonów Helm na klastrze Google Kubernetes Engine (GKE) w chmurze GCP.' 
-          : 'Containerized Docker images orchestrated via Helm charts on Google Kubernetes Engine (GKE) cluster in Google Cloud Platform.' }}
+        {{ 'architecture.infraCardDesc' | translate }}
       </p>
       <ul>
         <li><strong>Cloud Provider:</strong> Google Cloud Platform (GCP)</li>
