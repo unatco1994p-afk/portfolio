@@ -8,8 +8,9 @@ public record PortfolioData(
         List<Project> projects,
         List<TechSkill> skills,
         List<WorkExperience> experiences,
-        List<Education> education) {
+        List<Education> education,
+        List<Certification> certifications) {
     public PortfolioData() {
-        this(null, null, null, null, null, null);
+        this(null, null, null, null, null, null, null);
     }
 }

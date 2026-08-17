@@ -60,6 +60,7 @@ export class PortfolioService {
   readonly skills = computed(() => this.dataSignal()?.skills ?? []);
   readonly experiences = computed(() => this.dataSignal()?.experiences ?? []);
   readonly education = computed(() => this.dataSignal()?.education ?? []);
+  readonly certifications = computed(() => this.dataSignal()?.certifications ?? []);
 
   readonly selectedProjectCategory = signal<string>('all');
 

@@ -82,4 +82,12 @@ public class PortfolioResource {
             @HeaderParam("Accept-Language") String acceptLanguage) {
         return dataService.getMetrics(resolveLang(lang, acceptLanguage));
     }
+
+    @GET
+    @Path("/certifications")
+    public List<Certification> getCertifications(
+            @QueryParam("lang") String lang,
+            @HeaderParam("Accept-Language") String acceptLanguage) {
+        return dataService.getCertifications(resolveLang(lang, acceptLanguage));
+    }
 }

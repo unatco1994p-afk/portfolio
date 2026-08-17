@@ -32,6 +32,13 @@ export interface Project {
   status: string;
 }
 
+export interface SkillCertification {
+  name: string;
+  issuer: string;
+  issueDate: string;
+  badge: string;
+}
+
 export interface TechSkill {
   id: string;
   name: string;
@@ -40,6 +47,7 @@ export interface TechSkill {
   experience: string;
   icon: string;
   highlights: string[];
+  certification?: SkillCertification;
 }
 
 export interface WorkExperience {
@@ -65,6 +73,16 @@ export interface Education {
   description: string;
 }
 
+export interface Certification {
+  id: string;
+  name: string;
+  issuer: string;
+  issueDate: string;
+  credentialUrl?: string;
+  badgeUrl?: string;
+  description: string;
+}
+
 export interface PortfolioData {
   profile: UserProfile;
   metrics: SystemMetric[];
@@ -72,4 +90,6 @@ export interface PortfolioData {
   skills: TechSkill[];
   experiences: WorkExperience[];
   education: Education[];
+  certifications?: Certification[];
 }
+

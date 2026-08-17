@@ -1,0 +1,222 @@
+<div class="overview-page animate-fade-in">
+  <!-- Hero Profile & Photo Card -->
+  <section class="hero-card">
+    <div class="portrait-column">
+      <div class="photo-wrapper">
+        <img src="assets/photo.jpg" alt="Tomasz Zwierzyński" class="portrait-img" />
+        <div class="availability-badge">
+          <span class="pulse-dot"></span>
+          <span>{{ currentLang() === 'pl' ? 'Dostępny (Zdalnie / Hybrydowo)' : 'Available (Remote / Hybrid)' }}</span>
+        </div>
+      </div>
+
+      <div class="portrait-actions">
+        <a href="mailto:tomasz0zwierzynski@gmail.com" class="action-btn email-btn">
+          <span class="material-symbols-outlined">mail</span>
+          <span>{{ currentLang() === 'pl' ? 'Wyślij Email' : 'Email Me' }}</span>
+        </a>
+        <a [href]="profile()?.githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" class="action-btn github-btn">
+          <span class="material-symbols-outlined">code</span>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="bio-column">
+      <div class="bio-header">
+        <h2 class="person-name">{{ profile()?.name || 'Tomasz Zwierzyński' }}</h2>
+        <p class="person-title">{{ profile()?.title || 'Senior Software Engineer' }}</p>
+      </div>
+
+      <div class="meta-chips-row">
+        <div class="meta-chip">
+          <span class="material-symbols-outlined icon">location_on</span>
+          <span>{{ profile()?.location || 'Polska (Zdalnie / Hybrydowo)' }}</span>
+        </div>
+        <div class="meta-chip highlight-chip">
+          <span class="material-symbols-outlined icon">verified</span>
+          <span>Google Cloud Certified ACE</span>
+        </div>
+        <div class="meta-chip">
+          <span class="material-symbols-outlined icon">school</span>
+          <span>mgr inż. Mechatronika</span>
+        </div>
+      </div>
+
+      <p class="bio-text">
+        {{ profile()?.bio || (currentLang() === 'pl' 
+          ? 'Programista i inżynier oprogramowania z wieloletnim doświadczeniem w tworzeniu systemów samoobsługowych, ewidencji czasu oraz skalowalnych mikroserwisów (Quarkus, Angular, GCP, Kubernetes).' 
+          : 'Software Engineer with hands-on experience in building self-service systems, time-tracking applications, and scalable microservices.') }}
+      </p>
+
+      <div class="key-facts-grid">
+        <div class="fact-item">
+          <span class="fact-label">{{ currentLang() === 'pl' ? 'Główny backend:' : 'Primary backend:' }}</span>
+          <span class="fact-value">Java 21 / Quarkus Native / GraalVM</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">{{ currentLang() === 'pl' ? 'Główny frontend:' : 'Primary frontend:' }}</span>
+          <span class="fact-value">Angular 19 (Signals & Standalone)</span>
+        </div>
+        <div class="fact-item">
+          <span class="fact-label">{{ currentLang() === 'pl' ? 'Infrastruktura & Chmura:' : 'Cloud & Infra:' }}</span>
+          <span class="fact-value">GCP GKE, Helm, Cloud Build, Docker</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Stats Grid -->
+  <section class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-number">6+</span>
+      <span class="stat-label">{{ currentLang() === 'pl' ? 'Lat Doświadczenia' : 'Years Experience' }}</span>
+    </div>
+    <div class="stat-card cert-stat">
+      <span class="stat-number">GCP ACE</span>
+      <span class="stat-label">Google Cloud Certified (2026)</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">mgr inż.</span>
+      <span class="stat-label">Politechnika Śląska</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">&lt; 18ms</span>
+      <span class="stat-label">GraalVM Cold Start</span>
+    </div>
+  </section>
+
+  <!-- Snapshots Grid -->
+  <section class="snapshots-grid">
+    <!-- Experience Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">work</span>
+          <span>{{ currentLang() === 'pl' ? 'DOŚWIADCZENIE ZAWODOWE' : 'WORK EXPERIENCE' }}</span>
+        </div>
+        <a routerLink="/experience" class="view-link">
+          <span>{{ currentLang() === 'pl' ? 'Zobacz pełne' : 'View all' }}</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      @if (currentExperience; as exp) {
+        <div class="snapshot-body">
+          <h3 class="role-heading">{{ exp.role }}</h3>
+          <p class="company-sub">&#64; {{ exp.company }} ({{ exp.period }})</p>
+          <p class="summary-snippet">{{ exp.summary }}</p>
+          <div class="tech-chips">
+            @for (tech of exp.technologies.slice(0, 5); track tech) {
+              <span class="chip">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Skills Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">code</span>
+          <span>{{ currentLang() === 'pl' ? 'STOS TECHNOLOGICZNY' : 'TECH STACK' }}</span>
+        </div>
+        <a routerLink="/skills" class="view-link">
+          <span>{{ currentLang() === 'pl' ? 'Zobacz pełny stos' : 'View full stack' }}</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="snapshot-body">
+        <div class="core-skills-badges">
+          <span class="skill-badge highlight">Java 21</span>
+          <span class="skill-badge highlight">Quarkus Native</span>
+          <span class="skill-badge highlight">Angular 19</span>
+          <span class="skill-badge cert">Google Cloud ACE</span>
+          <span class="skill-badge">GCP GKE</span>
+          <span class="skill-badge">Helm & Docker</span>
+          <span class="skill-badge">PostgreSQL</span>
+          <span class="skill-badge">REST API & OpenAPI</span>
+          <span class="skill-badge">GraalVM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">school</span>
+          <span>{{ currentLang() === 'pl' ? 'EDUKACJA & CERTYFIKATY' : 'EDUCATION & CERTS' }}</span>
+        </div>
+        <a routerLink="/education" class="view-link">
+          <span>{{ currentLang() === 'pl' ? 'Zobacz wykształcenie' : 'View education' }}</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="snapshot-body">
+        <ul class="snapshot-list">
+          <li class="list-item highlight-item">
+            <span class="material-symbols-outlined icon">verified</span>
+            <div class="item-text">
+              <span class="item-title">Google Cloud Certified - Associate Cloud Engineer</span>
+              <span class="item-sub">Google Cloud • 23 marca 2026</span>
+            </div>
+          </li>
+          <li class="list-item">
+            <span class="material-symbols-outlined icon">school</span>
+            <div class="item-text">
+              <span class="item-title">mgr inż. Mechatronika (Aplikacje Napędowe)</span>
+              <span class="item-sub">Politechnika Śląska w Gliwicach (2017 – 2018)</span>
+            </div>
+          </li>
+          <li class="list-item">
+            <span class="material-symbols-outlined icon">school</span>
+            <div class="item-text">
+              <span class="item-title">inż. Mechatronika</span>
+              <span class="item-sub">Politechnika Śląska w Gliwicach (2013 – 2017)</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- System Architecture Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">schema</span>
+          <span>{{ currentLang() === 'pl' ? 'LIVE SYSTEM STACK' : 'LIVE SYSTEM STACK' }}</span>
+        </div>
+        <a routerLink="/architecture" class="view-link">
+          <span>{{ currentLang() === 'pl' ? 'Zobacz specyfikację' : 'View spec' }}</span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="snapshot-body">
+        <p class="arch-desc">
+          {{ currentLang() === 'pl' 
+            ? 'Produkcyjne portfolio zintegrowane w monorepo: Quarkus Native (GraalVM), Angular 19 SPA, packaging Helm oraz CI/CD na GCP Cloud Build.' 
+            : 'Production monorepo portfolio running Quarkus Native (GraalVM), Angular 19 SPA, Helm packaging, and GCP Cloud Build CI/CD.' }}
+        </p>
+        <div class="arch-metrics-mini">
+          <div class="mini-metric">
+            <span class="val">99.99%</span>
+            <span class="lbl">Uptime</span>
+          </div>
+          <div class="mini-metric">
+            <span class="val">&lt; 50MB</span>
+            <span class="lbl">RAM Footprint</span>
+          </div>
+          <div class="mini-metric">
+            <span class="val">18ms</span>
+            <span class="lbl">Cold Start</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

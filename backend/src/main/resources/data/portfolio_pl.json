@@ -98,6 +98,7 @@
       "experience": "4+ lat",
       "icon": "cloud",
       "highlights": [
+        "Google Cloud Certified - Associate Cloud Engineer (ACE)",
         "Docker & Multi-Stage Builds",
         "Kubernetes (K8s) & Helm Charts",
         "GCP (Google Cloud Platform & GKE)",
@@ -105,7 +106,13 @@
         "Jenkins & GitLab CI/CD",
         "Git (Gitflow, Pull/Merge Requests)",
         "Linux / Bash CLI & Nginx"
-      ]
+      ],
+      "certification": {
+        "name": "Google Cloud Certified - Associate Cloud Engineer",
+        "issuer": "Google Cloud",
+        "issueDate": "23 marca 2026",
+        "badge": "verified"
+      }
     },
     {
       "id": "s4",
@@ -190,6 +197,16 @@
       "period": "10.2013 – 01.2017",
       "location": "Gliwice, Polska",
       "description": "Wydział Mechaniczny Technologiczny. Studia I stopnia w trybie dziennym zakończone tytułem inżyniera."
+    }
+  ],
+  "certifications": [
+    {
+      "id": "c1",
+      "name": "Google Cloud Certified - Associate Cloud Engineer",
+      "issuer": "Google Cloud",
+      "issueDate": "23 marca 2026",
+      "badgeUrl": "workspace_premium",
+      "description": "Oficjalny certyfikat Google Cloud potwierdzający praktyczne umiejętności wdrażania aplikacji, monitorowania operacji i zarządzania rozwiązaniami chmurowymi w GCP oraz klastrach Kubernetes (GKE)."
     }
   ]
 }

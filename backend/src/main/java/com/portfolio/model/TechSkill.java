@@ -9,4 +9,5 @@ public record TechSkill(
         int proficiency,
         String experience,
         String icon,
-        List<String> highlights) {}
+        List<String> highlights,
+        SkillCertification certification) {}

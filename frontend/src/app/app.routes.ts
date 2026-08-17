@@ -1,7 +1,11 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'skills', pathMatch: 'full' },
+  { path: '', redirectTo: 'overview', pathMatch: 'full' },
+  {
+    path: 'overview',
+    loadComponent: () => import('./pages/overview/overview.component').then(m => m.OverviewComponent)
+  },
   {
     path: 'skills',
     loadComponent: () => import('./pages/skills/skills.component').then(m => m.SkillsComponent)
@@ -18,5 +22,5 @@ export const routes: Routes = [
     path: 'architecture',
     loadComponent: () => import('./pages/architecture/architecture.component').then(m => m.ArchitectureComponent)
   },
-  { path: '**', redirectTo: 'skills' }
+  { path: '**', redirectTo: 'overview' }
 ];

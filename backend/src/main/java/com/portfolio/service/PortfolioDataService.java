@@ -134,4 +134,9 @@ public class PortfolioDataService {
         PortfolioData data = getPortfolioData(lang);
         return data.metrics() != null ? data.metrics() : Collections.emptyList();
     }
+
+    public List<Certification> getCertifications(String lang) {
+        PortfolioData data = getPortfolioData(lang);
+        return data.certifications() != null ? data.certifications() : Collections.emptyList();
+    }
 }

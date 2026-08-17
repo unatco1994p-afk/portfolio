@@ -5,6 +5,11 @@
   </div>
 
   <nav class="sidebar-nav">
+    <a routerLink="/overview" routerLinkActive="active" class="nav-item">
+      <span class="material-symbols-outlined">person</span>
+      <span class="nav-text">{{ currentLang() === 'pl' ? 'O mnie / CV' : 'Overview & CV' }}</span>
+    </a>
+
     <a routerLink="/skills" routerLinkActive="active" class="nav-item">
       <span class="material-symbols-outlined">code</span>
       <span class="nav-text">{{ currentLang() === 'pl' ? 'Umiejętności' : 'Skills' }}</span>
@@ -33,3 +38,31 @@
     </a>
   </div>
 </aside>
+
+<!-- Fixed Bottom Navigation for Mobile Devices -->
+<nav class="mobile-bottom-nav">
+  <a routerLink="/overview" routerLinkActive="active" class="mobile-nav-item">
+    <span class="material-symbols-outlined">person</span>
+    <span class="nav-label">{{ currentLang() === 'pl' ? 'O mnie' : 'Overview' }}</span>
+  </a>
+
+  <a routerLink="/skills" routerLinkActive="active" class="mobile-nav-item">
+    <span class="material-symbols-outlined">code</span>
+    <span class="nav-label">{{ currentLang() === 'pl' ? 'Skille' : 'Skills' }}</span>
+  </a>
+
+  <a routerLink="/experience" routerLinkActive="active" class="mobile-nav-item">
+    <span class="material-symbols-outlined">work</span>
+    <span class="nav-label">{{ currentLang() === 'pl' ? 'Kariera' : 'Experience' }}</span>
+  </a>
+
+  <a routerLink="/education" routerLinkActive="active" class="mobile-nav-item">
+    <span class="material-symbols-outlined">school</span>
+    <span class="nav-label">{{ currentLang() === 'pl' ? 'Edukacja' : 'Education' }}</span>
+  </a>
+
+  <a routerLink="/architecture" routerLinkActive="active" class="mobile-nav-item">
+    <span class="material-symbols-outlined">schema</span>
+    <span class="nav-label">{{ currentLang() === 'pl' ? 'Stack' : 'Stack' }}</span>
+  </a>
+</nav>

@@ -15,5 +15,6 @@ export class EducationComponent {
   readonly languageService = inject(LanguageService);
 
   readonly education = this.portfolioService.education;
+  readonly certifications = this.portfolioService.certifications;
   readonly currentLang = this.languageService.currentLang;
 }

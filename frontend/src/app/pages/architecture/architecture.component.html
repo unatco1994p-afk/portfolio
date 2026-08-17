@@ -2,50 +2,40 @@
   <header class="page-header">
     <div class="header-tag">
       <span class="material-symbols-outlined">schema</span>
-      <span>LIVE SYSTEM ARCHITECTURE & DEMO STACK</span>
+      <span>SYSTEM ARCHITECTURE</span>
     </div>
     <h1 class="page-title">
-      {{ currentLang() === 'pl' ? 'Architektura & Live Tech Stack' : 'Architecture & Live Tech Stack' }}
+      {{ currentLang() === 'pl' ? 'Architektura Portfela' : 'Portfolio Architecture' }}
     </h1>
     <p class="page-subtitle">
       {{ currentLang() === 'pl' 
-        ? 'Realny schemat oraz metryki produkcyjne obecnego serwisu w oparciu o Quarkus GraalVM Native, Angular 19 oraz GCP GKE.' 
-        : 'Live architecture diagram and production metrics running Quarkus GraalVM Native, Angular 19, and GCP GKE.' }}
+        ? 'Schemat przepływu danych oraz opis warstw technologicznych natywnej aplikacji chmurowej.' 
+        : 'System flow diagram and technical layer breakdown of this cloud-native application.' }}
     </p>
   </header>
 
-  <!-- Metrics Grid -->
-  <section class="metrics-grid">
-    @for (metric of metrics(); track metric.id) {
-      <div class="metric-card">
-        <div class="metric-header">
-          <span class="metric-label">{{ metric.label }}</span>
-          <span class="status-indicator" [class.optimal]="metric.status === 'optimal'"></span>
-        </div>
-        <div class="metric-value-row">
-          <span class="metric-value">{{ metric.value }}</span>
-          @if (metric.trend) {
-            <span class="metric-trend">{{ metric.trend }}</span>
-          }
-        </div>
-      </div>
-    }
-  </section>
-
-  <!-- Flowchart Diagram -->
+  <!-- Top Visual Architecture Diagram -->
   <section class="diagram-section">
-    <h2 class="section-title">
-      <span class="material-symbols-outlined">account_tree</span>
-      <span>{{ currentLang() === 'pl' ? 'Przepływ Żądania w Chmurze GCP' : 'GCP Request Flow & Topology' }}</span>
-    </h2>
+    <div class="section-title-row">
+      <div class="section-title">
+        <span class="material-symbols-outlined">account_tree</span>
+        <span>{{ currentLang() === 'pl' ? 'Schemat Przepływu Systemu' : 'System Architecture Flow' }}</span>
+      </div>
+      <span class="tag-badge">GCP GKE • QUARKUS NATIVE • ANGULAR 19</span>
+    </div>
 
+    <div class="diagram-image-wrapper">
+      <img src="assets/architecture-diagram.jpg" alt="Architecture Diagram" class="architecture-img" />
+    </div>
+
+    <!-- Step Pipeline Nodes -->
     <div class="flowchart-container">
       <div class="flow-step">
         <div class="node-icon user">
-          <span class="material-symbols-outlined">person</span>
+          <span class="material-symbols-outlined">devices</span>
         </div>
-        <span class="node-title">{{ currentLang() === 'pl' ? 'Użytkownik / Przeglądarka' : 'User / Client' }}</span>
-        <span class="node-subtitle">HTTPS / TLS 1.3</span>
+        <div class="node-title">{{ currentLang() === 'pl' ? 'Przeglądarka / Client' : 'User / Browser' }}</div>
+        <div class="node-subtitle">Angular 19 SPA</div>
       </div>
 
       <div class="flow-arrow">
@@ -54,10 +44,10 @@
 
       <div class="flow-step">
         <div class="node-icon ingress">
-          <span class="material-symbols-outlined">cloud</span>
+          <span class="material-symbols-outlined">router</span>
         </div>
-        <span class="node-title">GCP Ingress & DNS</span>
-        <span class="node-subtitle">Managed Certs & Load Balancer</span>
+        <div class="node-title">Load Balancer</div>
+        <div class="node-subtitle">Ingress Controller</div>
       </div>
 
       <div class="flow-arrow">
@@ -68,8 +58,8 @@
         <div class="node-icon frontend">
           <span class="material-symbols-outlined">web</span>
         </div>
-        <span class="node-title">Angular 19 SPA</span>
-        <span class="node-subtitle">Nginx Pod (GKE)</span>
+        <div class="node-title">Frontend Pods</div>
+        <div class="node-subtitle">Angular 19 Signals</div>
       </div>
 
       <div class="flow-arrow">
@@ -78,61 +68,64 @@
 
       <div class="flow-step">
         <div class="node-icon backend">
-          <span class="material-symbols-outlined">bolt</span>
+          <span class="material-symbols-outlined">dns</span>
         </div>
-        <span class="node-title">Quarkus Native</span>
-        <span class="node-subtitle">GraalVM Java 21 Pod (&lt;50MB RAM)</span>
+        <div class="node-title">Backend Native Pods</div>
+        <div class="node-subtitle">Quarkus Java 21 REST API</div>
       </div>
     </div>
   </section>
 
-  <!-- Core Stack Cards -->
+  <!-- Bottom Tech Stack & System Operation Cards -->
   <section class="stack-details-grid">
+    <div class="stack-card">
+      <div class="card-icon">
+        <span class="material-symbols-outlined">laptop_mac</span>
+      </div>
+      <h3>Frontend (Angular 19)</h3>
+      <p class="card-description">
+        {{ currentLang() === 'pl' 
+          ? 'Reaktywny interfejs typu Single Page Application wybudowany w oparciu o Standalone Components i Angular Signals. Zarządzanie stanem (w tym natychmiastowe przełączanie języka PL/EN) odbywa się bez odświeżania strony.' 
+          : 'Reactive Single Page Application built with Standalone Components and Angular Signals for instant PL/EN language switching without page reloads.' }}
+      </p>
+      <ul>
+        <li><strong>Framework:</strong> Angular 19 (Standalone Architecture)</li>
+        <li><strong>State:</strong> Angular Signals & Computed State</li>
+        <li><strong>Styling:</strong> Custom SCSS Design System</li>
+      </ul>
+    </div>
+
     <div class="stack-card">
       <div class="card-icon">
         <span class="material-symbols-outlined">terminal</span>
       </div>
-      <h3>Frontend Architecture</h3>
+      <h3>Backend (Quarkus Native)</h3>
+      <p class="card-description">
+        {{ currentLang() === 'pl' 
+          ? 'Mikroserwis napisany w Java 21 (Quarkus 3.x) skompilowany wyprzedzająco (AOT) za pomocą GraalVM do natywnej pliku binarnego, zapewniając zerowy czas rozgrzewania i błyskawiczne API.' 
+          : 'Microservice written in Java 21 (Quarkus 3.x) compiled ahead-of-time (AOT) via GraalVM into a standalone native binary for sub-millisecond API responses.' }}
+      </p>
       <ul>
-        <li><strong>Angular 19 SPA:</strong> Standalone Components & Signals.</li>
-        <li><strong>Nginx Container:</strong> Ultra-fast static assets distribution.</li>
-        <li><strong>Responsive Design System:</strong> Dark Mode Glassmorphism SCSS.</li>
+        <li><strong>Runtime:</strong> Java 21 LTS + GraalVM Native Image</li>
+        <li><strong>Framework:</strong> Quarkus 3.x (Reactive REST API)</li>
+        <li><strong>Testing:</strong> JUnit 5 & REST Assured Automation</li>
       </ul>
     </div>
 
     <div class="stack-card">
       <div class="card-icon">
-        <span class="material-symbols-outlined">memory</span>
+        <span class="material-symbols-outlined">cloud_sync</span>
       </div>
-      <h3>Backend Architecture</h3>
+      <h3>Chmura & DevOps (GCP GKE)</h3>
+      <p class="card-description">
+        {{ currentLang() === 'pl' 
+          ? 'Lekkie kontenerowe obrazy Dockerowe orkiestrowane za pomocą szablonów Helm na klastrze Google Kubernetes Engine (GKE) w chmurze GCP.' 
+          : 'Containerized Docker images orchestrated via Helm charts on Google Kubernetes Engine (GKE) cluster in Google Cloud Platform.' }}
+      </p>
       <ul>
-        <li><strong>Quarkus (Java 21):</strong> Reactive REST endpoints.</li>
-        <li><strong>GraalVM Native Image:</strong> Cold start &lt; 20ms.</li>
-        <li><strong>Low Footprint:</strong> Minimal RAM consumption (&lt; 50MB per pod).</li>
-      </ul>
-    </div>
-
-    <div class="stack-card">
-      <div class="card-icon">
-        <span class="material-symbols-outlined">cloud_queue</span>
-      </div>
-      <h3>Cloud & Infrastructure</h3>
-      <ul>
-        <li><strong>Google Cloud Platform:</strong> GKE Autopilot Cluster.</li>
-        <li><strong>Packaging:</strong> Helm v3 Chart deployment.</li>
-        <li><strong>Security:</strong> Workload Identity Federation (Keyless auth).</li>
-      </ul>
-    </div>
-
-    <div class="stack-card">
-      <div class="card-icon">
-        <span class="material-symbols-outlined">published_with_changes</span>
-      </div>
-      <h3>CI/CD & Automation</h3>
-      <ul>
-        <li><strong>GCP Cloud Build:</strong> Automated GitHub triggers.</li>
-        <li><strong>Multi-Stage Docker Builds:</strong> Optimized container images.</li>
-        <li><strong>Zero Downtime:</strong> Rolling updates on Kubernetes.</li>
+        <li><strong>Cloud Provider:</strong> Google Cloud Platform (GCP)</li>
+        <li><strong>Orchestration:</strong> Google Kubernetes Engine (GKE)</li>
+        <li><strong>Packaging:</strong> Helm Charts & Docker Containers</li>
       </ul>
     </div>
   </section>

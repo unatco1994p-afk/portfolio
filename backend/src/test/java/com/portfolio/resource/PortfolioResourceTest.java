@@ -45,4 +45,14 @@ public class PortfolioResourceTest {
     public void testGetEducationEndpoint() {
         given().when().get("/api/education").then().statusCode(200).body("size()", is(2));
     }
+
+    @Test
+    public void testGetCertificationsEndpoint() {
+        given().when()
+                .get("/api/certifications")
+                .then()
+                .statusCode(200)
+                .body("size()", is(1))
+                .body("[0].name", is("Google Cloud Certified - Associate Cloud Engineer"));
+    }
 }
