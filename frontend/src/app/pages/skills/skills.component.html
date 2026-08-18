@@ -37,18 +37,38 @@
     </div>
   } @else if (!portfolioService.hasError()) {
 
-    <!-- Category Filter Tabs -->
-    <div class="category-filters">
-      @for (cat of categories; track cat.id) {
-        <button 
-          class="filter-tab"
-          [class.active]="selectedCategory() === cat.id"
-          (click)="setCategory(cat.id)"
-        >
-          <span class="material-symbols-outlined">{{ cat.icon }}</span>
-          <span>{{ cat.labelKey | translate }}</span>
-        </button>
-      }
+    <!-- Controls Container (Category Filters Top, Search Box Below) -->
+    <div class="controls-container">
+      <!-- Category Filter Tabs -->
+      <div class="category-filters">
+        @for (cat of categories; track cat.id) {
+          <button 
+            class="filter-tab"
+            [class.active]="selectedCategory() === cat.id"
+            (click)="setCategory(cat.id)"
+          >
+            <span class="material-symbols-outlined">{{ cat.icon }}</span>
+            <span>{{ cat.labelKey | translate }}</span>
+          </button>
+        }
+      </div>
+
+      <!-- Search Box (Below Category Filters) -->
+      <div class="search-box">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input 
+          type="text" 
+          class="search-input" 
+          [placeholder]="'skills.searchPlaceholder' | translate" 
+          [ngModel]="searchQuery()" 
+          (ngModelChange)="searchQuery.set($event)"
+        />
+        @if (searchQuery().length > 0) {
+          <button class="clear-btn" (click)="clearSearch()" [title]="'skills.clearSearch' | translate">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        }
+      </div>
     </div>
 
     <!-- Skills Grid -->
@@ -68,32 +88,16 @@
             </div>
           </div>
 
-          @if (skill.certification) {
-            <div class="skill-cert-banner">
-              <div class="cert-icon-box">
-                <span class="material-symbols-outlined">verified</span>
-              </div>
-              <div class="cert-info">
-                <div class="cert-name">{{ skill.certification.name }}</div>
-                <div class="cert-meta">
-                  <span>{{ skill.certification.issuer }}</span>
-                  <span class="dot-separator">•</span>
-                  <span>{{ skill.certification.issueDate }}</span>
-                </div>
-              </div>
-            </div>
-          }
-
           <div class="highlights-section">
-            <h4 class="section-label">
-              <span class="material-symbols-outlined label-icon">stars</span>
-              {{ 'skills.provenStack' | translate }}
-            </h4>
             <div class="badge-container">
               @for (item of skill.highlights; track item) {
-                <span class="tech-badge" [class.highlighted-badge]="item.includes('Angielski') || item.includes('English') || item.includes('Google Cloud Certified')">
+                <span 
+                  class="tech-badge" 
+                  [class.highlighted-badge]="item.includes('Angielski') || item.includes('English') || item.includes('Google Cloud Certified')"
+                  [class.search-matched]="isBadgeMatching(item)"
+                >
                   <span class="material-symbols-outlined badge-icon">
-                    {{ (item.includes('Angielski') || item.includes('English')) ? 'translate' : 'check_circle' }}
+                    {{ (item.includes('Angielski') || item.includes('English')) ? 'translate' : (isBadgeMatching(item) ? 'manage_search' : 'check_circle') }}
                   </span>
                   <span class="badge-text">{{ item }}</span>
                 </span>
@@ -104,7 +108,13 @@
       } @empty {
         <div class="empty-state">
           <span class="material-symbols-outlined">search_off</span>
-          <p>{{ 'skills.empty' | translate }}</p>
+          <p>{{ isQueryActive() ? ('skills.searchEmpty' | translate) : ('skills.empty' | translate) }}</p>
+          @if (isQueryActive()) {
+            <button class="clear-search-btn" (click)="clearSearch()">
+              <span class="material-symbols-outlined">backspace</span>
+              <span>{{ 'skills.clearSearch' | translate }}</span>
+            </button>
+          }
         </div>
       }
     </div>

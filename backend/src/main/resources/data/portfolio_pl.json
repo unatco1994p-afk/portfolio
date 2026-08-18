@@ -139,6 +139,20 @@
         "Clean Code & SOLID Principles",
         "Projektowanie API RESTful"
       ]
+    },
+    {
+      "id": "s6",
+      "name": "Narzędzia AI & Programowanie Wspomagane LLM",
+      "category": "methodology",
+      "experience": "2+ lat",
+      "icon": "auto_awesome",
+      "highlights": [
+        "AI Coding Assistants (Google Antigravity, GitHub Copilot, Cursor)",
+        "Modele Generatywne (ChatGPT / GPT-4o, Claude 3.5/3.7, Gemini)",
+        "Prompt Engineering & Inżynieria Kontekstu (Context Management)",
+        "Agentic Workflows & Programowanie Wspomagane Agentami AI",
+        "Automatyzacja Tworzenia Testów Jednostkowych & Refaktoryzacja z AI"
+      ]
     }
   ],
   "experiences": [

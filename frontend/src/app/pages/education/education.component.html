@@ -15,32 +15,25 @@
   <div class="timeline-container">
     <!-- Certifications (Top of Timeline) -->
     @for (cert of certifications(); track cert.id) {
-      <div class="timeline-item cert-item">
-        <div class="timeline-marker cert-marker">
-          <span class="marker-dot">
-            <span class="material-symbols-outlined marker-icon">verified</span>
-          </span>
+      <div class="timeline-item">
+        <div class="timeline-marker current">
+          <span class="marker-dot"></span>
           <span class="marker-line"></span>
         </div>
 
-        <div class="timeline-content cert-panel">
+        <div class="timeline-content glass-panel">
           <div class="item-header">
-            <div class="title-group">
-              <div class="badge-pill cert-pill">
-                <span class="material-symbols-outlined">verified</span>
-                <span>Google Cloud Certified</span>
-              </div>
-              <h2 class="item-title cert-name">{{ cert.name }}</h2>
-              <span class="issuer-name">&#64; {{ cert.issuer }}</span>
+            <div class="role-group">
+              <h2 class="role-title">{{ cert.name }}</h2>
+              <span class="company-name">&#64; {{ cert.issuer }}</span>
             </div>
-
-            <div class="period-badge cert-period">
-              <span class="material-symbols-outlined icon">workspace_premium</span>
+            <div class="period-badge">
+              <span class="material-symbols-outlined icon">verified</span>
               <span>{{ cert.issueDate }}</span>
             </div>
           </div>
 
-          <p class="description">{{ cert.description }}</p>
+          <p class="summary-text">{{ cert.description }}</p>
         </div>
       </div>
     }
@@ -49,24 +42,15 @@
     @for (edu of education(); track edu.id) {
       <div class="timeline-item">
         <div class="timeline-marker">
-          <span class="marker-dot">
-            <span class="material-symbols-outlined marker-icon">school</span>
-          </span>
+          <span class="marker-dot"></span>
           <span class="marker-line"></span>
         </div>
 
         <div class="timeline-content glass-panel">
           <div class="item-header">
-            <div class="title-group">
-              <div class="badge-pill degree-pill">
-                <span class="material-symbols-outlined">workspace_premium</span>
-                <span>{{ edu.degree }}</span>
-              </div>
-              <h2 class="item-title">{{ edu.institution }}</h2>
-              <span class="location-name">
-                <span class="material-symbols-outlined loc-icon">location_on</span>
-                {{ edu.location }}
-              </span>
+            <div class="role-group">
+              <h2 class="role-title">{{ edu.degree }} – {{ edu.fieldOfStudy }}</h2>
+              <span class="company-name">&#64; {{ edu.institution }}</span>
             </div>
 
             <div class="period-badge">
@@ -75,21 +59,13 @@
             </div>
           </div>
 
-          <div class="field-info-row">
-            <div class="field-info">
-              <span class="field-label">{{ 'education.fieldLabel' | translate }}</span>
-              <span class="field-value">{{ edu.fieldOfStudy }}</span>
+          @if (edu.specialization) {
+            <div class="technologies-row">
+              <span class="tech-tag">{{ 'education.specLabel' | translate }} {{ edu.specialization }}</span>
             </div>
+          }
 
-            @if (edu.specialization) {
-              <div class="field-info">
-                <span class="field-label">{{ 'education.specLabel' | translate }}</span>
-                <span class="field-value highlight">{{ edu.specialization }}</span>
-              </div>
-            }
-          </div>
-
-          <p class="description">{{ edu.description }}</p>
+          <p class="summary-text">{{ edu.description }}</p>
         </div>
       </div>
     }
