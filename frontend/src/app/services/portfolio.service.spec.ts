@@ -23,30 +23,32 @@ describe('PortfolioService', () => {
     httpMock.verify();
   });
 
-  it('should be created and issue HTTP GET request to /api/portfolio', () => {
+  it('should be created and issue HTTP GET request to backend API', () => {
     expect(service).toBeTruthy();
 
-    const req = httpMock.expectOne('/api/portfolio');
+    const req = httpMock.expectOne(request => request.url.includes('/portfolio'));
     expect(req.request.method).toBe('GET');
 
     // Respond with mock data
     req.flush({
-      profile: { name: 'Backend Loaded Name', title: 'Backend Title' },
+      profile: { name: 'Tomasz Zwierzyński', title: 'Senior Software Engineer' },
       metrics: [],
       projects: [],
       skills: [],
-      experiences: []
+      experiences: [],
+      education: []
     });
 
-    expect(service.profile().name).toBe('Backend Loaded Name');
-    expect(service.isLoadedFromBackend()).toBeTrue();
+    expect(service.profile()?.name).toBe('Tomasz Zwierzyński');
+    expect(service.hasError()).toBeFalse();
   });
 
-  it('should fallback to default data if HTTP call fails', () => {
-    const req = httpMock.expectOne('/api/portfolio');
+  it('should set hasError state when HTTP call fails', () => {
+    const req = httpMock.expectOne(request => request.url.includes('/portfolio'));
     req.error(new ProgressEvent('Network error'));
 
-    expect(service.profile().name).toBe('Partial Derivative');
-    expect(service.isLoadedFromBackend()).toBeFalse();
+    expect(service.profile()).toBeNull();
+    expect(service.hasError()).toBeTrue();
+    expect(service.errorMessage()).toBeTruthy();
   });
 });

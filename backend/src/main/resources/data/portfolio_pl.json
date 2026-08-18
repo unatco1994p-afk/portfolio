@@ -1,0 +1,264 @@
+{
+  "profile": {
+    "name": "Tomasz Zwierzyński",
+    "title": "Senior Software Engineer",
+    "avatarUrl": "/images/photo.jpg",
+    "status": "",
+    "bio": "Programista i inżynier oprogramowania z wieloletnim doświadczeniem w tworzeniu systemów samoobsługowych, ewidencji czasu oraz skalowalnych mikroserwisów (Quarkus, Angular, GCP, Kubernetes).",
+    "location": "Polska (Zdalnie / Hybrydowo)",
+    "email": "tomasz0zwierzynski@gmail.com",
+    "githubUrl": "https://github.com/unatco1994p-afk/portfolio",
+    "linkedinUrl": "https://www.linkedin.com/in/tomasz-zwierzyński-614733194/"
+  },
+  "metrics": [
+    { "id": "m1", "label": "Czas Działania Systemu", "value": "99.99%", "trend": "+0.01%", "status": "optimal" },
+    { "id": "m2", "label": "Węzły Kubernetes", "value": "3 Aktywne", "status": "optimal" },
+    { "id": "m3", "label": "Zimny Start GraalVM", "value": "18ms", "trend": "-82%", "status": "optimal" },
+    { "id": "m4", "label": "Sukces Pipeline CI/CD", "value": "100%", "status": "good" }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "GCP Cloud & GKE Microservices Monorepo",
+      "category": "cloud",
+      "description": "Produkcyjne portfolio zintegrowane w monorepo: Quarkus Native z GraalVM, SPA w Angularze 19, packaging Helm oraz pipeline CI/CD na GCP Cloud Build z Workload Identity.",
+      "metrics": "< 50MB zużycia RAM na pod",
+      "techStack": ["Quarkus", "GraalVM", "Angular 19", "GCP GKE", "Helm", "Cloud Build"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/portfolio",
+      "featured": true,
+      "status": "PRODUCTION"
+    },
+    {
+      "id": "p2",
+      "title": "Wpłatomaty / Wypłatomaty Self-Service GUI",
+      "category": "backend",
+      "description": "Moduł logiki biznesowej i GUI dla dedykowanych urządzeń samoobsługowych wpłat i wypłat gotówki dla instytucji finansowych.",
+      "metrics": "Transakcje w czasie rzeczywistym",
+      "techStack": ["Java", "JavaFX", "Hibernate", "PostgreSQL", "REST API"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/",
+      "featured": true,
+      "status": "COMPLETED"
+    },
+    {
+      "id": "p3",
+      "title": "System Zarządzania Czasem Pracy",
+      "category": "frontend",
+      "description": "Nowoczesna aplikacja webowa do rejestracji i analizy ewidencji czasu pracy pracowników w enterprise.",
+      "metrics": "Modułowy interfejs webowy",
+      "techStack": ["Angular", "TypeScript", "HTML5", "CSS3", "REST API"],
+      "githubUrl": "https://github.com/tomasz0zwierzynski/",
+      "featured": true,
+      "status": "STABLE"
+    }
+  ],
+  "skills": [
+    {
+      "id": "s1",
+      "name": "Backend & JVM Ecosystem",
+      "category": "backend",
+      "experience": "6+ lat",
+      "icon": "terminal",
+      "highlights": [
+        "Java (21 / 25-ready)",
+        "Quarkus (Native & MicroProfile)",
+        "Jakarta EE & WildFly",
+        "Hibernate & JPA",
+        "GraalVM Native Image",
+        "Maven",
+        "JUnit 5 & Mockito",
+        "REST-Assured (API Testing)",
+        "PostgreSQL & Liquibase",
+        "REST API & OpenAPI / Swagger"
+      ]
+    },
+    {
+      "id": "s2",
+      "name": "Frontend & Modern Web UI",
+      "category": "frontend",
+      "experience": "5+ lat",
+      "icon": "code",
+      "highlights": [
+        "Angular (Standalone Components, Signals)",
+        "TypeScript & JavaScript (ES6+)",
+        "HTML5 & SCSS / CSS3 (Flexbox/Grid, RWD)",
+        "RxJS & Reactive Streams",
+        "Karma & Jasmine (Unit Testing)",
+        "Figma (Design-to-Code)",
+        "Node.js & npm",
+        "Angular Router & HTTP Interceptors"
+      ]
+    },
+    {
+      "id": "s3",
+      "name": "DevOps, Cloud & Infrastruktura",
+      "category": "devops",
+      "experience": "4+ lat",
+      "icon": "cloud",
+      "highlights": [
+        "Google Cloud Certified - Associate Cloud Engineer (ACE)",
+        "Docker & Multi-Stage Builds",
+        "Kubernetes (K8s) & Helm Charts",
+        "GCP (Google Cloud Platform & GKE)",
+        "GCP Cloud Build & Artifact Registry",
+        "Jenkins & GitLab CI/CD",
+        "Git (Gitflow, Pull/Merge Requests)",
+        "Linux / Bash CLI & Nginx"
+      ],
+      "certification": {
+        "name": "Google Cloud Certified - Associate Cloud Engineer",
+        "issuer": "Google Cloud",
+        "issueDate": "23 marca 2026",
+        "badge": "verified"
+      }
+    },
+    {
+      "id": "s4",
+      "name": "Security & Jakość Kodu",
+      "category": "security",
+      "experience": "6+ lat",
+      "icon": "verified_user",
+      "highlights": [
+        "SDLC (Secure Development Life Cycle)",
+        "CVE Analysis & SonarQube / SonarCloud",
+        "OWASP Top 10 Awareness",
+        "Dependency Vulnerability Scanning",
+        "Code Review & Quality Gates"
+      ]
+    },
+    {
+      "id": "s5",
+      "name": "Metodyki, Narzędzia & Architektura",
+      "category": "methodology",
+      "experience": "6+ lat",
+      "icon": "architecture",
+      "highlights": [
+        "Język Angielski (C1/C2 - Biegły w mowie i piśmie)",
+        "Scrum & Agile Development",
+        "Jira & Confluence",
+        "Architektura Mikrousługowa",
+        "Clean Code & SOLID Principles",
+        "Projektowanie API RESTful"
+      ]
+    },
+    {
+      "id": "s6",
+      "name": "Narzędzia AI & Programowanie Wspomagane LLM",
+      "category": "methodology",
+      "experience": "2+ lat",
+      "icon": "auto_awesome",
+      "highlights": [
+        "AI Coding Assistants (Google Antigravity, GitHub Copilot, Cursor)",
+        "Modele Generatywne (ChatGPT / GPT-4o, Claude 3.5/3.7, Gemini)",
+        "Prompt Engineering & Inżynieria Kontekstu (Context Management)",
+        "Agentic Workflows & Programowanie Wspomagane Agentami AI",
+        "Automatyzacja Tworzenia Testów Jednostkowych & Refaktoryzacja z AI"
+      ]
+    }
+  ],
+  "experiences": [
+    {
+      "id": "e1",
+      "company": "PSI Polska Sp. z o.o.",
+      "role": "Software Engineer / Java & Angular Developer",
+      "period": "12.2020 – Obecnie",
+      "location": "Poznań / Polska",
+      "summary": "Projektowanie, rozwój oraz utrzymanie zaawansowanych systemów oprogramowania dla przemysłu i logistyki w architekturze mikrousługowej.",
+      "achievements": [
+        "Rozwój skomplikowanych modułów biznesowych w Java/Quarkus i Angular.",
+        "Refaktoryzacja i podnoszenie jakości kodu oraz automatyzacja testów jednostkowych i integracyjnych.",
+        "Współpraca w zespole programistycznym przy wykorzystaniu zwinnych metodyk Agile."
+      ],
+      "technologies": ["Java", "Quarkus", "Spring Boot", "Angular", "TypeScript", "Docker", "REST API"],
+      "isCurrent": true
+    },
+    {
+      "id": "e2",
+      "company": "WASKO S.A.",
+      "role": "Programista / Full-Stack Engineer",
+      "period": "08.2018 – 11.2020",
+      "location": "Gliwice / Polska",
+      "summary": "Tworzenie i rozwój dedykowanych systemów biznesowych, aplikacji bankomatowych/samoobsługowych oraz systemów webowych.",
+      "achievements": [
+        "Projekt Wpłatomaty / Wypłatomaty: Tworzenie interfejsu graficznego GUI i logiki biznesowej dla urządzeń samoobsługowych (Java, JavaFX, Hibernate, PostgreSQL).",
+        "Projekt System Zarządzania Czasem Pracy: Tworzenie i rozwój aplikacji klienckiej do ewidencji czasu (Angular, HTML5, CSS3, REST API).",
+        "Jakość i Testy: Tworzenie oraz wykonywanie scenariuszy testowych (manualne, integracyjne, jednostkowe)."
+      ],
+      "technologies": ["Java", "JavaFX", "Hibernate", "PostgreSQL", "Angular", "HTML5", "CSS3", "REST API"],
+      "isCurrent": false
+    }
+  ],
+  "education": [
+    {
+      "id": "edu1",
+      "institution": "Politechnika Śląska w Gliwicach",
+      "degree": "mgr inż. (Magister Inżynier)",
+      "fieldOfStudy": "Mechatronika",
+      "specialization": "Aplikacje Napędowe",
+      "period": "02.2017 – 10.2018",
+      "location": "Gliwice, Polska",
+      "description": "Wydział Mechaniczny Technologiczny. Studia II stopnia zakończone uzyskaniem tytułu magistra inżyniera mechatroniki."
+    },
+    {
+      "id": "edu2",
+      "institution": "Politechnika Śląska w Gliwicach",
+      "degree": "inż. (Inżynier)",
+      "fieldOfStudy": "Mechatronika",
+      "specialization": "",
+      "period": "10.2013 – 01.2017",
+      "location": "Gliwice, Polska",
+      "description": "Wydział Mechaniczny Technologiczny. Studia I stopnia w trybie dziennym zakończone tytułem inżyniera."
+    }
+  ],
+  "certifications": [
+    {
+      "id": "c1",
+      "name": "Google Cloud Certified - Associate Cloud Engineer",
+      "issuer": "Google Cloud",
+      "issueDate": "23 marca 2026",
+      "badgeUrl": "workspace_premium",
+      "description": "Oficjalny certyfikat Google Cloud potwierdzający praktyczne umiejętności wdrażania aplikacji, monitorowania operacji i zarządzania rozwiązaniami chmurowymi w GCP oraz klastrach Kubernetes (GKE)."
+    }
+  ],
+  "interests": [
+    {
+      "id": "tech",
+      "icon": "memory",
+      "title": "Nowe Technologie & Cloud-Native",
+      "category": "Innowacje & Software",
+      "description": "Praktyczne eksperymentowanie z kompilacją natywną GraalVM AOT, architekturą mikroserwisową, frameworkiem Quarkus 3.x, reaktywnymi sygnałami w Angularze 19 oraz orkiestracją konteneryzacji na GCP GKE.",
+      "tags": ["GraalVM AOT", "Angular 19 Signals", "Quarkus Native", "K8s & GCP GKE"]
+    },
+    {
+      "id": "mechatronics",
+      "icon": "precision_manufacturing",
+      "title": "Mechatronika & Automatyka",
+      "category": "Inżynieria Hardware",
+      "description": "Pielęgnowanie pasji z czasów studiów magisterskich na Wydziale Mechanicznym Technologicznym Politechniki Śląskiej — układy sterowania, automatyka przemysłowa, napędy oraz integracja sprzętu z oprogramowaniem.",
+      "tags": ["mgr inż. Politechnika Śląska", "Automatyka Przemysłowa", "Hardware & Embedded"]
+    },
+    {
+      "id": "automotive",
+      "icon": "directions_car",
+      "title": "Motoryzacja & Nowoczesne Pojazdy",
+      "category": "Technologia & Transport",
+      "description": "Zainteresowanie rozwojem nowoczesnej motoryzacji, zaawansowanymi systemami wspomagania kierowcy (ADAS), technologią pojazdów elektrycznych (EV) oraz inżynierią oprogramowania samochodowego.",
+      "tags": ["Systemy ADAS", "EV Engineering", "Technologia Samochodowa"]
+    },
+    {
+      "id": "outdoor",
+      "icon": "hiking",
+      "title": "Podróże & Turystyka Górka",
+      "category": "Styl Życia & Outdoor",
+      "description": "Piesze wycieczki w góry, trekking na świeżym powietrzu, odkrywanie nowych szlaków oraz aktywny wypoczynek zapewniający doskonały balans i regenerację po intensywnej pracy architektonicznej.",
+      "tags": ["Trekking Górski", "Outdoor & Nature", "Work-Life Balance"]
+    },
+    {
+      "id": "gaming",
+      "icon": "sports_esports",
+      "title": "Gry Strategiczne & E-Sport",
+      "category": "Rozrywka Analityczna",
+      "description": "Pasja do gier strategicznych i symulacyjnych rozwijających myślenie analityczne, śledzenie e-sportu oraz fascynacja nowinkami z zakresu technologii silników graficznych i renderowania.",
+      "tags": ["Simulations & Strategy", "Analytical Thinking", "Graphics Engines"]
+    }
+  ]
+}

@@ -22,7 +22,7 @@ export interface SystemMetric {
 export interface Project {
   id: string;
   title: string;
-  category: 'cloud' | 'backend' | 'fullstack' | 'devops';
+  category: string;
   description: string;
   metrics: string;
   techStack: string[];
@@ -32,14 +32,21 @@ export interface Project {
   status: string;
 }
 
+export interface SkillCertification {
+  name: string;
+  issuer: string;
+  issueDate: string;
+  badge: string;
+}
+
 export interface TechSkill {
   id: string;
   name: string;
-  category: 'Cloud & Infrastructure' | 'Backend & JVM' | 'Frontend & Web' | 'DevOps & CI/CD';
-  proficiency: number; // 0 to 100
+  category: string;
   experience: string;
   icon: string;
   highlights: string[];
+  certification?: SkillCertification;
 }
 
 export interface WorkExperience {
@@ -54,10 +61,44 @@ export interface WorkExperience {
   isCurrent?: boolean;
 }
 
+export interface Education {
+  id: string;
+  institution: string;
+  degree: string;
+  fieldOfStudy: string;
+  specialization?: string;
+  period: string;
+  location: string;
+  description: string;
+}
+
+export interface Certification {
+  id: string;
+  name: string;
+  issuer: string;
+  issueDate: string;
+  credentialUrl?: string;
+  badgeUrl?: string;
+  description: string;
+}
+
+export interface Interest {
+  id: string;
+  icon: string;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+}
+
 export interface PortfolioData {
   profile: UserProfile;
   metrics: SystemMetric[];
   projects: Project[];
   skills: TechSkill[];
   experiences: WorkExperience[];
+  education: Education[];
+  certifications?: Certification[];
+  interests: Interest[];
 }
+

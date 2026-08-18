@@ -1,0 +1,175 @@
+<div class="overview-page animate-fade-in">
+  <!-- Hero Profile & Photo Card -->
+  <section class="hero-card">
+    <div class="portrait-column">
+      <div class="photo-wrapper">
+        <img src="assets/official.jpg" [alt]="profile()?.name || 'Tomasz Zwierzyński'" class="portrait-img" />
+      </div>
+
+      <div class="portrait-actions">
+        <a href="mailto:tomasz0zwierzynski@gmail.com" class="action-btn email-btn">
+          <span class="material-symbols-outlined">mail</span>
+          <span>{{ 'overview.emailMe' | translate }}</span>
+        </a>
+        <a [href]="profile()?.githubUrl || 'https://github.com/unatco1994p-afk/portfolio'" target="_blank" class="action-btn github-btn">
+          <span class="material-symbols-outlined">code</span>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="bio-column">
+      <div class="bio-header">
+        <h2 class="person-name">{{ profile()?.name || 'Tomasz Zwierzyński' }}</h2>
+        <p class="person-title">{{ profile()?.title || 'Senior Software Engineer' }}</p>
+      </div>
+
+      <div class="meta-chips-row">
+        <div class="meta-chip">
+          <span class="material-symbols-outlined icon">location_on</span>
+          <span>{{ 'overview.location' | translate }}</span>
+        </div>
+      </div>
+
+      <div class="bio-text">
+        <p>{{ profile()?.bio || ('overview.expSubtitle' | translate) }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Executive Stats Grid -->
+  <section class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-number">6+</span>
+      <span class="stat-label">{{ 'overview.expTitle' | translate }}</span>
+    </div>
+    <div class="stat-card cert-stat">
+      <span class="stat-number">GCP ACE</span>
+      <span class="stat-label">{{ 'overview.cloudCertSubtitle' | translate }}</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-number">mgr inż.</span>
+      <span class="stat-label">{{ 'overview.eduSubtitle' | translate }}</span>
+    </div>
+  </section>
+
+  <!-- Snapshots Grid -->
+  <section class="snapshots-grid">
+    <!-- Experience Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">work</span>
+          <span>{{ 'nav.experience' | translate }}</span>
+        </div>
+        <a routerLink="/experience" class="view-link">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      @if (currentExperience; as exp) {
+        <div class="snapshot-body">
+          <h3 class="role-heading">{{ exp.role }}</h3>
+          <p class="company-sub">&#64; {{ exp.company }} ({{ exp.period }})</p>
+          <p class="summary-snippet">{{ exp.summary }}</p>
+          <div class="tech-chips">
+            @for (tech of exp.technologies.slice(0, 5); track tech) {
+              <span class="chip">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Skills Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">code</span>
+          <span>{{ 'nav.skills' | translate }}</span>
+        </div>
+        <a routerLink="/skills" class="view-link">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="snapshot-body">
+        <div class="core-skills-badges">
+          <span class="skill-badge highlight">Java 21</span>
+          <span class="skill-badge highlight">Quarkus Native</span>
+          <span class="skill-badge highlight">Angular 19</span>
+          <span class="skill-badge cert">Google Cloud ACE</span>
+          <span class="skill-badge">GCP GKE</span>
+          <span class="skill-badge">Helm & Docker</span>
+          <span class="skill-badge">PostgreSQL</span>
+          <span class="skill-badge">REST API & OpenAPI</span>
+          <span class="skill-badge">GraalVM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">school</span>
+          <span>{{ 'nav.education' | translate }}</span>
+        </div>
+        <a routerLink="/education" class="view-link">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="snapshot-body">
+        <ul class="snapshot-list">
+          <li class="list-item highlight-item">
+            <span class="material-symbols-outlined icon">verified</span>
+            <div class="item-text">
+              <span class="item-title">Google Cloud Certified - Associate Cloud Engineer</span>
+              <span class="item-sub">Google Cloud • 2026</span>
+            </div>
+          </li>
+          <li class="list-item">
+            <span class="material-symbols-outlined icon">school</span>
+            <div class="item-text">
+              <span class="item-title">mgr inż. Mechatronika</span>
+              <span class="item-sub">Politechnika Śląska (2017 – 2018)</span>
+            </div>
+          </li>
+          <li class="list-item">
+            <span class="material-symbols-outlined icon">school</span>
+            <div class="item-text">
+              <span class="item-title">inż. Mechatronika</span>
+              <span class="item-sub">Politechnika Śląska (2013 – 2017)</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Portfolio App Demo Snapshot -->
+    <div class="snapshot-card">
+      <div class="snapshot-header">
+        <div class="snapshot-tag">
+          <span class="material-symbols-outlined">schema</span>
+          <span>{{ 'overview.demoTitle' | translate }}</span>
+        </div>
+        <a routerLink="/architecture" class="view-link">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+
+      <div class="snapshot-body">
+        <p class="arch-desc">
+          {{ 'overview.demoSubtitle' | translate }}
+        </p>
+        <div class="tech-chips">
+          <span class="chip">Angular 19 SPA</span>
+          <span class="chip">Quarkus Java 21</span>
+          <span class="chip">GraalVM AOT</span>
+          <span class="chip">GCP GKE</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "overview": "O mnie / CV",
+    "skills": "Umiejętności",
+    "experience": "Doświadczenie",
+    "education": "Wykształcenie",
+    "architecture": "Architektura & Stack",
+    "interests": "Zainteresowania",
+    "contact": "Kontakt",
+    "mobileOverview": "O mnie",
+    "mobileSkills": "Skille",
+    "mobileExperience": "Kariera",
+    "mobileEducation": "Edukacja",
+    "mobileArchitecture": "Stack",
+    "mobileInterests": "Pasje"
+  },
+  "header": {
+    "systemRole": "SYSTEM INŻYNIERYJNY FULL-STACK",
+    "availability": "Dostępny do Współpracy",
+    "online": "SYSTEM ONLINE",
+    "langTooltip": "Zmień język serwisu (PL / EN)"
+  },
+  "overview": {
+    "emailMe": "Wyślij Email",
+    "location": "Polska (Zdalnie / Hybrydowo)",
+    "snapshotTitle": "Kluczowe Osiągnięcia & Certyfikaty",
+    "snapshotSubtitle": "Zestawienie oficjalnych uprawnień, doświadczenia i statusu natywnego portfela.",
+    "cloudCertTitle": "Certyfikat Chmurowy Google",
+    "cloudCertSubtitle": "Google Cloud Certified - Associate Cloud Engineer (ACE)",
+    "expTitle": "Komercyjne Doświadczenie",
+    "expSubtitle": "Ponad 6 lat w budowie i utrzymaniu systemów IT",
+    "eduTitle": "Wykształcenie Wyższe",
+    "eduSubtitle": "Magister Inżynier Mechatroniki (Politechnika Śląska)",
+    "demoTitle": "Aplikacja Portfolio (Demo)",
+    "demoSubtitle": "Architektura natywna Java 21 & Angular 19 Signals"
+  },
+  "skills": {
+    "headerTag": "TECH STACK & CORE COMPETENCIES",
+    "title": "Ekosystem Technologiczny & Umiejętności",
+    "subtitle": "Zestawienie zaawansowanych stosów technologicznych, środowisk uruchomieniowych, chmurowych oraz praktyk inżynieryjnych.",
+    "errorTitle": "Brak połączenia z backendem API",
+    "retry": "Ponów próbę",
+    "loading": "Ładowanie stosu technologicznego z serwera...",
+    "provenStack": "Sprawdzony Stos & Narzędzia",
+    "expSuffix": "doświadczenia",
+    "empty": "Brak technologii w wybranej kategorii.",
+    "searchPlaceholder": "Szukaj technologii (np. Java, Quarkus, Angular)...",
+    "searchEmpty": "Brak technologii pasujących do wyszukiwania.",
+    "clearSearch": "Wyczyść wyszukiwanie",
+    "catAll": "Wszystkie",
+    "catBackend": "Backend & JVM",
+    "catFrontend": "Frontend & UI",
+    "catDevops": "DevOps & Cloud",
+    "catSecurity": "Security & Jakość",
+    "catMethodology": "Metodyki & Architektura"
+  },
+  "experience": {
+    "headerTag": "WORK EXPERIENCE & CAREER PATH",
+    "title": "Doświadczenie Zawodowe",
+    "subtitle": "Przebieg kariery inżynieryjnej, historia zatrudnienia oraz udokumentowane sukcesy projektowe.",
+    "errorTitle": "Brak połączenia z backendem API",
+    "retry": "Ponów próbę",
+    "loading": "Pobieranie historii kariery z backendu...",
+    "currentBadge": "Obecne stanowisko",
+    "achievementsTitle": "Kluczowe Osiągnięcia & Zakres Odpowiedzialności"
+  },
+  "education": {
+    "headerTag": "ACADEMIC & PROFESSIONAL CREDENTIALS",
+    "title": "Wykształcenie & Certyfikaty",
+    "subtitle": "Udokumentowane wykształcenie wyższe magistersko-inżynierskie oraz oficjalne certyfikacje branżowe.",
+    "certTag": "OFICJALNY CERTYFIKAT CHMUROWY",
+    "validUntil": "Ważny do",
+    "verifiedBadge": "Weryfikowalny w Google Cloud Directory",
+    "viewCredential": "Zobacz Certyfikat",
+    "degreeTag": "TYTUŁ NAUKOWY",
+    "fieldLabel": "Kierunek:",
+    "specLabel": "Specjalność:"
+  },
+  "architecture": {
+    "headerTag": "SYSTEM ARCHITECTURE",
+    "title": "Architektura Portfela",
+    "subtitle": "Schemat przepływu danych oraz opis warstw technologicznych natywnej aplikacji chmurowej.",
+    "tagBadge": "GCP GKE • QUARKUS NATIVE • ANGULAR 19",
+    "flowTitle": "Schemat Przepływu Systemu",
+    "pipelineTitle": "Ścieżka Wdrożeniowa (CI/CD Pipeline):",
+    "pipelineFlow": "GitHub Repo → GCP Cloud Build Trigger → Helm Charts & Docker → GCP GKE Cluster",
+    "runtimeTitle": "Ścieżka Aplikacji (Runtime Flow):",
+    "runtimeFlow": "Przeglądarka (User) → Load Balancer (Ingress) → Angular 19 SPA → Quarkus Java 21 REST API",
+    "frontendCardTitle": "Natywny Frontend SPA",
+    "frontendCardSub": "Angular 19 Standalone & Signals",
+    "frontendCardDesc": "Reaktywna aplikacja SPA oparta o technologię Angular Signals, bezzbędną zmianę stref (zoneless change detection), modularny układ SCSS z motywami zdefiniowanymi w zmiennych CSS.",
+    "backendCardTitle": "Wysokowydajny Backend REST",
+    "backendCardSub": "Quarkus 3.x Java 21 Native Image",
+    "backendCardDesc": "Mikroserwis wbudowany z wykorzystaniem frameworka Quarkus i kompilowany AOT do obrazu natywnego GraalVM, zapewniający czas startu poniżej 20ms i minimalne zużycie pamięci RAM.",
+    "infraCardTitle": "Infrastruktura & Chmura",
+    "infraCardSub": "GCP GKE & Automated CI/CD",
+    "infraCardDesc": "Automatyczny deployment w oparciu o Google Cloud Build, wykrywanie zdarzeń w repozytorium GitHub, paczkowanie Helm Charts i orkiestrację w klastrze Kubernetes (GKE)."
+  },
+  "interests": {
+    "headerTag": "HOBBIES & PERSONAL PASSIONS",
+    "title": "Zainteresowania & Pasje",
+    "subtitle": "Czym zajmuję się po godzinach spędzonych przy kodzie — innowacje technologiczne, mechatronika, motoryzacja oraz aktywny wypoczynek."
+  },
+  "errors": {
+    "backendUnreachable": "Brak połączenia z serwerem API portfolio. Upewnij się, że usługa backendowa Quarkus jest uruchomiona."
+  }
+}

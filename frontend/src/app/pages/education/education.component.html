@@ -1,0 +1,73 @@
+<div class="education-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">school</span>
+      <span>{{ 'education.headerTag' | translate }}</span>
+    </div>
+    <h1 class="page-title">
+      {{ 'education.title' | translate }}
+    </h1>
+    <p class="page-subtitle">
+      {{ 'education.subtitle' | translate }}
+    </p>
+  </header>
+
+  <div class="timeline-container">
+    <!-- Certifications (Top of Timeline) -->
+    @for (cert of certifications(); track cert.id) {
+      <div class="timeline-item">
+        <div class="timeline-marker current">
+          <span class="marker-dot"></span>
+          <span class="marker-line"></span>
+        </div>
+
+        <div class="timeline-content glass-panel">
+          <div class="item-header">
+            <div class="role-group">
+              <h2 class="role-title">{{ cert.name }}</h2>
+              <span class="company-name">&#64; {{ cert.issuer }}</span>
+            </div>
+            <div class="period-badge">
+              <span class="material-symbols-outlined icon">verified</span>
+              <span>{{ cert.issueDate }}</span>
+            </div>
+          </div>
+
+          <p class="summary-text">{{ cert.description }}</p>
+        </div>
+      </div>
+    }
+
+    <!-- University Degrees -->
+    @for (edu of education(); track edu.id) {
+      <div class="timeline-item">
+        <div class="timeline-marker">
+          <span class="marker-dot"></span>
+          <span class="marker-line"></span>
+        </div>
+
+        <div class="timeline-content glass-panel">
+          <div class="item-header">
+            <div class="role-group">
+              <h2 class="role-title">{{ edu.degree }} – {{ edu.fieldOfStudy }}</h2>
+              <span class="company-name">&#64; {{ edu.institution }}</span>
+            </div>
+
+            <div class="period-badge">
+              <span class="material-symbols-outlined icon">calendar_today</span>
+              <span>{{ edu.period }}</span>
+            </div>
+          </div>
+
+          @if (edu.specialization) {
+            <div class="technologies-row">
+              <span class="tech-tag">{{ 'education.specLabel' | translate }} {{ edu.specialization }}</span>
+            </div>
+          }
+
+          <p class="summary-text">{{ edu.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

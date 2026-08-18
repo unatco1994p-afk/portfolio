@@ -1,0 +1,44 @@
+<div class="interests-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">favorite</span>
+      <span>{{ 'interests.headerTag' | translate }}</span>
+    </div>
+    <h1 class="page-title">
+      {{ 'interests.title' | translate }}
+    </h1>
+    <p class="page-subtitle">
+      {{ 'interests.subtitle' | translate }}
+    </p>
+  </header>
+
+  <div class="interests-page-grid">
+    @for (item of interests(); track item.id) {
+      <div class="interest-card glass-panel">
+        <div class="card-top">
+          <div class="icon-wrapper">
+            <span class="material-symbols-outlined">{{ item.icon }}</span>
+          </div>
+          <span class="category-badge">
+            {{ item.category }}
+          </span>
+        </div>
+
+        <div class="card-body">
+          <h2 class="item-title">
+            {{ item.title }}
+          </h2>
+          <p class="item-desc">
+            {{ item.description }}
+          </p>
+
+          <div class="tags-row">
+            @for (tag of item.tags; track tag) {
+              <span class="tag-pill">{{ tag }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

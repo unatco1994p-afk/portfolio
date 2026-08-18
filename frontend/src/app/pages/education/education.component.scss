@@ -1,0 +1,149 @@
+.education-page {
+  padding: 2rem 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1.5rem;
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.5rem;
+
+    .marker-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--surface-container-highest);
+      border: 2px solid var(--outline);
+      z-index: 2;
+    }
+
+    &.current .marker-dot {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 0 10px var(--secondary);
+    }
+
+    .marker-line {
+      width: 2px;
+      flex: 1;
+      background: var(--outline-variant);
+      margin-top: 0.5rem;
+    }
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    cursor: default;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .item-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      .role-group {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0.5rem;
+
+        .role-title {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--on-surface);
+        }
+
+        .company-name {
+          font-size: 1.05rem;
+          color: var(--primary);
+          font-weight: 600;
+        }
+      }
+
+      .period-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--on-surface-variant);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 0.25rem 0.6rem;
+        border-radius: 0.25rem;
+        border: 1px solid var(--outline-variant);
+
+        .icon {
+          font-size: 0.95rem;
+          color: var(--primary);
+        }
+      }
+    }
+
+    .summary-text {
+      color: var(--on-surface-variant);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .technologies-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.2rem;
+
+      .tech-tag {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+        background: rgba(56, 189, 248, 0.08);
+        border: 1px solid rgba(56, 189, 248, 0.18);
+        border-radius: 0.25rem;
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .education-page {
+    padding: 0;
+  }
+
+  .timeline-item {
+    gap: 0.75rem;
+
+    .timeline-content {
+      padding: 1.25rem;
+
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  }
+}

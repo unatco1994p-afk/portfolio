@@ -1,9 +1,16 @@
-<div class="experience-page">
-  <div class="page-header">
-    <span class="badge badge-primary">04 // CAREER TIMELINE & IMPACT</span>
-    <h1 class="page-title">Work Experience & Leadership</h1>
-    <p class="page-description">Historia zatrudnienia, zrealizowane projekty inżynieryjne oraz mierzalny wpływ biznesowy i technologiczny.</p>
-  </div>
+<div class="experience-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">work</span>
+      <span>{{ 'experience.headerTag' | translate }}</span>
+    </div>
+    <h1 class="page-title">
+      {{ 'experience.title' | translate }}
+    </h1>
+    <p class="page-subtitle">
+      {{ 'experience.subtitle' | translate }}
+    </p>
+  </header>
 
   <div class="timeline-container">
     @for (exp of experiences(); track exp.id) {
@@ -28,7 +35,9 @@
           <p class="summary-text">{{ exp.summary }}</p>
 
           <div class="achievements-section">
-            <h3 class="section-subtitle">Key Achievements & Impact</h3>
+            <h3 class="section-subtitle">
+              {{ 'experience.achievementsTitle' | translate }}
+            </h3>
             <ul class="achievements-list">
               @for (achievement of exp.achievements; track achievement) {
                 <li class="achievement-item">

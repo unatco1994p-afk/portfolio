@@ -1,15 +1,16 @@
-# Portfolio OS | Engineering Showcase
+# Portfolio
 
 A high-performance, cloud-native engineering portfolio and interactive CV application built with **Quarkus (Java 21)** and **Angular 19**, organized as a clean monorepo. 
 
-The application showcases modern software design patterns including **Angular Signals**, standalone component architecture, **RESTful microservice endpoints**, and a SaaS-inspired **Glassmorphism UI** ("Engineering Elegance").
+The application showcases modern software design patterns including **Angular Signals**, **Java 21 Records**, **In-Memory Caching**, **i18n (PL/EN) Localization**, standalone component architecture, **RESTful microservice endpoints**, and a SaaS-inspired **Glassmorphism UI** ("Engineering Elegance").
 
 ---
 
 ## 🚀 Key Architectural Highlights
 
-- **Frontend**: **Angular 19** Single Page Application (SPA) utilizing Signals (`signal`, `computed`), standalone components, native control flow (`@if`, `@for`), typed reactive services, and a modular SCSS design system.
-- **Backend**: **Quarkus 3.x (Java 21 LTS)** high-performance REST API serving typed portfolio assets from zero-overhead JSON data models. Built for ultra-low latency and GraalVM Native Image compilation (< 50MB RAM footprint).
+- **Frontend**: **Angular 19** Single Page Application (SPA) utilizing Signals (`signal`, `computed`), standalone components, native control flow (`@if`, `@for`), typed reactive services, persistent `PL | EN` i18n language switcher, and a modular SCSS design system.
+- **Backend**: **Quarkus 3.x (Java 21 LTS)** high-performance REST API powered by **Java 21 Records**, in-memory caching (`@PostConstruct` + `ConcurrentHashMap`), structured JBoss logging, and `spotless-maven-plugin` (Google Java Format). Built for ultra-low latency and GraalVM Native Image compilation (< 50MB RAM footprint).
+- **Internationalization (i18n)**: Native bilingual support (Polish & English) handled seamlessly via `lang` query parameters and `Accept-Language` HTTP headers.
 - **Design System**: "Engineering Elegance" theme featuring Obsidian dark surfaces (`#051424`), Electric Blue highlights (`#8ed5ff`), Emerald Green metric indicators (`#4edea3`), and typography powered by *Inter* & *JetBrains Mono*.
 
 ---
@@ -18,19 +19,19 @@ The application showcases modern software design patterns including **Angular Si
 
 ```text
 portfolio/
-├── backend/                  # Quarkus REST API (Java 21)
-│   ├── src/main/java/       # DTOs, Data Services, & REST Endpoints
-│   ├── src/main/resources/  # Portfolio JSON data & application configuration
+├── backend/                  # Quarkus REST API (Java 21 LTS)
+│   ├── src/main/java/       # Java 21 Records (DTOs), Data Services, & REST Endpoints
+│   ├── src/main/resources/  # Portfolio JSON data (portfolio_pl.json, portfolio_en.json)
 │   ├── src/test/java/       # Integration tests (@QuarkusTest & REST Assured)
 │   ├── mvnw.cmd / mvnw      # Maven Wrapper
-│   └── pom.xml
+│   └── pom.xml               # Spotless (Google Java Format AOSP), RESTEasy Jackson
 ├── frontend/                 # Angular 19 SPA
-│   ├── src/app/             # Signals-driven components, layout, & services
+│   ├── src/app/             # Signals-driven components (Skills, Experience, Education, Architecture)
+│   ├── src/assets/          # Static production assets (photo.jpg)
 │   ├── proxy.conf.json      # Dev proxy forwarding /api to Quarkus (8080)
 │   ├── angular.json
 │   └── package.json         # Strict exact package dependency pinning
 ├── .gitignore
-├── portfolio.spec.md         # Project technical specification & roadmap
 └── README.md
 ```
 
@@ -60,12 +61,13 @@ cd backend
 ```
 
 The Quarkus backend will start on **`http://localhost:8080`**.  
-Available REST API endpoints:
+Available REST API endpoints (supporting `?lang=pl` / `?lang=en`):
 - `GET http://localhost:8080/api/portfolio`
 - `GET http://localhost:8080/api/profile`
 - `GET http://localhost:8080/api/projects`
 - `GET http://localhost:8080/api/skills`
 - `GET http://localhost:8080/api/experiences`
+- `GET http://localhost:8080/api/education`
 - `GET http://localhost:8080/api/metrics`
 
 ---
@@ -80,11 +82,18 @@ npm start
 ```
 
 The Angular dev server will launch at **`http://localhost:4200`**.  
-The development server automatically proxies API requests (`/api/*`) from port 4200 to the Quarkus backend on port 8080. If the backend is offline, the frontend safely falls back to default cached mock state.
+The development server automatically proxies API requests (`/api/*`) from port 4200 to the Quarkus backend on port 8080. If the backend is offline, the frontend safely falls back to default cached state.
 
 ---
 
-## 🧪 Running Tests
+## 🧪 Running Tests & Code Quality Checks
+
+### Backend Code Formatting (Spotless / Google Java Format)
+```bash
+cd backend
+.\mvnw.cmd spotless:apply   # Automatically format all Java source files
+.\mvnw.cmd spotless:check   # Verify code formatting compliance
+```
 
 ### Backend Integration Tests (Quarkus + JUnit 5 + REST Assured)
 ```bash
@@ -131,4 +140,3 @@ docker compose up --build
   ```bash
   docker compose down
   ```
-

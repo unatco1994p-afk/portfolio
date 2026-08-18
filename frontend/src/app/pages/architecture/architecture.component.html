@@ -1,0 +1,96 @@
+<div class="architecture-page animate-fade-in">
+  <header class="page-header">
+    <div class="header-tag">
+      <span class="material-symbols-outlined">schema</span>
+      <span>{{ 'architecture.headerTag' | translate }}</span>
+    </div>
+    <h1 class="page-title">
+      {{ 'architecture.title' | translate }}
+    </h1>
+    <p class="page-subtitle">
+      {{ 'architecture.subtitle' | translate }}
+    </p>
+  </header>
+
+  <!-- Top Visual Architecture Diagram -->
+  <section class="diagram-section">
+    <div class="section-title-row">
+      <div class="section-title">
+        <span class="material-symbols-outlined">account_tree</span>
+        <span>{{ 'architecture.flowTitle' | translate }}</span>
+      </div>
+      <span class="tag-badge">{{ 'architecture.tagBadge' | translate }}</span>
+    </div>
+
+    <div class="diagram-image-wrapper">
+      <img src="assets/architecture-diagram.jpg" alt="Architecture Diagram" class="architecture-img" />
+    </div>
+
+    <!-- Step Pipeline Summary -->
+    <div class="pipeline-summary-container">
+      <div class="pipeline-block">
+        <h4 class="pipeline-title">
+          <span class="material-symbols-outlined icon">sync</span>
+          <span>{{ 'architecture.pipelineTitle' | translate }}</span>
+        </h4>
+        <p class="pipeline-flow">{{ 'architecture.pipelineFlow' | translate }}</p>
+      </div>
+
+      <div class="pipeline-block">
+        <h4 class="pipeline-title">
+          <span class="material-symbols-outlined icon">swap_horiz</span>
+          <span>{{ 'architecture.runtimeTitle' | translate }}</span>
+        </h4>
+        <p class="pipeline-flow">{{ 'architecture.runtimeFlow' | translate }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Tech Stack & System Operation Cards -->
+  <section class="stack-details-grid">
+    <div class="stack-card">
+      <div class="card-icon">
+        <span class="material-symbols-outlined">laptop_mac</span>
+      </div>
+      <h3>{{ 'architecture.frontendCardTitle' | translate }}</h3>
+      <p class="card-description">
+        {{ 'architecture.frontendCardDesc' | translate }}
+      </p>
+      <ul>
+        <li><strong>Framework:</strong> Angular 19 (Standalone Architecture)</li>
+        <li><strong>State:</strong> Angular Signals & Computed State</li>
+        <li><strong>Styling:</strong> Custom SCSS Design System</li>
+      </ul>
+    </div>
+
+    <div class="stack-card">
+      <div class="card-icon">
+        <span class="material-symbols-outlined">terminal</span>
+      </div>
+      <h3>{{ 'architecture.backendCardTitle' | translate }}</h3>
+      <p class="card-description">
+        {{ 'architecture.backendCardDesc' | translate }}
+      </p>
+      <ul>
+        <li><strong>Runtime:</strong> Java 21 LTS + GraalVM Native Image</li>
+        <li><strong>Framework:</strong> Quarkus 3.x (Reactive REST API)</li>
+        <li><strong>Testing:</strong> JUnit 5 & REST Assured Automation</li>
+      </ul>
+    </div>
+
+    <div class="stack-card">
+      <div class="card-icon">
+        <span class="material-symbols-outlined">cloud_sync</span>
+      </div>
+      <h3>{{ 'architecture.infraCardTitle' | translate }}</h3>
+      <p class="card-description">
+        {{ 'architecture.infraCardDesc' | translate }}
+      </p>
+      <ul>
+        <li><strong>Cloud Provider:</strong> Google Cloud Platform (GCP)</li>
+        <li><strong>Orchestration:</strong> Google Kubernetes Engine (GKE)</li>
+        <li><strong>Packaging:</strong> Helm Charts & Docker Containers</li>
+      </ul>
+    </div>
+  </section>
+</div>
